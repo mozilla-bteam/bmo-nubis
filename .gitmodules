@@ -1,0 +1,4 @@
+[submodule "code"]
+	path = code
+	url = https://git.mozilla.org/webtools/bmo/bugzilla.git
+	branch = production
