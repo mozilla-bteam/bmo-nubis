@@ -88,3 +88,8 @@ package {
   ]:
     ensure => present,
 }
+
+file { "/var/www/bugzilla/answers.txt":
+  ensure => present,
+  source => "puppet:///nubis/files/answers.txt",
+}

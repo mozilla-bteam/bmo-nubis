@@ -23,7 +23,7 @@
        "sudo perl -I/var/www/bugzilla /var/www/bugzilla/install-module.pl Crypt::OpenPGP",
        "sudo perl -I/var/www/bugzilla /var/www/bugzilla/install-module.pl Crypt::SMIME",
        "sudo perl -I/var/www/bugzilla /var/www/bugzilla/install-module.pl File::MimeInfo::Magic",
-       "sudo perl /var/www/bugzilla/checksetup.pl"
+       "sudo perl /var/www/bugzilla/checksetup.pl --verbose /var/www/bugzilla/answers.txt"
     ],
     "order": "20"
   }

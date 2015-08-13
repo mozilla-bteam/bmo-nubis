@@ -1,0 +1,5 @@
+# Unattended
+$answer{'NO_PAUSE'} = 1;
+
+# Skip Database checks
+$answer{'db_check'} = 0;
