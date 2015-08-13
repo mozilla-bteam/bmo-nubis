@@ -7,20 +7,6 @@
 # Feel free to remove any of these that you do not need for your project.
 #
 
-exec { 'apt-get update':
-  command => '/usr/bin/apt-get update',
-}
-
-package { 'makepasswd':
-  ensure => '1.10-9',
-  require  => Exec['apt-get update'],
-}
-
-package { 'git':
-  ensure => present,
-  require  => Exec['apt-get update'],
-}
-
 file { '/etc/update-motd.d/55-nubis-welcome':
   source => 'puppet:///nubis/files/nubis-welcome',
   owner => 'root',
@@ -29,6 +15,6 @@ file { '/etc/update-motd.d/55-nubis-welcome':
 }
 
 exec { 'motd update':
-  command => '/bin/run-parts /etc/update-motd.d/ > /var/run/motd.dynamic',
+  command => '/usr/sbin/update-motd',
   require  => File['/etc/update-motd.d/55-nubis-welcome'],
 }
