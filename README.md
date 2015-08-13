@@ -1,5 +1,5 @@
-﻿# nubis-skel
-This is a skeleton repository that can be used for testing or as a quick way for you to incorporate nubis into your own project.
+﻿# bugzilla.mozilla.org
+This is a nubis deployment repository for BMO (bugzilla.mozilla.org)
 
 ## Prerequisites
 If you are new to the Nubisproject you will need to set up some [prerequisites](https://github.com/Nubisproject/nubis-docs/blob/master/PREREQUISITES.md). 
