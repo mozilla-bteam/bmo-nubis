@@ -2,8 +2,30 @@
 "provisioners": [
   {
     "type": "shell",
-    "inline": ["true"],
-    "order": "11"
+    "inline": [
+        "sudo mkdir -p -m 755 /var/www/bugzilla",
+        "sudo chown ec2-user:ec2-user /var/www/bugzilla"
+    ],
+    "order": "1"
+  },
+  {
+    "type": "file",
+    "source": "code/",
+    "destination": "/var/www/bugzilla",
+    "order": "2"
+  },
+  {
+    "type": "shell",
+    "inline": [
+       "sudo perl -I/var/www/bugzilla /var/www/bugzilla/install-module.pl Math::Random::ISAAC",
+       "sudo perl -I/var/www/bugzilla /var/www/bugzilla/install-module.pl File::MimeInfo::Magic",
+       "sudo perl -I/var/www/bugzilla /var/www/bugzilla/install-module.pl Daemon::Generic",
+       "sudo perl -I/var/www/bugzilla /var/www/bugzilla/install-module.pl Crypt::OpenPGP",
+       "sudo perl -I/var/www/bugzilla /var/www/bugzilla/install-module.pl Crypt::SMIME",
+       "sudo perl -I/var/www/bugzilla /var/www/bugzilla/install-module.pl File::MimeInfo::Magic",
+       "sudo perl /var/www/bugzilla/checksetup.pl"
+    ],
+    "order": "20"
   }
 ]
 }
