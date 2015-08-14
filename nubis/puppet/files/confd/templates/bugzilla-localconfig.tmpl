@@ -64,7 +64,7 @@ $db_user = '{{ if exists "/config/DBuser" }}{{ getv "/config/DBuser" }}{{ else }
 # If you use apostrophe (') or a backslash (\) in your password, you'll
 # need to escape it by preceding it with a '\' character. (\') or (\)
 # (It is far simpler to just not use those characters.)
-$db_pass = '{{ getv "/config/DBpassword" }}';
+$db_pass = '{{ if exists "/config/DBpassword" }}{{ getv "/config/DBpassword" }}{{ else }}provisioner_password{{ end }}';
 
 # Sometimes the database server is running on a non-standard port. If that's
 # the case for your database server, set this to the port number that your
