@@ -225,7 +225,7 @@
         "Ref": "Environment"
       }
     },
-    "wgServer": {
+    "Server": {
       "Description": "Consul: config/ Server name",
       "Value": {
         "Fn::Join": [
@@ -243,7 +243,7 @@
         ]
       }
     },
-    "wgCanonicalServer": {
+    "CanonicalServer": {
       "Description": "Consul: config/ Server url",
       "Value": {
         "Fn::Join": [
@@ -261,7 +261,7 @@
         ]
       }
     },
-    "wgDBserver": {
+    "DBserver": {
       "Description": "Consul: config/ Database endpoint",
       "Value": {
         "Fn::GetAtt": [
@@ -270,7 +270,7 @@
         ]
       }
     },
-    "wgDBname": {
+    "DBname": {
       "Description": "Consul: config/ Database name",
       "Value": {
         "Fn::GetAtt": [
@@ -279,7 +279,7 @@
         ]
       }
     },
-    "wgDBuser": {
+    "DBuser": {
       "Description": "Consul: config/ Database user",
       "Value": {
         "Fn::GetAtt": [
