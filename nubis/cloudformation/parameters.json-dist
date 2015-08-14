@@ -1,7 +1,7 @@
 [
   {
     "ParameterKey": "ServiceName",
-    "ParameterValue": "skel"
+    "ParameterValue": "bugzilla"
   }, 
   {
     "ParameterKey": "Environment",
