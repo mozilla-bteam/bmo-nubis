@@ -1,6 +1,6 @@
 {
   "AWSTemplateFormatVersion": "2010-09-09",
-  "Description": "Demo Mediawiki deployment for the nubis project.",
+  "Description": "Nubis version of bugzilla.mozilla.org",
   "Parameters": {
     "ServiceName": {
       "Description": "Name of the service",
@@ -150,7 +150,7 @@
           },
           "AllocatedStorage": "15",
           "DBInstanceClass": "db.t2.medium",
-          "DBName": "mediawiki",
+          "DBName": "bugzilla",
           "EC2SecurityGroup": {
             "Fn::GetAtt": [
               "EC2Stack",
