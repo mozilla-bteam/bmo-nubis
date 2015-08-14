@@ -5,6 +5,7 @@
 # Typically you will include things like Apache and other puppet modules
 # which are included in the base image.
 import 'skel.pp'
+import 'apache.pp'
 
 package { 'epel-release':
   ensure => present,
@@ -18,7 +19,7 @@ package {
     'bzr-python27',
     'graphviz',
     'patchutils',
-    'mod_perl',
+    'mod24_perl',
     'perl',
     'perl-version',
     'perl-autodie',
@@ -32,7 +33,6 @@ package {
     'perl-CPAN',
     'perl-App-cpanminus',
    #'perl-Any-URI-Escape',
-   #'perl-Apache-SizeLimit',
     'perl-Authen-SASL',
     'perl-Cache-Memcached',
    #'perl-Chart',
@@ -52,9 +52,9 @@ package {
     'perl-Encode-Detect',
     'perl-File-Find-Rule',
    #'perl-File-MimeInfo',
-   #'perl-GD',
-   #'perl-GD-Graph',
-   #'perl-GD-Text-Util',
+    'perl-GD',
+    'perl-GDGraph',
+    'perl-GDTextUtil',
     'perl-HTML-Parser',
     'perl-HTML-Scrubber',
     'perl-HTML-Tree',
