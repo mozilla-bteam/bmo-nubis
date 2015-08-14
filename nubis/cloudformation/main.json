@@ -1,6 +1,6 @@
 {
   "AWSTemplateFormatVersion": "2010-09-09",
-  "Description": "Skeleton deployment for the nubis project.",
+  "Description": "Demo Mediawiki deployment for the nubis project.",
   "Parameters": {
     "ServiceName": {
       "Description": "Name of the service",
@@ -17,6 +17,11 @@
       ],
       "ConstraintDescription": "Must specify prod, stage, or sandbox."
     },
+    "BaseZone": {
+      "Description": "Base zone to create route53 zone in",
+      "Default": "nubis.allizom.org",
+      "Type": "String"
+    },
     "SSHKeyName": {
       "Description": "Existing ssh key to deploy to EC2 instances",
       "Type": "String"
@@ -32,19 +37,19 @@
     "StacksVersion": {
       "Description": "Version of the Nubis Stacks",
       "Type": "String",
-      "Default": "master"
+      "Default": "v0.9.0"
     }
   },
   "Mappings": {
     "InstanceTypeMap": {
       "prod": {
-        "InstanceType": "m3.large"
+        "InstanceType": "m3.medium"
       },
-      "dev": {
+      "stage": {
         "InstanceType": "m3.medium"
       },
       "sandbox": {
-        "InstanceType": "m3.medium"
+        "InstanceType": "t2.small"
       }
     }
   },
@@ -87,6 +92,24 @@
               "ELBStack",
               "Outputs.ELB"
             ]
+          },
+          "AutoScalingGroupMinSize": "2",
+          "AutoScalingGroupDesiredCapacity": "2",
+          "AutoScalingGroupMaxSize": "6"
+        }
+      }
+    },
+    "AutoScalingStack": {
+      "Type": "AWS::CloudFormation::Stack",
+      "Properties": {
+        "TemplateURL": { "Fn::Join": [ "/", [ "https://s3.amazonaws.com/nubisproject-stacks", { "Ref": "StacksVersion" }, "autoscaling-cpu.template" ] ] },
+        "TimeoutInMinutes": "60",
+        "Parameters": {
+          "AutoScalingGroup": {
+            "Fn::GetAtt": [
+              "EC2Stack",
+              "Outputs.AutoScalingGroup"
+            ]
           }
         }
       }
@@ -106,7 +129,82 @@
           "Environment": {
             "Ref": "Environment"
           },
-          "ElbHealthTarget": "HTTP:80/"
+          "ElbHealthTarget": "HTTP:80/Special%3AVersion?no-ssl-rewrite"
+        }
+      }
+    },
+    "RDSStack": {
+      "Type": "AWS::CloudFormation::Stack",
+      "Properties": {
+        "TemplateURL": { "Fn::Join": [ "/", [ "https://s3.amazonaws.com/nubisproject-stacks", { "Ref": "StacksVersion" }, "rds-mysql.template" ] ] },
+        "TimeoutInMinutes": "60",
+        "Parameters": {
+          "ServiceName": {
+            "Ref": "ServiceName"
+          },
+          "TechnicalOwner": {
+            "Ref": "TechnicalOwner"
+          },
+          "Environment": {
+            "Ref": "Environment"
+          },
+          "AllocatedStorage": "15",
+          "DBInstanceClass": "db.t2.medium",
+          "DBName": "mediawiki",
+          "EC2SecurityGroup": {
+            "Fn::GetAtt": [
+              "EC2Stack",
+              "Outputs.EC2SecurityGroup"
+            ]
+          }
+        }
+      }
+    },
+    "MemcacheStack": {
+      "Type": "AWS::CloudFormation::Stack",
+      "Properties": {
+        "TemplateURL": { "Fn::Join": [ "/", [ "https://s3.amazonaws.com/nubisproject-stacks", { "Ref": "StacksVersion" }, "memcache.template" ] ] },
+        "TimeoutInMinutes": "60",
+        "Parameters": {
+          "ServiceName": {
+            "Ref": "ServiceName"
+          },
+          "TechnicalOwner": {
+            "Ref": "TechnicalOwner"
+          },
+          "Environment": {
+            "Ref": "Environment"
+          },
+          "EC2SecurityGroup": {
+            "Fn::GetAtt": [
+              "EC2Stack",
+              "Outputs.GroupId"
+            ]
+          }
+        }
+      }
+    },
+    "Route53Stack": {
+      "Type": "AWS::CloudFormation::Stack",
+      "Properties": {
+        "TemplateURL": { "Fn::Join": [ "/", [ "https://s3.amazonaws.com/nubisproject-stacks", { "Ref": "StacksVersion" }, "route53.template" ] ] },
+        "TimeoutInMinutes": "60",
+        "Parameters": {
+          "DNSName": {
+            "Ref": "AWS::StackName"
+          },
+          "Environment": {
+            "Ref": "Environment"
+          },
+          "BaseZone": {
+            "Ref": "BaseZone"
+          },
+          "ELBStack": {
+            "Fn::GetAtt": [
+              "ELBStack",
+              "Outputs.DNSName"
+            ]
+          }
         }
       }
     }
@@ -118,6 +216,93 @@
         "Fn::GetAtt": [
           "ELBStack",
           "Outputs.DNSName"
+        ]
+      }
+    },
+    "Environment": {
+      "Description": "Consul: config/ Environment we are deployed into",
+      "Value": {
+        "Ref": "Environment"
+      }
+    },
+    "wgServer": {
+      "Description": "Consul: config/ Server name",
+      "Value": {
+        "Fn::Join": [
+          ".",
+          [
+            "//www",
+            {
+              "Ref": "AWS::StackName"
+            },
+            {
+              "Ref": "Environment"
+            },
+            "nubis.allizom.org"
+          ]
+        ]
+      }
+    },
+    "wgCanonicalServer": {
+      "Description": "Consul: config/ Server url",
+      "Value": {
+        "Fn::Join": [
+          ".",
+          [
+            "https://www",
+            {
+              "Ref": "AWS::StackName"
+            },
+            {
+              "Ref": "Environment"
+            },
+            "nubis.allizom.org"
+          ]
+        ]
+      }
+    },
+    "wgDBserver": {
+      "Description": "Consul: config/ Database endpoint",
+      "Value": {
+        "Fn::GetAtt": [
+          "RDSStack",
+          "Outputs.RDSEndpoint"
+        ]
+      }
+    },
+    "wgDBname": {
+      "Description": "Consul: config/ Database name",
+      "Value": {
+        "Fn::GetAtt": [
+          "RDSStack",
+          "Outputs.RDSName"
+        ]
+      }
+    },
+    "wgDBuser": {
+      "Description": "Consul: config/ Database user",
+      "Value": {
+        "Fn::GetAtt": [
+          "RDSStack",
+          "Outputs.RDSUser"
+        ]
+      }
+    },
+    "MemCachedEndpoint": {
+      "Description": "Consul: config/ Database user",
+      "Value": {
+        "Fn::GetAtt": [
+          "MemcacheStack",
+          "Outputs.Endpoint"
+        ]
+      }
+    },
+    "MemCachedPort": {
+      "Description": "Consul: config/ Database user",
+      "Value": {
+        "Fn::GetAtt": [
+          "MemcacheStack",
+          "Outputs.Port"
         ]
       }
     }
