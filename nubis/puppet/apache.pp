@@ -29,6 +29,7 @@ class {
         service_ensure         => false;
     'apache::mod::remoteip':
         proxy_ips => [ '127.0.0.1', '10.0.0.0/8' ];
+    'apache::mod::headers':
 #    'apache::mod::perl': # Busted thanks to Amazon Linux mod24_perl ?!
 }
 
