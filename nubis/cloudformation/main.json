@@ -129,7 +129,7 @@
           "Environment": {
             "Ref": "Environment"
           },
-          "ElbHealthTarget": "HTTP:80/Special%3AVersion?no-ssl-rewrite"
+          "ElbHealthTarget": "HTTP:80/?no-ssl-rewrite&elb-health-check"
         }
       }
     },
