@@ -93,3 +93,12 @@ file { "/var/www/bugzilla/answers.txt":
   ensure => present,
   source => "puppet:///nubis/files/answers.txt",
 }
+
+file { "/etc/confd":
+  ensure  => directory,
+  recurse => true,
+  purge => false,
+  owner => 'root',
+  group => 'root',
+  source => "puppet:///nubis/files/confd",
+}

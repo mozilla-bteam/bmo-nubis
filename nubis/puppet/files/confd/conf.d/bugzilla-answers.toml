@@ -1,0 +1,10 @@
+[template]
+src = "bugzilla-answers.tmpl"
+dest = "/var/www/bugzilla/answers.txt"
+prefix = "/%%STACK%%/%%ENVIRONMENT%%"
+
+keys = [
+    "/config"
+]
+
+#reload_cmd = "perl -I/var/www/bugzilla /var/www/bugzilla/checksetup.pl /var/www/bugzilla/answers.txt"

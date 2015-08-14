@@ -1,0 +1,10 @@
+[template]
+src = "bugzilla-localconfig.tmpl"
+dest = "/var/www/bugzilla/localconfig"
+prefix = "/%%STACK%%/%%ENVIRONMENT%%"
+
+keys = [
+    "/config"
+]
+
+reload_cmd = "perl -I/var/www/bugzilla /var/www/bugzilla/checksetup.pl /var/www/bugzilla/answers.txt 2>&1 >> /var/log/bugzilla-localconfig.log && service httpd reload"

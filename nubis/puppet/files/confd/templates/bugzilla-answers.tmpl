@@ -1,0 +1,9 @@
+# Unattended
+$answer{'NO_PAUSE'} = 1;
+
+# Skip Database checks
+$answer{'db_check'} = {{ if exists "/config/db_check" }}{{ getv "/config/db_check" }}{{ else }}0{{ end }};
+
+$answer{'ADMIN_EMAIL'} = '{{ if exists "/config/admin_email" }}{{ getv "/config/admin_email" }}{{ else }}admin@bugzilla.bugs{{ end }}';
+$answer{'ADMIN_PASSWORD'} = '{{ if exists "/config/admin_password" }}{{ getv "/config/admin_password" }}{{ else }}test1234{{ end }}';
+$answer{'ADMIN_REALNAME'} = '{{ if exists "/config/admin_realname" }}{{ getv "/config/admin_realname" }}{{ else }}Bugzilla Admin{{ end }}';
