@@ -94,6 +94,14 @@ file { "/var/www/bugzilla/answers.txt":
   source => "puppet:///nubis/files/answers.txt",
 }
 
+file { "/usr/local/bin/bugzilla-install-dependencies":
+  ensure => present,
+  source => "puppet:///nubis/files/install-dependencies",
+  owner  => 'root',
+  group  => 'root',
+  mode   => '0755',
+}
+
 file { "/etc/confd":
   ensure  => directory,
   recurse => true,

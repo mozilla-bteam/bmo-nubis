@@ -1,0 +1,28 @@
+#!/bin/bash
+
+set -x
+
+for pkg in \
+   Math::Random::ISAAC \
+   File::MimeInfo::Magic \
+   Daemon::Generic \
+   Crypt::OpenPGP \
+   Crypt::SMIME \
+   TheSchwartz \
+   Any::URI::Escape \
+   Daemon::Generic \
+   Chart \
+   Crypt::OpenPGP \
+   Crypt::SMIME \
+   ElasticSearch \
+   File::MimeInfo \
+   HTTP::Lite \
+   JSON::RPC \
+   PatchReader \
+   RadiusPerl \
+   Template::GD \
+   Math::BigInt \
+  ; do
+  echo "Installing $pkg"
+  perl -I/var/www/bugzilla /var/www/bugzilla/install-module.pl $pkg
+done

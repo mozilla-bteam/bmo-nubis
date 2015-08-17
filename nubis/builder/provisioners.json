@@ -17,12 +17,7 @@
   {
     "type": "shell",
     "inline": [
-       "sudo perl -I/var/www/bugzilla /var/www/bugzilla/install-module.pl Math::Random::ISAAC",
-       "sudo perl -I/var/www/bugzilla /var/www/bugzilla/install-module.pl File::MimeInfo::Magic",
-       "sudo perl -I/var/www/bugzilla /var/www/bugzilla/install-module.pl Daemon::Generic",
-       "sudo perl -I/var/www/bugzilla /var/www/bugzilla/install-module.pl Crypt::OpenPGP",
-       "sudo perl -I/var/www/bugzilla /var/www/bugzilla/install-module.pl Crypt::SMIME",
-       "sudo perl -I/var/www/bugzilla /var/www/bugzilla/install-module.pl File::MimeInfo::Magic",
+       "sudo /usr/local/bin/bugzilla-install-dependencies",
        "sudo perl /var/www/bugzilla/checksetup.pl --verbose /var/www/bugzilla/answers.txt"
     ],
     "order": "20"
