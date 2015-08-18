@@ -102,6 +102,14 @@ file { "/usr/local/bin/bugzilla-install-dependencies":
   mode   => '0755',
 }
 
+file { "/usr/local/bin/bugzilla-update"
+  ensure => present,
+  source => "puppet:///nubis/files/update",
+  owner  => 'root',
+  group  => 'root',
+  mode   => '0755',
+}
+
 file { "/etc/confd":
   ensure  => directory,
   recurse => true,

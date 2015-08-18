@@ -1,0 +1,7 @@
+#!/bin/bash
+
+exec 1> /var/log/bugzilla-update.log 2>&1
+
+set -x
+
+perl -I/var/www/bugzilla /var/www/bugzilla/checksetup.pl /var/www/bugzilla/answers.txt

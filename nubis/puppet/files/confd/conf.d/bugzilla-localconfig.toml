@@ -7,4 +7,4 @@ keys = [
     "/config"
 ]
 
-reload_cmd = "perl -I/var/www/bugzilla /var/www/bugzilla/checksetup.pl /var/www/bugzilla/answers.txt 2>&1 >> /var/log/bugzilla-localconfig.log && service httpd reload"
+reload_cmd = "/usr/local/bin/bugzilla-update && service httpd reload"
