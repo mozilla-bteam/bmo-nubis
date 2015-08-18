@@ -102,7 +102,7 @@ file { "/usr/local/bin/bugzilla-install-dependencies":
   mode   => '0755',
 }
 
-file { "/usr/local/bin/bugzilla-update"
+file { "/usr/local/bin/bugzilla-update":
   ensure => present,
   source => "puppet:///nubis/files/update",
   owner  => 'root',
