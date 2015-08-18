@@ -4,4 +4,8 @@ exec 1> /var/log/bugzilla-update.log 2>&1
 
 set -x
 
-perl -I/var/www/bugzilla /var/www/bugzilla/checksetup.pl /var/www/bugzilla/answers.txt
+# Source the consul connection details from the metadata api
+eval `curl -fq http://169.254.169.254/latest/user-data`
+
+consul lock $NUBIS_STACK/$NUBIS_ENVIRONMENT/checksetup \
+    perl -I/var/www/bugzilla /var/www/bugzilla/checksetup.pl /var/www/bugzilla/answers.txt
