@@ -11,7 +11,7 @@ for pkg in \
    TheSchwartz \
    Any::URI::Escape \
    Daemon::Generic \
-   Chart \
+   Chart::Base \
    Crypt::OpenPGP \
    Crypt::SMIME \
    ElasticSearch \
@@ -19,10 +19,13 @@ for pkg in \
    HTTP::Lite \
    JSON::RPC \
    PatchReader \
-   RadiusPerl \
-   Template::GD \
+   Authen::Radius \
+   Template::Plugin::GD \
    Math::BigInt \
+   ElasticSearch@0.68 \
   ; do
   echo "Installing $pkg"
-  perl -I/var/www/bugzilla /var/www/bugzilla/install-module.pl $pkg
+  cpanm -l /var/www/bugzilla $pkg
 done
+
+exit
