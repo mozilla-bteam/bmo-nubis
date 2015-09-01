@@ -1,8 +1,8 @@
 #!/bin/bash
 
-exec 1> /var/log/bugzilla-update.log 2>&1
-
-set -x
+# Redirect stdout and stderr to the logfile and the console
+exec > >(tee /var/log/bugzilla-update.log)
+exec 2>&1
 
 # Source the consul connection details from the metadata api
 eval `curl -fq http://169.254.169.254/latest/user-data`
