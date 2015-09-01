@@ -118,3 +118,6 @@ file { "/etc/confd":
   group => 'root',
   source => "puppet:///nubis/files/confd",
 }
+
+include nubis_storage
+nubis::storage { "$project_name": }
