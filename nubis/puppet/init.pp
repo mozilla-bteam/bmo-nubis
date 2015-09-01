@@ -6,6 +6,7 @@
 # which are included in the base image.
 import 'skel.pp'
 import 'apache.pp'
+import 'storage.pp'
 
 package { 'epel-release':
   ensure => present,
@@ -21,6 +22,7 @@ package {
     'patchutils',
     'mod24_perl',
     'perl',
+    'perl-devel',
     'perl-version',
     'perl-autodie',
     'openssl-devel',
@@ -32,18 +34,12 @@ package {
     'perl-Crypt-DES_EDE3',
     'perl-CPAN',
     'perl-App-cpanminus',
-   #'perl-Any-URI-Escape',
     'perl-Authen-SASL',
     'perl-Cache-Memcached',
-   #'perl-Chart',
-   #'perl-Crypt-OpenPGP',
-   #'perl-Crypt-SMIME',
     'perl-DBD-MySQL',
     'perl-DBI',
-   #'perl-Daemon-Generic',
     'perl-DateTime',
     'perl-Digest-SHA',
-   #'perl-ElasticSearch',
     'perl-Email-MIME',
     'perl-Email-MIME-Attachment-Stripper',
     'perl-Email-MIME-Encodings',
@@ -51,32 +47,24 @@ package {
     'perl-Email-Send',
     'perl-Encode-Detect',
     'perl-File-Find-Rule',
-   #'perl-File-MimeInfo',
     'perl-GD',
     'perl-GDGraph',
     'perl-GDTextUtil',
     'perl-HTML-Parser',
     'perl-HTML-Scrubber',
     'perl-HTML-Tree',
-   #'perl-HTTP-Lite',
     'perl-HTTP-Tiny',
     'perl-IO-stringy',
-   #'perl-JSON-RPC',
     'perl-JSON-XS',
     'perl-LDAP',
     'perl-Linux-Pid',
     'perl-MIME-tools',
-   #'perl-Math-Random-ISAAC',
     'perl-Mozilla-CA',
-   #'perl-PatchReader',
-   #'perl-RadiusPerl',
     'perl-Regexp-Common',
     'perl-SOAP-Lite',
-   #'perl-Template-GD',
     'perl-Template-Toolkit',
     'perl-Text-Diff',
     'perl-Test-Taint',
-   #'perl-TheSchwartz',
     'perl-Tie-IxHash',
     'perl-TimeDate',
     'perl-Time-Duration',
@@ -118,6 +106,3 @@ file { "/etc/confd":
   group => 'root',
   source => "puppet:///nubis/files/confd",
 }
-
-include nubis_storage
-nubis::storage { "$project_name": }
