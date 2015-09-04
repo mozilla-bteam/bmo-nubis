@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Amazon Linux issue
+export PATH=/usr/local/bin:$PATH
+
 # Redirect stdout and stderr to the logfile and the console
 exec > >(tee /var/log/bugzilla-update.log)
 exec 2>&1
