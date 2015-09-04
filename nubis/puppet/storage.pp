@@ -8,7 +8,7 @@ package { "ceph":
 
 # need to fix #! to use python26
 exec { "fix-ceph-shebang":
-  command => "sed -i -e '1c#!/usr/bin/env python26' /usr/bin/ceph*",
+  command => "/usr/bin/sed -i -e '1c#!/usr/bin/env python26' /usr/bin/ceph*",
   require => Package["ceph"],
 }
 
