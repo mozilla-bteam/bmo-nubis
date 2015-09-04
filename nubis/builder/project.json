@@ -7,7 +7,7 @@
     ],
     "project_description": "bugzilla.mozilla.org",
     "project_name": "bugzilla",
-    "project_version": "0.1",
+    "project_version": "0.99",
     "source_ami_project_name": "nubis-base"
   }
 }
