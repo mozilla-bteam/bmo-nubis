@@ -1,6 +1,6 @@
 cron { 'collectstats':
   ensure => 'present',
-  command => "cd /var/www/bugzilla && consul-do bugzilla-$name perl -Mlib=lib collectstats.pl",
+  command => "cd /var/www/bugzilla && consul-do bugzilla-$name $(hostname) && perl -Mlib=lib collectstats.pl",
   hour => '0',
   minute => '0',
   user => 'root',
@@ -11,7 +11,7 @@ cron { 'collectstats':
 
 cron { 'whine':
   ensure => 'present',
-  command => "cd /var/www/bugzilla && consul-do bugzilla-$name perl -Mlib=lib whine.pl",
+  command => "cd /var/www/bugzilla && consul-do bugzilla-$name $(hostname) && perl -Mlib=lib whine.pl",
   minute => '*/15',
   user => 'apache',
   environment => [
@@ -21,7 +21,7 @@ cron { 'whine':
 
 cron { 'prune-last-visit':
   ensure => 'present',
-  command => "cd /var/www/bugzilla && consul-do bugzilla-$name perl -Mlib=lib clean-bug-user-last-visit.pl",
+  command => "cd /var/www/bugzilla && consul-do bugzilla-$name $(hostname) && perl -Mlib=lib clean-bug-user-last-visit.pl",
   hour => '0',
   minute => '0',
   user => 'apache',
@@ -32,7 +32,7 @@ cron { 'prune-last-visit':
 
 cron { 'requestnagger':
   ensure => 'present',
-  command => "cd /var/www/bugzilla && consul-do bugzilla-$name perl -Mlib=lib extensions/RequestNagger/bin/send-request-nags.pl",
+  command => "cd /var/www/bugzilla && consul-do bugzilla-$name $(hostname) && perl -Mlib=lib extensions/RequestNagger/bin/send-request-nags.pl",
   hour => '0',
   minute => '30',
   user => 'apache',
@@ -43,7 +43,7 @@ cron { 'requestnagger':
 
 cron { 'userprofile':
   ensure => 'present',
-  command => "cd /var/www/bugzilla && consul-do bugzilla-$name perl -Mlib=lib extensions/UserProfile/bin/update.pl",
+  command => "cd /var/www/bugzilla && consul-do bugzilla-$name $(hostname) && perl -Mlib=lib extensions/UserProfile/bin/update.pl",
   hour => '0',
   minute => '30',
   user => 'apache',
