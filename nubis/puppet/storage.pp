@@ -8,7 +8,7 @@ package { "ceph":
 
 # need to fix #! to use python26
 exec { "fix-ceph-shebang":
-  command => "file /usr/bin/ceph* | grep -i 'Python script' | cut -d: -f1 | xargs sed -i -e '1c#!/usr/bin/env python26",
+  command => "file /usr/bin/ceph* | grep -i 'Python script' | cut -d: -f1 | xargs sed -i -e '1c#!/usr/bin/env python26'",
   require => Package["ceph"],
   path => ['/sbin','/bin','/usr/sbin','/usr/bin','/usr/local/sbin','/usr/local/bin'],
 }
