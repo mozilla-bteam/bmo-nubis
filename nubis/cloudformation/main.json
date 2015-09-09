@@ -153,7 +153,7 @@
           "Environment": {
             "Ref": "Environment"
           },
-          "AllocatedStorage": "15",
+          "AllocatedStorage": "128",
           "DBInstanceClass": "db.t2.medium",
           "DBName": "bugzilla",
           "EC2SecurityGroup": {
