@@ -8,8 +8,9 @@ package { "ceph":
 
 # need to fix #! to use python26
 exec { "fix-ceph-shebang":
-  command => "/bin/sed -i -e '1c#!/usr/bin/env python26' /usr/bin/ceph*",
+  command => "file /usr/bin/ceph* | grep -i 'Python script' | cut -d: -f1 | xargs sed -i -e '1c#!/usr/bin/env python26",
   require => Package["ceph"],
+  path => ['/sbin','/bin','/usr/sbin','/usr/bin','/usr/local/sbin','/usr/local/bin'],
 }
 
 ### puppet-nubis-storage
