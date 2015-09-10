@@ -11,4 +11,4 @@ keys = [
     "/config"
 ]
 
-reload_cmd = "/usr/local/bin/bugzilla-update && service httpd reload"
+reload_cmd = "/usr/local/bin/bugzilla-update"

@@ -12,3 +12,7 @@ eval `curl -fq http://169.254.169.254/latest/user-data`
 
 consul lock $NUBIS_STACK/$NUBIS_ENVIRONMENT/checksetup \
     perl -I/var/www/bugzilla /var/www/bugzilla/checksetup.pl /var/www/bugzilla/answers.txt
+
+# Restart dependent services
+service httpd restart
+service bugzilla-queue restart
