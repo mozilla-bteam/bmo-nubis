@@ -1,11 +1,11 @@
 class { 'supervisord':
 }
 
-package { "MySQL-python":
+package { "MySQL-python27":
   ensure => present,
 }
 
-package { "python-pip":
+package { "python27-pip":
   ensure => present,
 }
 
@@ -18,11 +18,11 @@ package {[
   provider => 'pip',
   ensure   => present,
   require => [
-    Package["python-pip"],
+    Package["python27-pip"],
   ],
 }
 
-package { "mercurial":
+package { "mercurial-python27":
   ensure => present,
 }
 
@@ -32,6 +32,6 @@ vcsrepo { "/opt/pulseshims":
   source   => 'https://hg.mozilla.org/automation/pulseshims',
   revision => "f8fc683ea85e",
   require  => [
-    Package["mercurial"],
+    Package["mercurial-python27"],
   ],
 }
