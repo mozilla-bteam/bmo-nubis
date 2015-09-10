@@ -5,6 +5,10 @@ package { "MySQL-python":
   ensure => present,
 }
 
+package { "python-pip":
+  ensure => present,
+}
+
 package {[
   'mozillapulse',
   'mozlog',
@@ -13,6 +17,9 @@ package {[
 ]:
   provider => 'pip',
   ensure   => present;
+  require => [
+    Package["python-pip"],
+  ],
 }
 
 package { "mercurial":
