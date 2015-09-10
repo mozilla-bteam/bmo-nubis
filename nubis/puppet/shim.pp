@@ -9,17 +9,13 @@ package { "python27-pip":
   ensure => present,
 }
 
-package {[
+python::pip { [
   'mozillapulse',
   'mozlog',
   'sqlsoup',
   'pytz',
 ]:
-  provider => 'pip',
-  ensure   => present,
-  require => [
-    Package["python27-pip"],
-  ],
+  ensure => 'present',
 }
 
 package { "mercurial-python27":
