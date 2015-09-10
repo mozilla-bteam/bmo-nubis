@@ -1,6 +1,3 @@
-class { 'supervisord':
-}
-
 package { "MySQL-python27":
   ensure => present,
 }
@@ -14,6 +11,7 @@ python::pip { [
   'mozlog',
   'sqlsoup',
   'pytz',
+  'supervisor',
 ]:
   ensure => 'present',
   require => [
