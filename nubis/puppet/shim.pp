@@ -16,7 +16,7 @@ package {[
   'pytz',
 ]:
   provider => 'pip',
-  ensure   => present;
+  ensure   => present,
   require => [
     Package["python-pip"],
   ],
