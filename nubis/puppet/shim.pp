@@ -16,6 +16,9 @@ python::pip { [
   'pytz',
 ]:
   ensure => 'present',
+  require => [
+    Package["python27-pip"],
+  ],
 }
 
 package { "mercurial-python27":
