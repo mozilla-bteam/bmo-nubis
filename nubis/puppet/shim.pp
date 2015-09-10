@@ -5,9 +5,19 @@ package { "MySQL-python":
   ensure => present,
 }
 
+package {[
+  'mozillapulse',
+  'mozlog',
+  'sqlsoup',
+  'pytz',
+]:
+  provider => 'pip',
+  ensure   => present;
+}
+
 vcsrepo { "/opt/pulseshims":
   ensure   => present,
-  provider => "mercurial",
+  provider => "hg",
   source   => 'https://hg.mozilla.org/automation/pulseshims',
   revision => "f8fc683ea85e",
 }
