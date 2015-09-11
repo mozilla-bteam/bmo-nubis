@@ -26,12 +26,14 @@ exec { "install-supervisord":
 exec { "fix-supervisor-shebang":
   command => "file /usr/bin/supervisor* | grep -i 'Python script' | cut -d: -f1 | xargs sed -i -e '1c#!/usr/bin/env python26'",
   path => ['/sbin','/bin','/usr/sbin','/usr/bin','/usr/local/sbin','/usr/local/bin'],
-}->
-class { 'supervisord':
-  install_pip => false,
-  package_provider => "yum",
-  install_init => false,
 }
+
+#->
+#class { 'supervisord':
+#  install_pip => false,
+#  package_provider => "yum",
+#  install_init => false,
+#}
 
 package { "mercurial-python27":
   ensure => present,
