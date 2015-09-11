@@ -25,6 +25,11 @@ for pkg in \
    Template::Plugin::GD \
    Math::BigInt \
    ElasticSearch@0.68 \
+   Test::Number::Delta \
+   Math::Random::MT \
+   Devel::StackTrace \
+   Convert::Base32 \
+   Auth::GoogleAuth \
   ; do
   echo "Installing $pkg"
   cpanm -l /var/www/bugzilla $pkg
