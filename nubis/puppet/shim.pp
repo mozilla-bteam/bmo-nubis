@@ -11,12 +11,17 @@ python::pip { [
   'mozlog',
   'sqlsoup',
   'pytz',
-  'supervisor',
 ]:
   ensure => 'present',
   require => [
     Package["python27-pip"],
   ],
+}
+
+class { 'supervisord':
+  install_pip => false,
+  package_provider => "yum",
+  install_init = false,
 }
 
 package { "mercurial-python27":
