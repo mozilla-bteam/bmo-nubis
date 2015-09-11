@@ -34,11 +34,6 @@ exec { "enable supervisord":
 exec { "start supervisord":
   command => "service supervisord start",
   path => ['/sbin','/bin','/usr/sbin','/usr/bin','/usr/local/sbin','/usr/local/bin'],
-}->
-class { 'supervisord':
-  install_pip => false,
-  package_provider => "yum",
-  install_init => false,
 }
 
 package { "mercurial-python27":
