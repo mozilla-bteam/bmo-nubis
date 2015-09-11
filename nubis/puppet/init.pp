@@ -19,7 +19,6 @@ yumrepo { 'epel':
 package {
   [
     'ImageMagick-perl',
-    'bzr-python27',
     'graphviz',
     'patchutils',
     'mod24_perl',
@@ -75,6 +74,19 @@ package {
     'perl-XML-Twig',
     'perl-YAML-Syck',
     'perl-libwww-perl',
+    'perl-Capture-Tiny',
+    'perl-Carp',
+    'perl-Data-Dumper',
+    'perl-Exception-Class',
+    'perl-GD-Barcode',
+    'perl-Sub-Uplevel',
+    'perl-Test-Deep',
+    'perl-Test-Differences',
+    'perl-Test-Exception',
+    'perl-Test-Most',
+    'perl-Test-NoWarnings',
+    'perl-Test-Simple',
+    'perl-Test-Warn',
   ]:
     ensure => present,
 }
