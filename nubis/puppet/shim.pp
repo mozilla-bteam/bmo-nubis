@@ -21,7 +21,7 @@ python::pip { [
 class { 'supervisord':
   install_pip => false,
   package_provider => "yum",
-  install_init = false,
+  install_init => false,
 }
 
 package { "mercurial-python27":
