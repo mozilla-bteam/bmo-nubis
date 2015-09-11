@@ -31,13 +31,12 @@ service { "supervisord":
   enable => true,
   ensure => "running",
 }
-
-#->
-#class { 'supervisord':
-#  install_pip => false,
-#  package_provider => "yum",
-#  install_init => false,
-#}
+->
+class { 'supervisord':
+  install_pip => false,
+  package_provider => "yum",
+  install_init => false,
+}
 
 package { "mercurial-python27":
   ensure => present,
