@@ -8,11 +8,17 @@ package { "python27-pip":
 
 python::pip { [
   'mozillapulse',
-  'mozlog',
   'sqlsoup',
   'pytz',
 ]:
   ensure => 'present',
+  require => [
+    Package["python27-pip"],
+  ],
+}
+
+python::pip { "mozlog":
+  ensure => '1.6',
   require => [
     Package["python27-pip"],
   ],
@@ -31,6 +37,10 @@ exec { "enable supervisord":
   command => "chkconfig supervisord on",
   path => ['/sbin','/bin','/usr/sbin','/usr/bin','/usr/local/sbin','/usr/local/bin'],
 }->
+file { "/etc/supervisord.d/shim.ini":
+  ensure => present,
+  source => "puppet://nubis/files/shim.ini",
+}->
 exec { "start supervisord":
   command => "service supervisord start",
   path => ['/sbin','/bin','/usr/sbin','/usr/bin','/usr/local/sbin','/usr/local/bin'],
@@ -40,7 +50,7 @@ package { "mercurial-python27":
   ensure => present,
 }
 
-vcsrepo { "/opt/pulseshims":
+vcsrepo { "/opt/pulse/shims":
   ensure   => present,
   provider => "hg",
   source   => 'https://hg.mozilla.org/automation/pulseshims',
