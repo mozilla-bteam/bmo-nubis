@@ -1,0 +1,11 @@
+[bugzilla simple]
+engine = mysql://{{ if exists "/config/DBuser" }}{{ getv "/config/DBuser" }}{{ else }}bugzilla{{ end }}:{{ if exists "/config/DBpassword" }}{{ getv "/config/DBpassword" }}{{ else }}provisioner_password{{ end }}@{{ if exists "/config/DBserver" }}{{ getv "/config/DBserver" }}{{ else }}localhost{{ end }}/{{ if exists "/config/DBname" }}{{ getv "/config/DBname" }}{{ else }}bugzilla{{ end }}
+pulse host = {{ if exists "/config/PulseHost" }}{{ getv "/config/PulseHost" }}{{ else }}pulse.mozilla.org{{ end }}
+pulse port = {{ if exists "/config/PulsePort" }}{{ getv "/config/PulsePort" }}{{ else }}5672{{ end }}
+pulse vhost = {{ if exists "/config/PulseVHost" }}{{ getv "/config/PulseVHost" }}{{ else }}/{{ end }}
+pulse user = {{ if exists "/config/PulseUser" }}{{ getv "/config/PulseUser" }}{{ else }}bugzilla_simple{{ end }}
+pulse password = {{ if exists "/config/PulsePassword" }}{{ getv "/config/PulsePassword" }}{{ else }}password{{ end }}
+pulse timezone = {{ if exists "/config/PulseTimeZone" }}{{ getv "/config/PulseTimeZone" }}{{ else }}US/Pacific{{ end }}
+timezone = {{ if exists "/config/PulseTimeZone" }}{{ getv "/config/PulseTimeZone" }}{{ else }}US/Pacific{{ end }}
+
+log = /var/log/bugzilla-simple-shim.log

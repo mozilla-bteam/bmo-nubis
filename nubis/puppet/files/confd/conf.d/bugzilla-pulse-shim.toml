@@ -1,0 +1,14 @@
+[template]
+src = "bugzilla-pulse-shim.tmpl"
+dest = "/opt/pulse/config.ini"
+prefix = "/%%STACK%%/%%ENVIRONMENT%%"
+
+uid = 0
+gid = 48
+mode = "0640"
+
+keys = [
+    "/config"
+]
+
+reload_cmd = "/usr/bin/supervisorctl restart bugzilla-pulse-shim"
