@@ -112,6 +112,14 @@ file { "/usr/local/bin/bugzilla-update":
   mode   => '0755',
 }
 
+file { "/usr/local/bin/bugzilla-params-update":
+  ensure => present,
+  source => "puppet:///nubis/files/params-update",
+  owner  => 'root',
+  group  => 'root',
+  mode   => '0755',
+}
+
 file { "/etc/confd":
   ensure  => directory,
   recurse => true,

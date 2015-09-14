@@ -1,0 +1,9 @@
+#!/bin/bash
+
+SRC=/var/www/bugzilla-params
+DST=/var/www/bugzilla/data/params
+
+echo "Updating params from $SRC to $DST"
+
+cp -a $SRC $DST
+service httpd restart

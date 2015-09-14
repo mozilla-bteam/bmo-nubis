@@ -1,0 +1,14 @@
+[template]
+src = "bugzilla-params.tmpl"
+dest = "/var/www/bugzilla-params"
+prefix = "/%%STACK%%/%%ENVIRONMENT%%"
+
+uid = 0
+gid = 0
+mode = "0600"
+
+keys = [
+    "/config"
+]
+
+reload_cmd = "/usr/local/bin/bugzilla-params-update"
