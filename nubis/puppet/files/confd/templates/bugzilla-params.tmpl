@@ -89,7 +89,7 @@ Please contact the address at the end of this message if you believe this to be 
            'maxattachmentsize' => '1000',
            'maxusermatches' => '1000',
            'memcached_namespace' => 'bugzilla:',
-           'memcached_servers' => '',
+           'memcached_servers' => '{{ getv "/config/MemCachedEndpoint" }}:{{ getv "/config/MemCachedPort" }}',
            'metrics_elasticsearch_index' => 'bmo-metrics',
            'metrics_elasticsearch_server' => '127.0.0.1:9200',
            'metrics_elasticsearch_ttl' => '1210000000',
