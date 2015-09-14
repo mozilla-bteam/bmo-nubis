@@ -286,17 +286,14 @@
       "Description": "Consul: config/ Server url",
       "Value": {
         "Fn::Join": [
-          ".",
-          [
-            "https://www",
-            {
-              "Ref": "AWS::StackName"
-            },
-            {
-              "Ref": "Environment"
-            },
-            "nubis.allizom.org"
-          ]
+          "",
+          "https://",
+          {
+            "Fn::GetAtt": [
+              "Route53Stack",
+              "Outputs.DNSEntry"
+            ]
+          }
         ]
       }
     },
