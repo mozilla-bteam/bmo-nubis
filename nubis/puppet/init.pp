@@ -97,6 +97,13 @@ file { "/var/www/bugzilla/answers.txt":
   source => "puppet:///nubis/files/answers.txt",
 }
 
+file "/var/www/bugzilla/template_cache":
+  ensure => 'directory',
+  owner  => 'root',
+  group  => 'apache',
+  mode   => '0770',
+}
+
 file { "/usr/local/bin/bugzilla-install-dependencies":
   ensure => present,
   source => "puppet:///nubis/files/install-dependencies",
