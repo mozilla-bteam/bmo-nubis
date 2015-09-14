@@ -40,10 +40,6 @@ exec { "enable supervisord":
 file { "/etc/supervisord.d/shim.ini":
   ensure => present,
   source => "puppet:///nubis/files/shim.ini",
-}->
-exec { "start supervisord":
-  command => "service supervisord start",
-  path => ['/sbin','/bin','/usr/sbin','/usr/bin','/usr/local/sbin','/usr/local/bin'],
 }
 
 package { "mercurial-python27":
