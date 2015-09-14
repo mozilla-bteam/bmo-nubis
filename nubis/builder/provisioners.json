@@ -21,8 +21,7 @@
        "sudo perl -I/var/www/bugzilla /var/www/bugzilla/checksetup.pl /var/www/bugzilla/answers.txt",
        "sudo perl -I/var/www/bugzilla /var/www/bugzilla/jobqueue.pl install",
        "sudo perl -pi -e's/USER=(.*)/USER=root/g' /etc/sysconfig/bugzilla-queue",
-       "sudo perl -pi -e's[^NAME=.*][NAME=bugzilla-queue]g' /etc/init.d/bugzilla-queue",
-       "sudo perl -I/var/www/bugzilla /var/www/bugzilla/extensions/Push/bin/bugzilla-pushd.pl install"
+       "sudo perl -pi -e's[^NAME=.*][NAME=bugzilla-queue]g' /etc/init.d/bugzilla-queue"
     ],
     "order": "20"
   }
