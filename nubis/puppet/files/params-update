@@ -6,4 +6,7 @@ DST=/var/www/bugzilla/data/params
 echo "Updating params from $SRC to $DST"
 
 cp -a $SRC $DST
+
 service httpd restart
+service bugzilla-queue restart
+service bugzilla-push restart
