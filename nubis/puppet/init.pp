@@ -9,6 +9,7 @@ import 'apache.pp'
 import 'storage.pp'
 import 'cron.pp'
 import 'shim.pp'
+import 'push.pp'
 
 package { 'epel-release':
   ensure => present,
