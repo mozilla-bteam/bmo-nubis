@@ -97,7 +97,7 @@ file { "/var/www/bugzilla/answers.txt":
   source => "puppet:///nubis/files/answers.txt",
 }
 
-file "/var/www/bugzilla/template_cache":
+file { "/var/www/bugzilla/template_cache":
   ensure => 'directory',
   owner  => 'root',
   group  => 'apache',
