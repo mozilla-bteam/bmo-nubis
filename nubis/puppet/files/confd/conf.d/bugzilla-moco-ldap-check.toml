@@ -1,0 +1,12 @@
+[template]
+src = "bugzilla-moco-ldap-check.tmpl"
+dest = "/opt/bugzilla-moco-ldap-check/config"
+prefix = "/%%STACK%%/%%ENVIRONMENT%%"
+
+uid = 0
+gid = 0
+mode = "0640"
+
+keys = [
+    "/config"
+]

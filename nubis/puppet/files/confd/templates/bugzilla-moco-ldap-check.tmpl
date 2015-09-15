@@ -1,0 +1,60 @@
+# see bug 757706
+ldap.server         {{ if exists "/config/LDAPCheck/LDAPServer" }}{{ getv "/config/LDAPCheck/LDAPServer" }}{{ else }}pm-ns.mozilla.org{{ end }}
+ldap.scheme         {{ if exists "/config/LDAPCheck/LDAPScheme" }}{{ getv "/config/LDAPCheck/LDAPScheme" }}{{ else }}ldap{{ end }}
+ldap.user           {{ if exists "/config/LDAPCheck/LDAPUser" }}{{ getv "/config/LDAPCheck/LDAPUser" }}{{ else }}uid=bind-bmo,ou=logins,dc=mozilla{{ end }}
+ldap.pass           {{ if exists "/config/LDAPCheck/LDAPPassword" }}{{ getv "/config/LDAPCheck/LDAPPassword" }}{{ else }}password{{ end }}
+
+# this account needs editusers rights to fetch group members
+bugzilla.api_key    {{ if exists "/config/LDAPCheck/BugzillaAPIKey" }}{{ getv "/config/LDAPCheck/BugzillaAPIKey" }}{{ else }}Missing-API-KEY{{ end }}
+
+email.sender        nobody@mozilla.org
+email.subject       moco-ldap-check
+email.recipient     glob@mozilla.com
+email.recipient     dkl@mozilla.com
+
+# these are oddball ldap accounts that we should totally ignore
+ignore.ldap         airmozilla@mozilla.com              # Air Mozilla
+ignore.ldap         pdxreceptionist@mozilla.com
+
+# not people
+# these are generall accounts created for automation
+ignore.bugzilla     airmozilla@mozilla.com
+ignore.bugzilla     bidw-alerts@mozilla.com
+ignore.bugzilla     cloud-services-qa@mozilla.com
+ignore.bugzilla     engops-kanban@mozilla.bugs
+ignore.bugzilla     ffos-browser@mozilla.com
+ignore.bugzilla     ffos-epm@mozilla.com
+ignore.bugzilla     ffos-product@mozilla.com
+ignore.bugzilla     firefoxos-ux-bugzilla@mozilla.com
+ignore.bugzilla     fuzzing@mozilla.com
+ignore.bugzilla     fxos-cert-brand@mozilla.com
+ignore.bugzilla     fxos-cert@mozilla.com
+ignore.bugzilla     fxos-perf@mozilla.com
+ignore.bugzilla     infra+bot@mozilla.com
+ignore.bugzilla     l10n-qa@mozilla-japan.org
+ignore.bugzilla     legal-FFOSlaunch@mozilla.com
+ignore.bugzilla     marketplace-l10n-driver@mozilla.com
+ignore.bugzilla     marketplace-programs@mozilla.com
+ignore.bugzilla     mdn-dev@mozilla.com
+ignore.bugzilla     metrics@mozilla.com
+ignore.bugzilla     mp-product@mozilla.com
+ignore.bugzilla     nagiosapi@mozilla.moc.tld
+ignore.bugzilla     nightwatch@mozilla.com              # Security distribution list for whines
+ignore.bugzilla     push-production-releases@mozilla.com
+ignore.bugzilla     qa-auto@mozilla.com
+ignore.bugzilla     qa-drivers@mozilla.com
+ignore.bugzilla     qualys@mozilla.com                  # Qualys Security Scanner
+ignore.bugzilla     recruiting@mozilla.com
+ignore.bugzilla     release-mgmt@mozilla.com
+ignore.bugzilla     release@mozilla.com                 # Mozilla RelEng Bot
+ignore.bugzilla     reps-council@mozilla.com
+ignore.bugzilla     reps@mozilla.com
+ignore.bugzilla     servicedesk@mozilla.com
+ignore.bugzilla     services-ops@mozilla.com
+ignore.bugzilla     services-qa-jenkins@mozilla.com
+ignore.bugzilla     sumo-dev@mozilla.com                # SUMOdev [:sumodev]
+ignore.bugzilla     ux-review@mozilla.com
+ignore.bugzilla     webops-kanban@mozilla.bugs
+
+# special people
+ignore.bugzilla     daniel.veditz@mozilla.com           # dan's watcher account

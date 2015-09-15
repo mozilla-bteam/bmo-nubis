@@ -46,3 +46,9 @@ These are the settings that are not set automatically and can be optionally set 
  * ShadowDBHost
  * ShadowDBPort
  * SSLRedirect
+ * LDAPCheck/
+  * LDAPServer (pm-ns.mozilla.org)
+  * LDAPSCheme (ldap)
+  * LDAPUser   (uid=bind-bmo,ou=logins,dc=mozilla)
+  * LDAPPassword
+  * BugzillaAPIKey
