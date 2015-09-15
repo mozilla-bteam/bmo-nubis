@@ -49,21 +49,21 @@ apache::custom_config { 'mod_perl':
 
     # Set HTTPS for Bugzilla to detect ssl or not
     sub MY::FixupHandler {
-      my $r = shift;
+      my \$r = shift;
 
-      my $args  = $r->args();
+      my \$args  = \$r->args();
 
       #ELB Health check
-      if ($args eq 'no-ssl-rewrite&elb-health-check') {
+      if (\$args eq 'no-ssl-rewrite&elb-health-check') {
         # Cheat and pretend we are https, avoiding redirects
-        $r->subprocess_env('HTTPS' => 'on');
+        \$r->subprocess_env('HTTPS' => 'on');
         return Apache2::Const::OK;
       }
 
-      my $proto = $r->headers_in->get('X-Forwarded-Proto');
+      my \$proto = \$r->headers_in->get('X-Forwarded-Proto');
       
-      if ($proto eq 'https') {
-        $r->subprocess_env('HTTPS' => 'on');
+      if (\$proto eq 'https') {
+        \$r->subprocess_env('HTTPS' => 'on');
       }
       
       return Apache2::Const::OK;
