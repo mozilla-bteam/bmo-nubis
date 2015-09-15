@@ -38,12 +38,36 @@ apache::custom_config { 'mod_perl':
   LoadModule perl_module modules/mod_perl.so
   PerlSwitches -w -T
   PerlPostConfigRequire /var/www/bugzilla/mod_perl.pl
-  PerlPassEnv HTTPS
+
   # This is set in mod_perl.pl, but varies based on urlbase ?!?!
   <Perl>
     warn 'Setting Apache Sizelimit to 700M';
     use Apache2::SizeLimit;
     Apache2::SizeLimit->set_max_unshared_size(700_000);
+
+    use Apache2::Const -compile => 'OK';
+
+    # Set HTTPS for Bugzilla to detect ssl or not
+    sub MY::FixupHandler {
+      my $r = shift;
+
+      my $args  = $r->args();
+
+      #ELB Health check
+      if ($args eq 'no-ssl-rewrite&elb-health-check') {
+        # Cheat and pretend we are https, avoiding redirects
+        $r->subprocess_env('HTTPS' => 'on');
+        return Apache2::Const::OK;
+      }
+
+      my $proto = $r->headers_in->get('X-Forwarded-Proto');
+      
+      if ($proto eq 'https') {
+        $r->subprocess_env('HTTPS' => 'on');
+      }
+      
+      return Apache2::Const::OK;
+    } 
   </Perl>
 ",
 }
@@ -65,6 +89,8 @@ apache::vhost { $service:
         path => $install_root,
         custom_fragment => '
     AddHandler perl-script .cgi
+    # Fixup SSL detection
+    PerlFixupHandler MY::FixupHandler
     # No need to PerlModule these because they are already defined in mod_perl.pl
     PerlResponseHandler Bugzilla::ModPerl::ResponseHandler
     PerlCleanupHandler  Apache2::SizeLimit Bugzilla::ModPerl::CleanupHandler
