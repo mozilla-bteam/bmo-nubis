@@ -116,6 +116,10 @@ file { "/opt/bugzilla-moco-ldap-check/check.pl":
   owner  => 'root',
   group  => 'root',
   mode   => '0755',
+}->
+file { "/usr/local/bin/bugzilla-moco-ldap-check":
+  ensure => 'link',
+  target => '/opt/bugzilla-moco-ldap-check/check.pl',
 }
 
 file { "/usr/local/bin/bugzilla-install-dependencies":
