@@ -41,7 +41,7 @@ apache::custom_config { 'mod_perl':
   PerlPassEnv HTTPS
   # This is set in mod_perl.pl, but varies based on urlbase ?!?!
   <Perl>
-    warn "Setting Apache Sizelimit to 700M";
+    warn 'Setting Apache Sizelimit to 700M';
     Apache2::SizeLimit->set_max_unshared_size(700_000);
   </Perl>
 ",
