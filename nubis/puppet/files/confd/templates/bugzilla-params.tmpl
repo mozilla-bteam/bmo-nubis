@@ -132,7 +132,7 @@ and may not contain any commas or spaces.
            'smtp_username' => '',
            'smtpserver' => '',
            'splinter_base' => 'page.cgi?id=splinter.html/',
-           'ssl_redirect' => '{{ if exists "/config/SSLRedirect" }}{{ getv "/config/SSLRedirect" }}{{ else }}0{{ end }}',
+           'ssl_redirect' => '{{ if exists "/config/SSLRedirect" }}{{ getv "/config/SSLRedirect" }}{{ else }}1{{ end }}',
            'sslbase' => '{{ if exists "/config/CanonicalServer" }}{{ getv "/config/CanonicalServer" }}/{{ else }}{{ end }}',
            'strict_isolation' => 0,
            'strict_transport_security' => 'include_subdomains',
