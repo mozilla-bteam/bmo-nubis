@@ -38,6 +38,7 @@ apache::custom_config { 'mod_perl':
   LoadModule perl_module modules/mod_perl.so
   PerlSwitches -w -T
   PerlPostConfigRequire /var/www/bugzilla/mod_perl.pl
+  PerlPassEnv HTTPS
 ",
 }
 
