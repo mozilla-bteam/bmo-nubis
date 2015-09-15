@@ -11,7 +11,7 @@ cron { 'collectstats':
 
 cron { 'moco-ldap-check':
   ensure => 'present',
-  command => "consul-do bugzilla-cron-moco-ldap-check $(hostname) && /usr/local/bin/bugzilla-moco-ldap-check",
+  command => "consul-do bugzilla-cron-moco-ldap-check $(hostname) && /usr/local/bin/bugzilla-moco-ldap-check -cron -email",
   hour => '0',
   minute => '21',
   user => 'root',
