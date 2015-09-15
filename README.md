@@ -45,3 +45,4 @@ These are the settings that are not set automatically and can be optionally set 
  * ShadowDBName
  * ShadowDBHost
  * ShadowDBPort
+ * SSLRedirect
