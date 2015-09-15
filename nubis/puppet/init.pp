@@ -104,6 +104,20 @@ file { "/var/www/bugzilla/template_cache":
   mode   => '0770',
 }
 
+file { "/opt/bugzilla-moco-ldap-check":
+  ensure => 'directory',
+  owner  => 'root',
+  group  => 'root',
+  mode   => '0755',
+}->
+file { "/opt/bugzilla-moco-ldap-check/check.pl":
+  ensure => present,
+  source => "puppet:///nubis/files/moco-ldap-check.pl",
+  owner  => 'root',
+  group  => 'root',
+  mode   => '0755',
+}
+
 file { "/usr/local/bin/bugzilla-install-dependencies":
   ensure => present,
   source => "puppet:///nubis/files/install-dependencies",
