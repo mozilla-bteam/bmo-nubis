@@ -9,6 +9,17 @@ cron { 'collectstats':
   ],
 }
 
+cron { 'moco-ldap-check':
+  ensure => 'present',
+  command => "consul-do bugzilla-cron-moco-ldap-check $(hostname) && /usr/local/bin/bugzilla-moco-ldap-check",
+  hour => '0',
+  minute => '21',
+  user => 'root',
+  environment => [
+    "PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin:/opt/aws/bin",
+  ],
+}
+
 cron { 'whine':
   ensure => 'present',
   command => "cd /var/www/bugzilla && consul-do bugzilla-cron-whine $(hostname) && perl -Mlib=lib whine.pl",
@@ -51,3 +62,4 @@ cron { 'userprofile':
     "PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin:/opt/aws/bin",
   ],
 }
+
