@@ -88,6 +88,7 @@ package {
     'perl-Test-NoWarnings',
     'perl-Test-Simple',
     'perl-Test-Warn',
+    'perl-File-Slurp',
   ]:
     ensure => present,
 }
