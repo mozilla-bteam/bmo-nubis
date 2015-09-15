@@ -33,5 +33,15 @@ You are now ready to deploy your stack. Be sure to replace "YOUR_NAME" with a un
 aws cloudformation create-stack --template-body file://nubis/cloudformation/main.json --parameters file://nubis/cloudformation/parameters.json --stack-name YOUR-STACK
 ```
 
-## Help
-If you run into any issues, feel free to reach out to us. We hang out in #nubis-users on irc.mozilla.org.
+## Confd settings
+
+These are the settings that are not set automatically and can be optionally set in Consul under */<stack-name>/<environment>/<config>/*
+
+ * BitlyToken
+ * GitHubClientID
+ * GitHubClientSecret
+ * HoneyPotAPIKey
+ * InboundProxies
+ * ShadowDBName
+ * ShadowDBHost
+ * ShadowDBPort
