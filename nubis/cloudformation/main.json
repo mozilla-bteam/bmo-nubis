@@ -459,20 +459,20 @@
         ]
       }
     },
-    "S3UpBucket": {
-      "Description": "Consul: config/ Up Bucket Name",
+    "S3LeftBucket": {
+      "Description": "Consul: config/ Left Bucket Name",
       "Value": {
         "Fn::GetAtt": [
-          "BucketUp",
+          "LeftBucket",
           "Outputs.S3Bucket"
         ]
       }
     },
-    "S3DownBucket": {
-      "Description": "Consul: config/ Down Bucket Name",
+    "S3RightBucket": {
+      "Description": "Consul: config/ Right Bucket Name",
       "Value": {
         "Fn::GetAtt": [
-          "BucketDown",
+          "RightBucket",
           "Outputs.S3Bucket"
         ]
       }
