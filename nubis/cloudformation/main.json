@@ -307,6 +307,7 @@
           },
           "AccessControl": "Private",
           "VersioningConfiguration": "Enabled",
+          "WithRole": "true",
           "BucketName": {
             "Fn::Join": [
               "-",
@@ -343,6 +344,7 @@
           },
           "AccessControl": "Private",
           "VersioningConfiguration": "Enabled",
+          "WithRole": "true",
           "BucketName": {
             "Fn::Join": [
               "-",
