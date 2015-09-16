@@ -42,7 +42,7 @@
     "StacksVersion": {
       "Description": "Version of the Nubis Stacks",
       "Type": "String",
-      "Default": "master",
+      "Default": "master"
     }
   },
   "Mappings": {
