@@ -127,6 +127,12 @@
           "SSHKeyName": {
             "Ref": "SSHKeyName"
           },
+          "IamRole": {
+            "Fn::GetAtt": [
+              "LeftBucket",
+              "Outputs.S3Role"
+            ]
+          },
           "InstanceType": {
             "Fn::FindInMap": [
               "InstanceTypeMap",
