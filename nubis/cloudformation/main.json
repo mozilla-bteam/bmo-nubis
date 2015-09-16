@@ -59,6 +59,50 @@
     }
   },
   "Resources": {
+    "LeftBucketUUID": {
+      "Type": "Custom::UUID",
+      "Properties": {
+        "ServiceToken": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:aws:lambda:",
+              {
+                "Ref": "AWS::Region"
+              },
+              ":",
+              {
+                "Ref": "AWS::AccountId"
+              },
+              ":function:",
+              "UUID"
+            ]
+          ]
+        }
+      }
+    },
+    "RightBucketUUID": {
+      "Type": "Custom::UUID",
+      "Properties": {
+        "ServiceToken": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:aws:lambda:",
+              {
+                "Ref": "AWS::Region"
+              },
+              ":",
+              {
+                "Ref": "AWS::AccountId"
+              },
+              ":function:",
+              "UUID"
+            ]
+          ]
+        }
+      }
+    },
     "EC2Stack": {
       "Type": "AWS::CloudFormation::Stack",
       "Properties": {
@@ -246,6 +290,78 @@
           }
         }
       }
+    },
+    "LeftBucket": {
+      "Type": "AWS::CloudFormation::Stack",
+      "Properties": {
+        "TemplateURL": { "Fn::Join": [ "/", [ "https://s3.amazonaws.com/nubis-stacks", { "Ref": "StacksVersion" }, "s3-bucket.template" ] ] },
+        "Parameters": {
+          "ServiceName": {
+            "Ref": "ServiceName"
+          },
+          "TechnicalOwner": {
+            "Ref": "TechnicalOwner"
+          },
+          "Environment": {
+            "Ref": "Environment"
+          },
+          "AccessControl": "Private",
+          "VersioningConfiguration": "Enabled",
+          "BucketName": {
+            "Fn::Join": [
+              "-",
+              [
+                {
+                  "Ref": "StackName"
+                },
+                "left",
+                {
+                  "Fn::GetAtt": [
+                    "LeftBucketUUID",
+                    "uuid"
+                  ]
+                }
+              ]
+            ]
+          }
+        }
+      }
+    },
+    "RightBucket": {
+      "Type": "AWS::CloudFormation::Stack",
+      "Properties": {
+        "TemplateURL": { "Fn::Join": [ "/", [ "https://s3.amazonaws.com/nubis-stacks", { "Ref": "StacksVersion" }, "s3-bucket.template" ] ] },
+        "Parameters": {
+          "ServiceName": {
+            "Ref": "ServiceName"
+          },
+          "TechnicalOwner": {
+            "Ref": "TechnicalOwner"
+          },
+          "Environment": {
+            "Ref": "Environment"
+          },
+          "AccessControl": "Private",
+          "VersioningConfiguration": "Enabled",
+          "BucketName": {
+            "Fn::Join": [
+              "-",
+              [
+                {
+                  "Ref": "StackName"
+                },
+                "right",
+                {
+                  "Fn::GetAtt": [
+                    "RightBucketUUID",
+                    "uuid"
+                  ]
+                }
+              ]
+            ]
+          }
+        }
+      }
     }
   },
   "Outputs": {
@@ -340,6 +456,24 @@
         "Fn::GetAtt": [
           "MemcacheStack",
           "Outputs.Port"
+        ]
+      }
+    },
+    "S3UpBucket": {
+      "Description": "Consul: config/ Up Bucket Name",
+      "Value": {
+        "Fn::GetAtt": [
+          "BucketUp",
+          "Outputs.S3Bucket"
+        ]
+      }
+    },
+    "S3DownBucket": {
+      "Description": "Consul: config/ Down Bucket Name",
+      "Value": {
+        "Fn::GetAtt": [
+          "BucketDown",
+          "Outputs.S3Bucket"
         ]
       }
     }
