@@ -139,7 +139,7 @@
                 },
                 {
                   "Fn::GetAtt": [
-                    "Right",
+                    "RightBucket",
                     "Outputs.S3Role"
                   ]
                 }
