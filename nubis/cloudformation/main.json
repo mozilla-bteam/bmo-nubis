@@ -128,9 +128,22 @@
             "Ref": "SSHKeyName"
           },
           "IamRole": {
-            "Fn::GetAtt": [
-              "LeftBucket",
-              "Outputs.S3Role"
+            "Fn::Join": [
+              ",",
+              [
+                {
+                  "Fn::GetAtt": [
+                    "LeftBucket",
+                    "Outputs.S3Role"
+                  ]
+                },
+                {
+                  "Fn::GetAtt": [
+                    "Right",
+                    "Outputs.S3Role"
+                  ]
+                }
+              ]
             ]
           },
           "InstanceType": {
