@@ -42,7 +42,7 @@
     "StacksVersion": {
       "Description": "Version of the Nubis Stacks",
       "Type": "String",
-      "Default": "master"
+      "Default": "v1.0.0"
     }
   },
   "Mappings": {
@@ -128,22 +128,9 @@
             "Ref": "SSHKeyName"
           },
           "IamRole": {
-            "Fn::Join": [
-              ",",
-              [
-                {
-                  "Fn::GetAtt": [
-                    "LeftBucket",
-                    "Outputs.S3Role"
-                  ]
-                },
-                {
-                  "Fn::GetAtt": [
-                    "RightBucket",
-                    "Outputs.S3Role"
-                  ]
-                }
-              ]
+            "Fn::GetAtt": [
+              "LeftBucket",
+              "Outputs.S3Role"
             ]
           },
           "InstanceType": {
