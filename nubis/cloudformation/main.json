@@ -128,10 +128,7 @@
             "Ref": "SSHKeyName"
           },
           "IamRole": {
-            "Fn::GetAtt": [
-              "LeftBucket",
-              "Outputs.S3Role"
-            ]
+            "Ref": "BugzillaRole"
           },
           "InstanceType": {
             "Fn::FindInMap": [
@@ -313,7 +310,7 @@
           },
           "AccessControl": "Private",
           "VersioningConfiguration": "Enabled",
-          "WithRole": "true",
+          "IamRole" : { "Ref": "BugzillaRole" },
           "BucketName": {
             "Fn::Join": [
               "-",
@@ -350,7 +347,7 @@
           },
           "AccessControl": "Private",
           "VersioningConfiguration": "Enabled",
-          "WithRole": "true",
+          "IamRole" : { "Ref": "BugzillaRole" },
           "BucketName": {
             "Fn::Join": [
               "-",
@@ -369,6 +366,28 @@
             ]
           }
         }
+      }
+    },
+    "BugzillaRole": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Principal": {
+                "Service": [
+                  "ec2.amazonaws.com"
+                ]
+              },
+              "Action": [
+                "sts:AssumeRole"
+              ]
+            }
+          ]
+        },
+        "Path": "/"
       }
     }
   },
