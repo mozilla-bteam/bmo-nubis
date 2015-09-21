@@ -155,3 +155,8 @@ file { "/etc/confd":
   group => 'root',
   source => "puppet:///nubis/files/confd",
 }
+
+include nubis_configuration
+nubis::configuration{ 'bugzilla':
+        format => "sh",
+}
