@@ -9,10 +9,20 @@ else
   exit 1
 fi
 
+# Services to stop/start
+SERVICES="\
+bugzilla-queue \
+bugzilla-push \
+"
+
 if [ "$BUGZILLA_ACTIVE" == "1" ]; then
   echo "Starting Active services:"
-  echo "XXX: Not Implemented Yet"
+  for s in $SERVICES; do
+    service "$s" start
+  done
 else
   echo "Stopping Passive services:"
-  echo "XXX: Not Implemented Yet"
+  for s in $SERVICES; do
+    service "$s" stop
+  done
 fi
