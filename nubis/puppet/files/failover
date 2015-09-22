@@ -1,0 +1,18 @@
+#!/bin/bash
+
+CONFIG=/etc/nubis-config/active.sh
+# Load up our current status
+if [ -r $CONFIG ]; then
+  . $CONFIG
+else
+  echo "Can't find our config: $CONFIG"
+  exit 1
+fi
+
+if [ "$BUGZILLA_ACTIVE" == "1" ]; then
+  echo "Starting Active services:"
+  echo "XXX: Not Implemented Yet"
+else
+  echo "Stopping Passive services:"
+  echo "XXX: Not Implemented Yet"
+fi

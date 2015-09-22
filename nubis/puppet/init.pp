@@ -147,6 +147,22 @@ file { "/usr/local/bin/bugzilla-params-update":
   mode   => '0755',
 }
 
+file { "/usr/local/bin/bugzilla-run-if-active":
+  ensure => present,
+  source => "puppet:///nubis/files/run-if-active",
+  owner  => 'root',
+  group  => 'root',
+  mode   => '0755',
+}
+
+file { "/usr/local/bin/bugzilla-failover":
+  ensure => present,
+  source => "puppet:///nubis/files/failover",
+  owner  => 'root',
+  group  => 'root',
+  mode   => '0755',
+}
+
 file { "/etc/confd":
   ensure  => directory,
   recurse => true,

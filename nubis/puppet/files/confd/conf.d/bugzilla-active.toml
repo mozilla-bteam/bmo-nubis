@@ -10,3 +10,5 @@ mode = "0644"
 keys = [
     "/config"
 ]
+
+reload_cmd = "/usr/local/bin/bugzilla-failover"
