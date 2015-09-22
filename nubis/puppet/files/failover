@@ -15,14 +15,24 @@ bugzilla-queue \
 bugzilla-push \
 "
 
+SUPERVISOR_SERVICES="\
+bugzilla-pulse-shim \
+"
+
 if [ "$BUGZILLA_ACTIVE" == "1" ]; then
   echo "Starting Active services:"
   for s in $SERVICES; do
     service "$s" start
   done
+  for s in $SUPERVISOR_SERVICES; do
+    supervisorctl start "$s"
+  done
 else
   echo "Stopping Passive services:"
   for s in $SERVICES; do
     service "$s" stop
+  done
+  for s in $SUPERVISOR_SERVICES; do
+    supervisorctl stop "$s"
   done
 fi
