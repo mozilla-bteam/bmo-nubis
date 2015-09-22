@@ -1,0 +1,2 @@
+# Set to 1 to indicate bugzilla is active and not passive
+BUGZILLA_ACTIVE="{{ if exists "/config/Active" }}{{ getv "/config/Active" }}{{ else }}0{{ end }}"

@@ -1,0 +1,12 @@
+[template]
+src = "bugzilla-active.tmpl"
+dest = "/etc/nubis-config/active.sh"
+prefix = "/%%STACK%%/%%ENVIRONMENT%%"
+
+uid = 0
+gid = 0
+mode = "0644"
+
+keys = [
+    "/config"
+]
