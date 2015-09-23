@@ -8,5 +8,6 @@ echo "Updating params from $SRC to $DST"
 cp -a $SRC $DST
 
 service httpd restart
-service bugzilla-queue restart
-service bugzilla-push restart
+
+bugzilla-run-if-active service bugzilla-queue restart
+bugzilla-run-if-active service bugzilla-push restart
