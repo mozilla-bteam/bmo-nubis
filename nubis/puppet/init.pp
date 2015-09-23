@@ -10,6 +10,7 @@ import 'storage.pp'
 import 'cron.pp'
 import 'shim.pp'
 import 'push.pp'
+import 'fluentd.pp'
 
 package { 'epel-release':
   ensure => present,
