@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# Returns false only if we are not active
+# Note: failures defaults on the safe side and return true
+
+CONFIG=/etc/nubis-config/active.sh
+
+# Load up our current status
+if [ -r $CONFIG ]; then
+  . $CONFIG
+else
+  echo "Can't find our config: $CONFIG"
+  exit 0
+fi
+
+if [ "$BUGZILLA_ACTIVE" == "1" ]; then
+  exit 1 
+else
+  exit 0
+fi

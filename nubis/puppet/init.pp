@@ -156,6 +156,22 @@ file { "/usr/local/bin/bugzilla-run-if-active":
   mode   => '0755',
 }
 
+file { "/usr/local/bin/bugzilla-active":
+  ensure => present,
+  source => "puppet:///nubis/files/active",
+  owner  => 'root',
+  group  => 'root',
+  mode   => '0755',
+}
+
+file { "/usr/local/bin/bugzilla-passive":
+  ensure => present,
+  source => "puppet:///nubis/files/passive",
+  owner  => 'root',
+  group  => 'root',
+  mode   => '0755',
+}
+
 file { "/usr/local/bin/bugzilla-failover":
   ensure => present,
   source => "puppet:///nubis/files/failover",
