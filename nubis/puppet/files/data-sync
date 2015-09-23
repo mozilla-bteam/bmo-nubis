@@ -1,0 +1,30 @@
+#!/bin/bash
+
+CONFIG=/etc/nubis-config/bugzilla.sh
+ACTIVE=/etc/nubis-config/active.sh
+
+DATA=/var/www/bugzilla/data
+
+# Load up $S3DataBucket
+if [ -r $CONFIG ] ; then
+  . $CONFIG
+else
+  echo "Can't find config in $CONFIG"
+  exit 1
+fi
+
+#XXX: probably needs more exlude patterns
+S3_SYNC="aws s3 sync \
+  --sse \
+  --exclude=params \
+  --exclude=mod_perl_preload \
+  $* \
+"
+
+if bugzilla-active; then
+  # Push
+  $S3_SYNC "$DATA/" "s3://$S3DataBucket/"
+else
+  # Pull
+  $S3_SYNC "s3://$S3DataBucket/" "$DATA/"
+fi

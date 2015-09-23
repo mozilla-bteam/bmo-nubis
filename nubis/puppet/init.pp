@@ -180,6 +180,14 @@ file { "/usr/local/bin/bugzilla-failover":
   mode   => '0755',
 }
 
+file { "/usr/local/bin/bugzilla-data-sync":
+  ensure => present,
+  source => "puppet:///nubis/files/data-sync",
+  owner  => 'root',
+  group  => 'root',
+  mode   => '0755',
+}
+
 file { "/etc/confd":
   ensure  => directory,
   recurse => true,
