@@ -310,7 +310,9 @@
           },
           "AccessControl": "Private",
           "VersioningConfiguration": "Enabled",
-          "IamRole" : { "Ref": "BugzillaRole" },
+          "IamRole": {
+            "Ref": "BugzillaRole"
+          },
           "BucketName": {
             "Fn::Join": [
               "-",
@@ -347,7 +349,9 @@
           },
           "AccessControl": "Private",
           "VersioningConfiguration": "Enabled",
-          "IamRole" : { "Ref": "BugzillaRole" },
+          "IamRole": {
+            "Ref": "BugzillaRole"
+          },
           "BucketName": {
             "Fn::Join": [
               "-",
@@ -388,6 +392,35 @@
           ]
         },
         "Path": "/"
+      }
+    },
+    "BugzillaSendEmailUser": {
+      "Type": "AWS::IAM::User",
+      "Properties": {
+        "Path": "/",
+        "Policies": [
+          {
+            "PolicyName": "SendMail",
+            "PolicyDocument": {
+              "Version": "2012-10-17",
+              "Statement": [
+                {
+                  "Effect": "Allow",
+                  "Action": "ses:SendRawEmail",
+                  "Resource": "*"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "SESUserAccessKey": {
+      "Type": "AWS::IAM::AccessKey",
+      "Properties": {
+        "UserName": {
+          "Ref": "BugzillaSendEmailUser"
+        }
       }
     }
   },
@@ -501,6 +534,36 @@
         "Fn::GetAtt": [
           "DataBucket",
           "Outputs.S3Bucket"
+        ]
+      }
+    },
+    "SESUser": {
+      "Description": "Consul: config/SMTP/User SMTP Username",
+      "Value": {
+        "Ref": "SESUserAccessKey"
+      }
+    },
+    "SESPassword": {
+      "Description": "Consul: config/SMTP/Password SMTP Password",
+      "Value": {
+        "Fn::GetAtt": [
+          "SESUserAccessKey",
+          "SecretAccessKey"
+        ]
+      }
+    },
+    "SESServer": {
+      "Description": "Consul: config/SMTP/Server SMTP Server",
+      "Value": {
+        "Fn::Join": [
+          ".",
+          [
+            "email-smtp",
+            {
+              "Ref": "AWS::Region"
+            },
+            "amazonaws.com"
+          ]
         ]
       }
     }
