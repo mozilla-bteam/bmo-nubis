@@ -12,8 +12,9 @@ else
   exit 1
 fi
 
-#XXX: probably needs more exlude patterns
 S3_SYNC="aws s3 sync \
+  --delete \
+  --no-guess-mime-type \
   --sse \
   --exclude=params \
   --exclude=mod_perl_preload \
@@ -23,8 +24,8 @@ S3_SYNC="aws s3 sync \
 
 if bugzilla-active; then
   # Push
-  $S3_SYNC "$DATA/" "s3://$S3DataBucket/"
+  $S3_SYNC "$DATA/" "s3://$S3LeftBucket/"
 else
   # Pull
-  $S3_SYNC "s3://$S3DataBucket/" "$DATA/"
+  $S3_SYNC "s3://$S3RightBucket/" "$DATA/"
 fi

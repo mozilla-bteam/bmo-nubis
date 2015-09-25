@@ -1,3 +1,14 @@
+cron { 'data-sync':
+  ensure => 'present',
+  command => "consul-do bugzilla-cron-data-sync $(hostname) && /usr/local/bin/bugzilla-data-sync",
+  hour => '*',
+  minute => '30',
+  user => 'root',
+  environment => [
+    "PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin:/opt/aws/bin",
+  ],
+}
+
 cron { 'collectstats':
   ensure => 'present',
   command => "cd /var/www/bugzilla && consul-do bugzilla-cron-collectstats $(hostname) && perl -Mlib=lib collectstats.pl",
