@@ -52,3 +52,8 @@ These are the settings that are not set automatically and can be optionally set 
   * LDAPUser   (uid=bind-bmo,ou=logins,dc=mozilla)
   * LDAPPassword
   * BugzillaAPIKey
+ * SMTP/
+  * Debug (0)
+  * Server
+  * User
+  * Password
