@@ -1,7 +1,6 @@
 #!/bin/bash
 
 CONFIG=/etc/nubis-config/bugzilla.sh
-ACTIVE=/etc/nubis-config/active.sh
 
 DATA=/var/www/bugzilla/data
 
