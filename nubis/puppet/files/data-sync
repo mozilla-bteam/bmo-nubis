@@ -24,8 +24,8 @@ S3_SYNC="aws s3 sync \
 
 if bugzilla-active; then
   # Push
-  $S3_SYNC "$DATA/" "s3://$S3LeftBucket/"
+  $S3_SYNC "$DATA/" "s3://$S3DataBucket/"
 else
   # Pull
-  $S3_SYNC "s3://$S3RightBucket/" "$DATA/"
+  $S3_SYNC "s3://$S3DataBucket/" "$DATA/"
 fi
