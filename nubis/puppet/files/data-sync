@@ -13,7 +13,6 @@ else
 fi
 
 S3_SYNC="aws s3 sync \
-  --delete \
   --no-guess-mime-type \
   --sse \
   --exclude=params \
