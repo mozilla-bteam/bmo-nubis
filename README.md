@@ -54,6 +54,6 @@ These are the settings that are not set automatically and can be optionally set 
   * BugzillaAPIKey
  * SMTP/
   * Debug (0)
-  * Server
-  * User
-  * Password
+  * SESServer
+  * SESUser
+  * SESPassword
