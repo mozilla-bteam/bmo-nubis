@@ -538,13 +538,13 @@
       }
     },
     "SESUser": {
-      "Description": "Consul: config/SMTP/User SMTP Username",
+      "Description": "Consul: config/SMTP/ SMTP Username",
       "Value": {
         "Ref": "SESUserAccessKey"
       }
     },
     "SESPassword": {
-      "Description": "Consul: config/SMTP/Password SMTP Password",
+      "Description": "Consul: config/SMTP/ SMTP Password",
       "Value": {
         "Fn::GetAtt": [
           "SESUserAccessKey",
@@ -553,7 +553,7 @@
       }
     },
     "SESServer": {
-      "Description": "Consul: config/SMTP/Server SMTP Server",
+      "Description": "Consul: config/SMTP/ SMTP Server",
       "Value": {
         "Fn::Join": [
           ".",
