@@ -9,6 +9,9 @@ if [ ! -L "/var/www/bugzilla/lib/perl5" ]; then
   ln -s . perl5
 fi
 
+# Force install, this is failing some tests
+cpanm -l /var/www/bugzilla --force Math::BigInt::Pari
+
 for pkg in \
    Math::Random::ISAAC \
    File::MimeInfo::Magic \
