@@ -30,6 +30,7 @@ for pkg in \
    Devel::StackTrace \
    Convert::Base32 \
    Auth::GoogleAuth \
+   Net::SFTP \
   ; do
   echo "Installing $pkg"
   cpanm -l /var/www/bugzilla $pkg
