@@ -29,6 +29,7 @@ package {
     'perl-version',
     'perl-autodie',
     'openssl-devel',
+    'gmp-devel',
     'perl-Module-Pluggable',
     'perl-Sys-Syslog',
     'perl-LWP-Protocol-https',
