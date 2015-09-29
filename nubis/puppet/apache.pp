@@ -24,9 +24,9 @@ class {
         default_mods        => true,
         default_vhost       => false,
         default_confd_files => false,
-	service_manage         => true,
-        service_enable         => true,
-        service_ensure         => false;
+	      service_manage      => true,
+        service_enable      => true,
+        service_ensure      => false;
     'apache::mod::remoteip':
         proxy_ips => [ '127.0.0.1', '10.0.0.0/8' ];
     'apache::mod::headers':
