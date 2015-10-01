@@ -82,7 +82,9 @@ apache::vhost { $service:
     docroot_group               => 'apache',
     block                       => ['scm'],
     setenvif                    => 'X_FORWARDED_PROTO https HTTPS=on',
-    access_log_format           => '%a %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-agent}i\"',
+    access_log_format           => '%{X-Forwarded-For}i %l %{Bugzilla_login}C %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\" %T %v %D',
+    access_log_pipe             => '|/usr/local/bin/apache-syslog.pl',
+    error_log_pipe              => '|/usr/local/bin/apache-syslog.pl',
     custom_fragment             => 'PerlChildInitHandler "sub { Bugzilla::RNG::srand(); srand(); }"',
     directories => [
       {
