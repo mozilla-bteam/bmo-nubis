@@ -102,5 +102,60 @@ apache::vhost { $service:
     DirectoryIndex index.cgi index.html	
 	'
       },
+    ],
+    serveradmin   => 'bugzilla-admin@mozilla.org',
+    serveraliases => [
+      '*.bugzilla.mozilla.org',
+      '*.bmoattachments.org',
+      'test1.bugzilla.mozilla.org',
+      'test2.bugzilla.mozilla.org',
+      'sub1.test1.bugzilla.mozilla.org',
+      'sub2.test1.bugzilla.mozilla.org',
+      'sub1.test2.bugzilla.mozilla.org'
+    ],
+    redirect_status  => [
+      'gone',
+    ],
+    redirect_source  => [
+      '/localconfig.js',
+    ],
+    redirect_dest    => [
+      '',
+    ],
+    rewrites         => [
+      {
+        comment      => 'Redirect invalid domains to the main one',
+        rewrite_cond => [
+          '%{HTTP_HOST} !^bugzilla\.mozilla\.org$',
+          '%{HTTP_HOST} !^bug[0-9]+\.bugzilla\.mozilla\.org$',
+          '%{HTTP_HOST} !^test[12]\.bugzilla\.mozilla\.org$',
+          '%{HTTP_HOST} !^sub[12]\.test1\.bugzilla\.mozilla\.org$',
+          '%{HTTP_HOST} !^sub1\.test2\.bugzilla\.mozilla\.org$',
+          '%{HTTP_HOST} !^api-dev\.bugzilla\.mozilla\.org$',
+          '%{HTTP_HOST} !^bug[0-9]+\.bmoattachments\.org$',
+        ],
+        rewrite_rule => ['(.*) https://bugzilla.mozilla.org$1 [R=301,L]'],
+      },
+      {
+        comment      => 'Skip robots.txt',
+        rewrite_rule => ['^/robots.txt$ - [L]'],
+      },
+      {
+        comment      => 'Redirect bug subdomains to the bug itself',
+        rewrite_cond => ['%{SERVER_NAME} ^bug(\d+)\.'],
+        rewrite_rule => ['^/$ https://bugzilla.mozilla.org/show_bug.cgi?id=%1 [R=302,L]'],
+      },
+      {
+        comment      => 'Add quicksearch redirect',
+        rewrite_rule => ['^/quicksearch\.html$ https://bugzilla.mozilla.org/page.cgi?id=quicksearch.html [R=301]'],
+      },
+      {
+        comment      => 'Add bugwritinghelp redirect',
+        rewrite_rule => ['^/bugwritinghelp\.html$ https://bugzilla.mozilla.org/page.cgi?id=bug-writing.html [R=301]'],
+      },
+      {
+        comment      => 'Map URI containing only a bug number directly to bug',
+        rewrite_rule => ['^/([0-9]+)$ https://bugzilla.mozilla.org/show_bug.cgi?id=$1 [R=301,L]'],
+      },
     ]
 }
