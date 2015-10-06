@@ -9,6 +9,17 @@ cron { 'data-sync':
   ],
 }
 
+cron { 'remove-idle-group-members':
+  ensure => 'present',
+  command => "cd /var/www/bugzilla && consul-do bugzilla-cron-idle-group $(hostname) && perl -Mlib=lib scripts/remove_idle_group_members.pl 2>&1 | logger -t bugzilla-cron-idle-group",
+  hour => '0',
+  minute => '0',
+  user => 'root',
+  environment => [
+    "PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin:/opt/aws/bin",
+  ],
+}
+
 cron { 'collectstats':
   ensure => 'present',
   command => "cd /var/www/bugzilla && consul-do bugzilla-cron-collectstats $(hostname) && perl -Mlib=lib collectstats.pl 2>&1 | logger -t bugzilla-cron-collectstats",
