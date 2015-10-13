@@ -34,6 +34,7 @@ for pkg in \
    Convert::Base32 \
    Auth::GoogleAuth \
    Net::SFTP \
+   File::Copy::Recursive \
   ; do
   echo "Installing $pkg"
   cpanm -l /var/www/bugzilla $pkg
