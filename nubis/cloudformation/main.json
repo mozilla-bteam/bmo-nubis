@@ -415,11 +415,53 @@
         ]
       }
     },
+    "DataBucketUser": {
+      "Type": "AWS::IAM::User",
+      "Properties": {
+        "Path": "/",
+        "Policies": [
+          {
+            "PolicyName": "SyncData",
+            "PolicyDocument": {
+              "Version": "2012-10-17",
+              "Statement": [
+                {
+                  "Effect": "Allow",
+                  "Action": "s3:*",
+                  "Resource": {
+                    "Fn::Join": [
+                      "",
+                      [
+                        "awn:aws:s3:::",
+                        {
+                          "Fn::GetAtt": [
+                            "DataBucket",
+                            "Outputs.S3Bucket"
+                          ]
+                        }
+                      ]
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
     "SESUserAccessKey": {
       "Type": "AWS::IAM::AccessKey",
       "Properties": {
         "UserName": {
           "Ref": "BugzillaSendEmailUser"
+        }
+      }
+    },
+    "DataBucketAccessKey": {
+      "Type": "AWS::IAM::AccessKey",
+      "Properties": {
+        "UserName": {
+          "Ref": "DataBucketUser"
         }
       }
     }
@@ -564,6 +606,15 @@
             },
             "amazonaws.com"
           ]
+        ]
+      }
+    },
+    "DataBucketUser": {
+      "Description": "Data Sync Secret Key",
+      "Value": {
+        "Fn::GetAtt": [
+          "DataBucketAccessKey",
+          "SecretAccessKey"
         ]
       }
     }
