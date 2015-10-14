@@ -1,17 +1,3 @@
-# Main entry for puppet
-#
-
-# Here we are simply importing a custom application puppet file.
-# Typically you will include things like Apache and other puppet modules
-# which are included in the base image.
-import 'skel.pp'
-import 'apache.pp'
-import 'storage.pp'
-import 'cron.pp'
-import 'shim.pp'
-import 'push.pp'
-import 'fluentd.pp'
-
 package { 'epel-release':
   ensure => present,
 }->
