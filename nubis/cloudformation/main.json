@@ -432,7 +432,7 @@
                     "Fn::Join": [
                       "",
                       [
-                        "awn:aws:s3:::",
+                        "arn:aws:s3:::",
                         {
                           "Fn::GetAtt": [
                             "DataBucket",
