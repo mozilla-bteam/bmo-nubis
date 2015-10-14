@@ -428,7 +428,23 @@
                 {
                   "Effect": "Allow",
                   "Action": "s3:*",
-                  "Resource": {
+                  "Resource": [
+                  {
+                    "Fn::Join": [
+                      "",
+                      [
+                        "arn:aws:s3:::",
+                        {
+                          "Fn::GetAtt": [
+                            "DataBucket",
+                            "Outputs.S3Bucket"
+                          ]
+                        },
+                        "/*"
+                      ]
+                    ]
+                  },
+                  {
                     "Fn::Join": [
                       "",
                       [
@@ -442,6 +458,7 @@
                       ]
                     ]
                   }
+                 ]
                 }
               ]
             }
