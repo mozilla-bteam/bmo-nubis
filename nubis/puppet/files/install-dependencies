@@ -10,7 +10,7 @@ if [ ! -L "/var/www/bugzilla/lib/perl5" ]; then
 fi
 
 # Force install, this is failing some tests
-cpanm -l /var/www/bugzilla --force Math::BigInt::Pari
+cpanm -l /var/www/bugzilla --force --configure-timeout 300 Math::BigInt::Pari
 
 for pkg in \
    Math::Random::ISAAC \
