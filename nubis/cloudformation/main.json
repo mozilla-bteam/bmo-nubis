@@ -609,7 +609,13 @@
         ]
       }
     },
-    "DataBucketUser": {
+    "DataBucketAccessKey": {
+      "Description": "Data Sync Access Key",
+      "Value": {
+        "Ref": "DataBucketAccessKey"
+      }
+    },
+    "DataBucketSecretKey": {
       "Description": "Data Sync Secret Key",
       "Value": {
         "Fn::GetAtt": [
