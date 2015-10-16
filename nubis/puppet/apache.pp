@@ -24,7 +24,7 @@ class {
         default_mods        => true,
         default_vhost       => false,
         default_confd_files => false,
-	      service_manage      => true,
+        service_manage      => true,
         service_enable      => true,
         service_ensure      => false;
     'apache::mod::remoteip':
