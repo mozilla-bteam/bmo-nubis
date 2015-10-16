@@ -2,7 +2,7 @@
 
 CONFIG=/etc/nubis-config/bugzilla.sh
 
-DATA=/var/www/bugzilla/data
+DATA=/data/bugzilla
 
 # Load up $S3DataBucket
 if [ -r $CONFIG ] ; then

@@ -18,5 +18,11 @@ exec { "fix-ceph-shebang":
 # Link to our mountpoint
 file { "/var/www/bugzilla/data":
   ensure => 'link',
-  target => "/data/$project_name",
+  target => "/data/$project_name/data",
+}
+
+# Link to our mountpoint
+file { "/var/www/bugzilla/graphs":
+  ensure => 'link',
+  target => "/data/$project_name/graphs",
 }
