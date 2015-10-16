@@ -24,9 +24,9 @@ class {
         default_mods        => true,
         default_vhost       => false,
         default_confd_files => false,
-	service_manage         => true,
-        service_enable         => true,
-        service_ensure         => false;
+        service_manage      => true,
+        service_enable      => true,
+        service_ensure      => false;
     'apache::mod::remoteip':
         proxy_ips => [ '127.0.0.1', '10.0.0.0/8' ];
     'apache::mod::headers':
@@ -82,7 +82,9 @@ apache::vhost { $service:
     docroot_group               => 'apache',
     block                       => ['scm'],
     setenvif                    => 'X_FORWARDED_PROTO https HTTPS=on',
-    access_log_format           => '%a %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-agent}i\"',
+    access_log_format           => '%{X-Forwarded-For}i %l %{Bugzilla_login}C %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\" %T %v %D',
+    access_log_pipe             => '|/usr/local/bin/apache-syslog.pl',
+    error_log_pipe              => '|/usr/local/bin/apache-syslog.pl',
     custom_fragment             => 'PerlChildInitHandler "sub { Bugzilla::RNG::srand(); srand(); }"',
     directories => [
       {
@@ -99,6 +101,61 @@ apache::vhost { $service:
     AllowOverride Limit FileInfo Indexes
     DirectoryIndex index.cgi index.html	
 	'
+      },
+    ],
+    serveradmin   => 'bugzilla-admin@mozilla.org',
+    serveraliases => [
+      '*.bugzilla.mozilla.org',
+      '*.bmoattachments.org',
+      'test1.bugzilla.mozilla.org',
+      'test2.bugzilla.mozilla.org',
+      'sub1.test1.bugzilla.mozilla.org',
+      'sub2.test1.bugzilla.mozilla.org',
+      'sub1.test2.bugzilla.mozilla.org'
+    ],
+    redirect_status  => [
+      'gone',
+    ],
+    redirect_source  => [
+      '/localconfig.js',
+    ],
+    redirect_dest    => [
+      '',
+    ],
+    rewrites         => [
+      {
+        comment      => 'Redirect invalid domains to the main one',
+        rewrite_cond => [
+          '%{HTTP_HOST} !^bugzilla\.mozilla\.org$',
+          '%{HTTP_HOST} !^bug[0-9]+\.bugzilla\.mozilla\.org$',
+          '%{HTTP_HOST} !^test[12]\.bugzilla\.mozilla\.org$',
+          '%{HTTP_HOST} !^sub[12]\.test1\.bugzilla\.mozilla\.org$',
+          '%{HTTP_HOST} !^sub1\.test2\.bugzilla\.mozilla\.org$',
+          '%{HTTP_HOST} !^api-dev\.bugzilla\.mozilla\.org$',
+          '%{HTTP_HOST} !^bug[0-9]+\.bmoattachments\.org$',
+        ],
+        rewrite_rule => ['(.*) https://bugzilla.mozilla.org$1 [R=301,L]'],
+      },
+      {
+        comment      => 'Skip robots.txt',
+        rewrite_rule => ['^/robots.txt$ - [L]'],
+      },
+      {
+        comment      => 'Redirect bug subdomains to the bug itself',
+        rewrite_cond => ['%{SERVER_NAME} ^bug(\d+)\.'],
+        rewrite_rule => ['^/$ https://bugzilla.mozilla.org/show_bug.cgi?id=%1 [R=302,L]'],
+      },
+      {
+        comment      => 'Add quicksearch redirect',
+        rewrite_rule => ['^/quicksearch\.html$ https://bugzilla.mozilla.org/page.cgi?id=quicksearch.html [R=301]'],
+      },
+      {
+        comment      => 'Add bugwritinghelp redirect',
+        rewrite_rule => ['^/bugwritinghelp\.html$ https://bugzilla.mozilla.org/page.cgi?id=bug-writing.html [R=301]'],
+      },
+      {
+        comment      => 'Map URI containing only a bug number directly to bug',
+        rewrite_rule => ['^/([0-9]+)$ https://bugzilla.mozilla.org/show_bug.cgi?id=$1 [R=301,L]'],
       },
     ]
 }
