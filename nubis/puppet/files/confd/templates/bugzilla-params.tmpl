@@ -16,9 +16,7 @@
            'allowbugdeletion' => 0,
            'allowemailchange' => 1,
            'allowuserdeletion' => 0,
-           'announcehtml' => '<div style="background-color:#fff9db;color:#666458;padding:5px">
-This is <b>bugzilla.allizom.org</b>. Database is a snapshot of production from <b>April 8, 2014</b>.  Email is disabled.
-</div>',
+           'announcehtml' => '{{ if exists "/config/AnnounceHTML" }}{{ getv "/config/AnnounceHTML" }}{{ else }}{{ end }}',
            'antispam_abusive_comment_count' => '5',
            'antispam_abusive_disable_text' => 'This account has been automatically disabled as a result of a high number of comments tagged as abusive.<br>
 <br>
