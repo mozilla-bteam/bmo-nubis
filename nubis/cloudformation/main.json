@@ -56,6 +56,17 @@
       "sandbox": {
         "InstanceType": "t2.small"
       }
+    },
+    "DBNameMap": {
+      "prod": {
+        "DBName": "bugs"
+      },
+      "stage": {
+        "DBName": "bugzilla_allizom_org"
+      },
+      "sandbox": {
+        "DBName": "bugzilla"
+      }
     }
   },
   "Resources": {
@@ -202,7 +213,15 @@
           },
           "AllocatedStorage": "128",
           "DBInstanceClass": "db.t2.medium",
-          "DBName": "bugzilla",
+          "DBName": {
+            "Fn::FindInMap": [
+              "DBNameMap",
+              {
+                "Ref": "Environment"
+              },
+              "DBName"
+            ]
+          },
           "EC2SecurityGroup": {
             "Fn::GetAtt": [
               "EC2Stack",
