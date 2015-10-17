@@ -208,6 +208,7 @@
           },
           "AllocatedStorage": "128",
           "DBInstanceClass": "db.t2.medium",
+          "MasterUsername": "bugzilla",
           "DBName": {
             "Fn::FindInMap": [
               "EnvironmentMap",
