@@ -46,25 +46,17 @@
     }
   },
   "Mappings": {
-    "InstanceTypeMap": {
+    "EnvironmentMap": {
       "prod": {
-        "InstanceType": "m3.medium"
-      },
-      "stage": {
-        "InstanceType": "m3.medium"
-      },
-      "sandbox": {
-        "InstanceType": "t2.small"
-      }
-    },
-    "DBNameMap": {
-      "prod": {
+        "InstanceType": "m3.medium",
         "DBName": "bugs"
       },
       "stage": {
+        "InstanceType": "m3.medium",
         "DBName": "bugzilla_allizom_org"
       },
       "sandbox": {
+        "InstanceType": "t2.small",
         "DBName": "bugzilla"
       }
     }
@@ -143,7 +135,7 @@
           },
           "InstanceType": {
             "Fn::FindInMap": [
-              "InstanceTypeMap",
+              "EnvironmentMap",
               {
                 "Ref": "Environment"
               },
@@ -218,7 +210,7 @@
           "DBInstanceClass": "db.t2.medium",
           "DBName": {
             "Fn::FindInMap": [
-              "DBNameMap",
+              "EnvironmentMap",
               {
                 "Ref": "Environment"
               },
