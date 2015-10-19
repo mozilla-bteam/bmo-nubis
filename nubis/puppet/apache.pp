@@ -159,7 +159,6 @@ apache::vhost { $service:
       {
         comment      => 'Map URI containing only a bug number directly to bug',
         rewrite_rule => ['^/([0-9]+)$ https://%{HTTP_HOST}/show_bug.cgi?id=$1 [R=301,L]'],
-$
       },
     ]
 }
