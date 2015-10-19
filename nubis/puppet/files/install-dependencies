@@ -9,8 +9,15 @@ if [ ! -L "/var/www/bugzilla/lib/perl5" ]; then
   ln -s . perl5
 fi
 
+DISTS=/var/www/bugzilla/dists
+if [ ! -d $DISTS ]; then
+  mkdir $DISTS
+fi
+
+CPANM="cpanm -l /var/www/bugzilla --save-dists $DISTS"
+
 # Force install, this is failing some tests
-cpanm -l /var/www/bugzilla --force --configure-timeout 300 Math::BigInt::Pari
+$CPANM --force --configure-timeout 300 Math::BigInt::Pari
 
 for pkg in \
    Math::Random::ISAAC \
@@ -37,5 +44,5 @@ for pkg in \
    File::Copy::Recursive \
   ; do
   echo "Installing $pkg"
-  cpanm -l /var/www/bugzilla $pkg
+  $CPANM $pkg
 done
