@@ -134,6 +134,8 @@ apache::vhost { $service:
           '%{HTTP_HOST} !^sub1\.test2\.bugzilla\.mozilla\.org$',
           '%{HTTP_HOST} !^api-dev\.bugzilla\.mozilla\.org$',
           '%{HTTP_HOST} !^bug[0-9]+\.bmoattachments\.org$',
+          # XXX: This whole redirect business to canonical url needs to be based on config/CanonicalServer
+          '%{HTTP_HOST} !\.nubis\.allizom\.org$',
         ],
         rewrite_rule => ['(.*) https://bugzilla.mozilla.org$1 [R=301,L]'],
       },
@@ -143,20 +145,21 @@ apache::vhost { $service:
       },
       {
         comment      => 'Redirect bug subdomains to the bug itself',
-        rewrite_cond => ['%{SERVER_NAME} ^bug(\d+)\.'],
-        rewrite_rule => ['^/$ https://bugzilla.mozilla.org/show_bug.cgi?id=%1 [R=302,L]'],
+        rewrite_cond => ['%{SERVER_NAME} ^bug(\d+)\.(.*)'],
+        rewrite_rule => ['^/$ https://%2/show_bug.cgi?id=%1 [R=302,L]'],
       },
       {
         comment      => 'Add quicksearch redirect',
-        rewrite_rule => ['^/quicksearch\.html$ https://bugzilla.mozilla.org/page.cgi?id=quicksearch.html [R=301]'],
+        rewrite_rule => ['^/quicksearch\.html$ https://%{HTTP_HOST}/page.cgi?id=quicksearch.html [R=301]'],
       },
       {
         comment      => 'Add bugwritinghelp redirect',
-        rewrite_rule => ['^/bugwritinghelp\.html$ https://bugzilla.mozilla.org/page.cgi?id=bug-writing.html [R=301]'],
+        rewrite_rule => ['^/bugwritinghelp\.html$ https://%{HTTP_HOST}/page.cgi?id=bug-writing.html [R=301]'],
       },
       {
         comment      => 'Map URI containing only a bug number directly to bug',
-        rewrite_rule => ['^/([0-9]+)$ https://bugzilla.mozilla.org/show_bug.cgi?id=$1 [R=301,L]'],
+        rewrite_rule => ['^/([0-9]+)$ https://%{HTTP_HOST}/show_bug.cgi?id=$1 [R=301,L]'],
+$
       },
     ]
 }
