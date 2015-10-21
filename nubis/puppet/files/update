@@ -16,5 +16,5 @@ consul lock $NUBIS_STACK/$NUBIS_ENVIRONMENT/checksetup \
 # Restart dependent services
 service httpd restart
 
-bugzilla-run-if-active service bugzilla-queue restart
-bugzilla-run-if-active service bugzilla-push restart
+/usr/local/bin/bugzilla-run-if-active service bugzilla-queue restart
+/usr/local/bin/bugzilla-run-if-active service bugzilla-push restart
