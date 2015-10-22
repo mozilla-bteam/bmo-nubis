@@ -136,6 +136,7 @@ apache::vhost { $service:
           '%{HTTP_HOST} !^bug[0-9]+\.bmoattachments\.org$',
           # XXX: This whole redirect business to canonical url needs to be based on config/CanonicalServer
           '%{HTTP_HOST} !\.nubis\.allizom\.org$',
+          '%{HTTP_HOST} !^bugzilla\.allizom\.org$',
         ],
         rewrite_rule => ['(.*) https://bugzilla.mozilla.org$1 [R=301,L]'],
       },
