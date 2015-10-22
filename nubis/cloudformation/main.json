@@ -581,7 +581,7 @@
         ]
       }
     },
-    "ShadowDBname": {
+    "ShadowDBName": {
       "Description": "Consul: config/ Slave Database name",
       "Value": {
         "Fn::GetAtt": [
