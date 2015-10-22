@@ -563,8 +563,8 @@
         ]
       }
     },
-    "SlaveDBserver": {
-      "Description": "Consul: config/ SlaveDatabase endpoint",
+    "ShadowDBHost": {
+      "Description": "Consul: config/ Slave Database endpoint",
       "Value": {
         "Fn::GetAtt": [
           "RDSStack",
@@ -574,6 +574,15 @@
     },
     "DBname": {
       "Description": "Consul: config/ Database name",
+      "Value": {
+        "Fn::GetAtt": [
+          "RDSStack",
+          "Outputs.RDSName"
+        ]
+      }
+    },
+    "ShadowDBname": {
+      "Description": "Consul: config/ Slave Database name",
       "Value": {
         "Fn::GetAtt": [
           "RDSStack",
