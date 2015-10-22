@@ -209,6 +209,7 @@
           "AllocatedStorage": "128",
           "DBInstanceClass": "db.t2.medium",
           "MasterUsername": "bugzilla",
+          "ReadOnlySlave": "true",
           "DBName": {
             "Fn::FindInMap": [
               "EnvironmentMap",
@@ -559,6 +560,15 @@
         "Fn::GetAtt": [
           "RDSStack",
           "Outputs.RDSEndpoint"
+        ]
+      }
+    },
+    "SlaveDBserver": {
+      "Description": "Consul: config/ SlaveDatabase endpoint",
+      "Value": {
+        "Fn::GetAtt": [
+          "RDSStack",
+          "Outputs.SlaveRDSEndpoint"
         ]
       }
     },
