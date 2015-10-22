@@ -282,6 +282,9 @@
         "TemplateURL": { "Fn::Join": [ "/", [ "https://s3.amazonaws.com/nubis-stacks", { "Ref": "StacksVersion" }, "storage.template" ] ] },
         "TimeoutInMinutes": "60",
         "Parameters": {
+          "StacksVersion": {
+            "Ref": "StacksVersion"
+          },
           "StackName": {
             "Ref": "AWS::StackName"
           },
