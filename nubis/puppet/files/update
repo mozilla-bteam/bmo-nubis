@@ -7,6 +7,9 @@ export PATH=/usr/local/bin:$PATH
 exec > >(tee /var/log/bugzilla-update.log)
 exec 2>&1
 
+# Ensure the storage directories are present, checksetup.pl can't create them via symlinks
+mkdir -p /data/bugzilla/{data,graphs}
+
 # Source the consul connection details from the metadata api
 eval `curl -fq http://169.254.169.254/latest/user-data`
 
