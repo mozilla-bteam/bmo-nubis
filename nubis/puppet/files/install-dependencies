@@ -3,18 +3,12 @@
 # Exit if anything fails
 set -e
 
-# cpanm installs in /var/www/bugzilla/lib/perl5 (local::lib) friendly, but Bugzilla doesn't expect that
-if [ ! -L "/var/www/bugzilla/lib/perl5" ]; then
-  cd /var/www/bugzilla/lib
-  ln -s . perl5
-fi
-
 DISTS=/var/www/bugzilla/dists
 if [ ! -d $DISTS ]; then
   mkdir $DISTS
 fi
 
-CPANM="cpanm -l /var/www/bugzilla --save-dists $DISTS"
+CPANM="cpanm --save-dists $DISTS"
 
 # Force install, this is failing some tests
 $CPANM --force --configure-timeout 300 Math::BigInt::Pari
