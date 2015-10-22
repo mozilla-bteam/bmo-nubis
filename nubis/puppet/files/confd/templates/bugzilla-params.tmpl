@@ -108,7 +108,7 @@ and may not contain any commas or spaces.
            'password_check_on_login' => '1',
            'password_complexity' => 'no_constraints',
            'persona_includejs_url' => 'https://login.persona.org/include.js',
-           'persona_proxy_url' => '',
+           'persona_proxy_url' => '{{ if exists "/config/HTTPProxy" }}{{ getv "/config/HTTPProxy" }}{{ else }}{{ end }}',
            'persona_verify_url' => 'https://browserid.org/verify',
            'proxy_url' => '{{ if exists "/config/HTTPProxy" }}{{ getv "/config/HTTPProxy" }}{{ else }}{{ end }}',
            'querysharegroup' => 'editbugs',
