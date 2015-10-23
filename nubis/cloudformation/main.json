@@ -218,7 +218,7 @@
               {
                 "Ref": "Environment"
               },
-              "StorageType"
+              "DBStorageType"
             ]
           },
           "AllocatedStorage": {
