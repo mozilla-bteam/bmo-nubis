@@ -212,7 +212,7 @@
           "Environment": {
             "Ref": "Environment"
           },
-          "DBStorageTpye": {
+          "DBStorageType": {
             "Fn::FindInMap": [
               "EnvironmentMap",
               {
