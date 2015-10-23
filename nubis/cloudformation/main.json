@@ -50,17 +50,20 @@
       "prod": {
         "InstanceType": "m3.medium",
         "DBName": "bugs",
-        "DBStorage": "256"
+        "DBStorage": "256",
+        "DBStorageType": "gp2"
       },
       "stage": {
         "InstanceType": "m3.medium",
         "DBName": "bugzilla_allizom_org",
-        "DBStorage": "128"
+        "DBStorage": "128",
+        "DBStorageType": "gp2"
       },
       "sandbox": {
         "InstanceType": "t2.small",
         "DBName": "bugzilla",
-        "DBStorage": "32"
+        "DBStorage": "32",
+        "DBStorageType": "standard"
       }
     }
   },
@@ -208,6 +211,15 @@
           },
           "Environment": {
             "Ref": "Environment"
+          },
+          "DBStorageTpye": {
+            "Fn::FindInMap": [
+              "EnvironmentMap",
+              {
+                "Ref": "Environment"
+              },
+              "StorageType"
+            ]
           },
           "AllocatedStorage": {
             "Fn::FindInMap": [
