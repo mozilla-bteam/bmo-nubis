@@ -49,15 +49,18 @@
     "EnvironmentMap": {
       "prod": {
         "InstanceType": "m3.medium",
-        "DBName": "bugs"
+        "DBName": "bugs",
+        "DBStorage": "256"
       },
       "stage": {
         "InstanceType": "m3.medium",
-        "DBName": "bugzilla_allizom_org"
+        "DBName": "bugzilla_allizom_org",
+        "DBStorage": "128"
       },
       "sandbox": {
         "InstanceType": "t2.small",
-        "DBName": "bugzilla"
+        "DBName": "bugzilla",
+        "DBStorage": "32"
       }
     }
   },
@@ -206,7 +209,15 @@
           "Environment": {
             "Ref": "Environment"
           },
-          "AllocatedStorage": "128",
+          "AllocatedStorage": {
+            "Fn::FindInMap": [
+              "EnvironmentMap",
+              {
+                "Ref": "Environment"
+              },
+              "DBStorage"
+            ]
+          },
           "DBInstanceClass": "db.t2.medium",
           "MasterUsername": "bugzilla",
           "ReadOnlySlave": "true",
