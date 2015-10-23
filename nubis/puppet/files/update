@@ -16,6 +16,9 @@ eval `curl -fq http://169.254.169.254/latest/user-data`
 consul lock $NUBIS_STACK/$NUBIS_ENVIRONMENT/checksetup \
     perl -I/var/www/bugzilla /var/www/bugzilla/checksetup.pl /var/www/bugzilla/answers.txt
 
+# Kick a data sync, for fresh new nodes
+/usr/local/bin/bugzilla-data-sync
+
 # Restart dependent services
 service httpd restart
 
