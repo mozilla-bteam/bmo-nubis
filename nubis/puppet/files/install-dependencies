@@ -3,7 +3,7 @@
 # Exit if anything fails
 set -e
 
-DISTS=/var/www/bugzilla/dists
+DISTS=/var/www/dists
 if [ ! -d $DISTS ]; then
   mkdir $DISTS
 fi
@@ -40,3 +40,6 @@ for pkg in \
   echo "Installing $pkg"
   $CPANM $pkg
 done
+
+tar -C $(dirname $DISTS) -zcvf $DISTS.tar.gz $(basename $DISTS)
+rm -rf $DISTS

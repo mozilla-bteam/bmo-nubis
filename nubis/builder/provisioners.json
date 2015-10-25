@@ -15,6 +15,13 @@
     "order": "2"
   },
   {
+    "type": "file",
+    "source": "/var/www/dists.tar.gz",
+    "destination": "dists.tar.gz",
+    "direction": "download",
+    "order": "99"
+  },
+  {
     "type": "shell",
     "inline": [
        "sudo /usr/local/bin/bugzilla-install-dependencies",
