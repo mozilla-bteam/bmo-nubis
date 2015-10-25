@@ -90,7 +90,7 @@ and may not contain any commas or spaces.
            'max_search_results' => '10000',
            'maxattachmentsize' => '4096',
            'maxusermatches' => 100,
-           'memcached_namespace' => 'bugzilla:',
+           'memcached_namespace' => '{{ if exists "/config/MemCachedNamespace" }}{{ getv "/config/MemCachedNamespace" }}bugzilla{{ else }}{{ end }}:',
            'memcached_servers' => '{{ getv "/config/MemCachedEndpoint" }}:{{ getv "/config/MemCachedPort" }}',          
            'metrics_elasticsearch_index' => '',
            'metrics_elasticsearch_server' => '',
