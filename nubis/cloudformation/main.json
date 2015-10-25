@@ -48,13 +48,13 @@
   "Mappings": {
     "EnvironmentMap": {
       "prod": {
-        "InstanceType": "m3.medium",
+        "InstanceType": "m4.xlarge",
         "DBName": "bugs",
         "DBStorage": "256",
         "DBStorageType": "gp2"
       },
       "stage": {
-        "InstanceType": "m3.medium",
+        "InstanceType": "t2.large",
         "DBName": "bugzilla_allizom_org",
         "DBStorage": "128",
         "DBStorageType": "gp2"
