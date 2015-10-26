@@ -53,7 +53,6 @@ These are the settings that are not set automatically and can be optionally set 
   * LDAPPassword
   * BugzillaAPIKey
  * SMTP/
-  * Debug (0)
   * SESServer
   * SESUser
   * SESPassword
