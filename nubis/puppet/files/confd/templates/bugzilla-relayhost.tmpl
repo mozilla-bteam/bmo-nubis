@@ -1,3 +1,5 @@
+include postfix
+
 postfix::config::maincfhelper { "relayhost": 
   value => "[{{ getv "/config/SMTP/SESServer" }}]:587",
 }

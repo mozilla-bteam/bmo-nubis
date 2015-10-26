@@ -1,4 +1,5 @@
 # Global settings to enable SES
+include postfix
 
 postfix::config::maincfhelper { "smtp_use_tls":
   value => "yes"
