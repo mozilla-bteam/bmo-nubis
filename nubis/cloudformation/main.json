@@ -46,19 +46,22 @@
         "InstanceType": "m4.xlarge",
         "DBName": "bugs",
         "DBStorage": "256",
-        "DBStorageType": "gp2"
+        "DBStorageType": "gp2",
+        "SSLCertificate": "arn:aws:iam::0000:server-certificate/not-set"
       },
       "stage": {
         "InstanceType": "t2.large",
         "DBName": "bugzilla_allizom_org",
         "DBStorage": "128",
-        "DBStorageType": "gp2"
+        "DBStorageType": "gp2",
+        "SSLCertificate": "arn:aws:iam::0000:server-certificate/not-set"
       },
       "sandbox": {
         "InstanceType": "t2.small",
         "DBName": "bugzilla",
         "DBStorage": "32",
-        "DBStorageType": "standard"
+        "DBStorageType": "standard",
+        "SSLCertificate": "arn:aws:iam::0000:server-certificate/not-set"
       }
     }
   },
@@ -184,6 +187,15 @@
           },
           "Environment": {
             "Ref": "Environment"
+          },
+          "SSLCertificate": {
+            "Fn::FindInMap": [
+              "EnvironmentMap",
+              {
+                "Ref": "Environment"
+              },
+              "SSLCertificate"
+            ]
           },
           "ElbHealthTarget": "HTTP:80/?no-ssl-rewrite&elb-health-check"
         }
