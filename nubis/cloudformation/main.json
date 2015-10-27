@@ -47,14 +47,14 @@
         "DBName": "bugs",
         "DBStorage": "256",
         "DBStorageType": "gp2",
-        "SSLCertificate": "arn:aws:iam::0000:server-certificate/not-set"
+        "SSLCertificate": "arn:aws:iam::230871113385:server-certificate/bugzilla.mozilla.org"
       },
       "stage": {
         "InstanceType": "t2.large",
         "DBName": "bugzilla_allizom_org",
         "DBStorage": "128",
         "DBStorageType": "gp2",
-        "SSLCertificate": "arn:aws:iam::0000:server-certificate/not-set"
+        "SSLCertificate": "arn:aws:iam::230871113385:server-certificate/wildcard.allizom.org"
       },
       "sandbox": {
         "InstanceType": "t2.small",
