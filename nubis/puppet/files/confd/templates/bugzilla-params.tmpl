@@ -79,7 +79,7 @@ and may not contain any commas or spaces.
            'globalwatchers' => '',
            'honeypot_api_key' => '{{ if exists "/config/HoneyPotAPIKey" }}{{ getv "/config/HoneyPotAPIKey" }}{{ else }}{{ end }}',
            'honeypot_threat_threshold' => '32',
-           'inbound_proxies' => '{{ if exists "/config/InboundProxies" }}{{ getv "/config/InboundProxies" }}{{ else }}{{ end }}',
+           'inbound_proxies' => '{{ if exists "/config/InboundProxies" }}{{ getv "/config/InboundProxies" }}{{ else }}*{{ end }}',
            'insidergroup' => 'core-security',
            'last_visit_keep_days' => 10,
            'letsubmitterchoosemilestone' => 1,
