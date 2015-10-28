@@ -12,6 +12,7 @@ CPANM="cpanm --save-dists $DISTS"
 
 # Force install, this is failing some tests
 $CPANM --force --configure-timeout 300 Math::BigInt::Pari
+$CPANM --force --configure-timeout 300 Math::BigInt::GMP
 
 for pkg in \
    Math::Random::ISAAC \
