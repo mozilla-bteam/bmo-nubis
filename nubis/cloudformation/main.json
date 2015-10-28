@@ -44,13 +44,15 @@
     "EnvironmentMap": {
       "prod": {
         "InstanceType": "m4.xlarge",
+        "DBInstanceClass": "db.r3.4xlarge",
         "DBName": "bugs",
         "DBStorage": "256",
         "DBStorageType": "gp2",
         "SSLCertificate": "arn:aws:iam::230871113385:server-certificate/bugzilla.mozilla.org"
       },
       "stage": {
-        "InstanceType": "t2.large",
+        "InstanceType": "t2.medium",
+        "DBInstanceClass": "db.t2.medium",
         "DBName": "bugzilla_allizom_org",
         "DBStorage": "128",
         "DBStorageType": "gp2",
@@ -58,6 +60,7 @@
       },
       "sandbox": {
         "InstanceType": "t2.small",
+        "DBInstanceClass": "db.t2.small",
         "DBName": "bugzilla",
         "DBStorage": "32",
         "DBStorageType": "standard",
@@ -218,6 +221,15 @@
           },
           "Environment": {
             "Ref": "Environment"
+          },
+          "DBInstanceClass": {
+            "Fn::FindInMap": [
+              "EnvironmentMap",
+              {
+                "Ref": "Environment"
+              },
+              "DBInstanceClass"
+            ]
           },
           "DBStorageType": {
             "Fn::FindInMap": [
