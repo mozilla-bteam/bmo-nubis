@@ -48,7 +48,10 @@
         "DBName": "bugs",
         "DBStorage": "256",
         "DBStorageType": "gp2",
-        "SSLCertificate": "arn:aws:iam::230871113385:server-certificate/bugzilla.mozilla.org"
+        "SSLCertificate": "arn:aws:iam::230871113385:server-certificate/bugzilla.mozilla.org",
+        "AutoScalingGroupMinSize": "2",
+        "AutoScalingGroupDesiredCapacity": "4",
+        "AutoScalingGroupMaxSize": "8"
       },
       "stage": {
         "InstanceType": "t2.medium",
@@ -56,7 +59,10 @@
         "DBName": "bugzilla_allizom_org",
         "DBStorage": "128",
         "DBStorageType": "gp2",
-        "SSLCertificate": "arn:aws:iam::230871113385:server-certificate/wildcard.allizom.org"
+        "SSLCertificate": "arn:aws:iam::230871113385:server-certificate/wildcard.allizom.org",
+        "AutoScalingGroupMinSize": "2",
+        "AutoScalingGroupDesiredCapacity": "2",
+        "AutoScalingGroupMaxSize": "4"
       },
       "sandbox": {
         "InstanceType": "t2.small",
@@ -64,7 +70,10 @@
         "DBName": "bugzilla",
         "DBStorage": "32",
         "DBStorageType": "standard",
-        "SSLCertificate": "arn:aws:iam::0000:server-certificate/not-set"
+        "SSLCertificate": "arn:aws:iam::0000:server-certificate/not-set",
+        "AutoScalingGroupMinSize": "1",
+        "AutoScalingGroupDesiredCapacity": "1",
+        "AutoScalingGroupMaxSize": "2"
       }
     }
   },
@@ -156,9 +165,33 @@
               "Outputs.ELB"
             ]
           },
-          "AutoScalingGroupMinSize": "2",
-          "AutoScalingGroupDesiredCapacity": "2",
-          "AutoScalingGroupMaxSize": "6"
+          "AutoScalingGroupMinSize": {
+            "Fn::FindInMap": [
+              "EnvironmentMap",
+              {
+                "Ref": "Environment"
+              },
+              "AutoScalingGroupMinSize"
+            ]
+          },
+          "AutoScalingGroupDesiredCapacity": {
+            "Fn::FindInMap": [
+              "EnvironmentMap",
+              {
+                "Ref": "Environment"
+              },
+              "AutoScalingGroupDesiredCapacity"
+            ]
+          },
+          "AutoScalingGroupMaxSize": {
+            "Fn::FindInMap": [
+              "EnvironmentMap",
+              {
+                "Ref": "Environment"
+              },
+              "AutoScalingGroupMaxSize"
+            ]
+          }
         }
       }
     },
