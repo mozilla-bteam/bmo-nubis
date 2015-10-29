@@ -41,10 +41,6 @@ apache::custom_config { 'mod_perl':
 
   # This is set in mod_perl.pl, but varies based on urlbase ?!?!
   <Perl>
-    warn 'Setting Apache Sizelimit to 700M';
-    use Apache2::SizeLimit;
-    Apache2::SizeLimit->set_max_unshared_size(700_000);
-
     use Apache2::Const -compile => 'OK';
 
     # Set HTTPS for Bugzilla to detect ssl or not

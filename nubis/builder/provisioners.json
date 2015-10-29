@@ -15,6 +15,13 @@
     "order": "2"
   },
   {
+    "type": "shell",
+    "inline": [
+      "echo '[patch] Increasing Apache2::SizeLimit max unshared size to 750_000'",
+      "sudo perl -pi -e's/(Apache2::SizeLimit->set_max_unshared_size)\([0-9_]+\)/$1(750_000)/g' /var/www/bugzilla/mod_perl.pl'",
+    ]
+  },
+  {
     "type": "file",
     "source": "/var/www/dists.tar.gz",
     "destination": "dists.tar.gz",
