@@ -3,6 +3,9 @@
 # Exit if anything fails
 set -e
 
+echo "[patch] Set Apache::SizeLimit max unshared size to 750Mb"
+perl -pi -e's/(Apache2::SizeLimit->set_max_unshared_size)\([0-9_]+\)/$1(750_000)/g' /var/www/bugzilla/mod_perl.pl
+
 DISTS=/var/www/dists
 if [ ! -d $DISTS ]; then
   mkdir $DISTS
