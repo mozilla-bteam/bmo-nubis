@@ -250,7 +250,6 @@
               "DBStorage"
             ]
           },
-          "DBInstanceClass": "db.t2.medium",
           "MasterUsername": "bugzilla",
           "ReadOnlySlave": "true",
           "DBName": {
