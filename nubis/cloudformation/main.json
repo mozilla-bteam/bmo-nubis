@@ -140,6 +140,7 @@
           "IamRole": {
             "Ref": "BugzillaRole"
           },
+          "RollingUpgradePauseTime": "PT4M",
           "InstanceType": {
             "Fn::FindInMap": [
               "EnvironmentMap",
