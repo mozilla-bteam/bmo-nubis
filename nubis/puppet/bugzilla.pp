@@ -82,6 +82,7 @@ package {
     'perl-Test-Simple',
     'perl-Test-Warn',
     'perl-File-Slurp',
+    'mysql',
   ]:
     ensure => present,
 }
