@@ -33,6 +33,15 @@ class {
 #    'apache::mod::perl': # Busted thanks to Amazon Linux mod24_perl ?!
 }
 
+# Enable /server-status
+class { "apache::mod::status":
+}
+
+# Enable /server-info
+class { "apache::mod::info":
+}
+
+
 apache::custom_config { 'mod_perl':
   content => "
   LoadModule perl_module modules/mod_perl.so
