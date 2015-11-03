@@ -132,6 +132,7 @@ apache::vhost { $service:
         comment      => 'Redirect invalid domains to the main one (but not ELB health checks)',
         rewrite_cond => [
           '%{QUERY_STRING} !elb-health-check',
+          '%{REQUEST_URI} !^/server-(status|info)$',
           '%{HTTP_HOST} !^bugzilla\.mozilla\.org$',
           '%{HTTP_HOST} !^bug[0-9]+\.bugzilla\.mozilla\.org$',
           '%{HTTP_HOST} !^test[12]\.bugzilla\.mozilla\.org$',
