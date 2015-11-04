@@ -50,7 +50,7 @@ $use_suexec = 0;
 $db_driver = 'mysql';
 
 # The DNS name or IP address of the host that the database server runs on.
-$db_host = '{{ if exists "/config/DBserver" }}{{ getv "/config/DBserver" }}{{ else }}localhost{{ end }}';
+$db_host = '{{ if exists "/config/Override/DBserver" }}{{ getv "/config/Override/DBserver" }}{{ else }}{{ if exists "/config/DBserver" }}{{ getv "/config/DBserver" }}{{ else }}localhost{{ end }}{{ end }}';
 
 # The name of the database. For Oracle, this is the database's SID. For
 # SQLite, this is a name (or path) for the DB file.
@@ -116,7 +116,7 @@ $site_wide_secret = '{{ if exists "/config/SiteWideSecret" }}{{ getv "/config/Si
 
 %param_override = (
                     'shadowdb' => {{ if exists "/config/ShadowDBName" }}'{{ getv "/config/ShadowDBName" }}'{{ else }}undef{{ end }},
-                    'shadowdbhost' => {{ if exists "/config/ShadowDBHost" }}'{{ getv "/config/ShadowDBHost" }}'{{ else }}undef{{ end }},
+                    'shadowdbhost' => {{ if exists "/config/Override/ShadowDBHost" }}'{{ getv "/config/Override/ShadowDBHost" }}'{{else}}{{ if exists "/config/ShadowDBHost" }}'{{ getv "/config/ShadowDBHost" }}'{{ else }}undef{{ end }}{{end}},
                     'memcached_namespace' => '{{ if exists "/config/MemCachedNamespace" }}{{ getv "/config/MemCachedNamespace" }}{{ else }}bugzilla{{ end }}:',
                     'memcached_servers' => '{{ getv "/config/MemCachedEndpoint" }}:{{ getv "/config/MemCachedPort" }}',
                     'shadowdbsock' => undef,
