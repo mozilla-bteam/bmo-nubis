@@ -15,7 +15,6 @@ fi
 S3_SYNC="aws s3 sync \
   --no-guess-mime-type \
   --sse \
-  --exclude=params \
   --exclude=mod_perl_preload \
   --exclude=webdot/ \
   $* \
