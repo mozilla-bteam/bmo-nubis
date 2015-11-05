@@ -24,3 +24,6 @@ service httpd restart
 
 /usr/local/bin/bugzilla-run-if-active service bugzilla-queue restart
 /usr/local/bin/bugzilla-run-if-active service bugzilla-push restart
+
+# Success!
+exit 0
