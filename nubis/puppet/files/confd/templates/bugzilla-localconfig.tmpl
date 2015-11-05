@@ -127,3 +127,6 @@ $site_wide_secret = '{{ if exists "/config/SiteWideSecret" }}{{ getv "/config/Si
                     'shadowdbsock' => undef
                   );
 
+# This is the max amount of unshared memory the apache process is allowed to use
+# before Apache::SizeLimit kills it. This is only applicable when run under mod_perl.
+$apache_size_limit = 750_000;
