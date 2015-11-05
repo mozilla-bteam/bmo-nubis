@@ -3,6 +3,10 @@ src = "bugzilla-answers.tmpl"
 dest = "/var/www/bugzilla/answers.txt"
 prefix = "/%%STACK%%/%%ENVIRONMENT%%"
 
+uid = 0
+gid = 48
+mode = "0640"
+
 keys = [
     "/config"
 ]
