@@ -10,7 +10,7 @@ SUPERVISOR_SERVICES="\
 bugzilla-pulse-shim \
 "
 
-if bugzilla-active; then
+if /usr/local/bin/bugzilla-active; then
   echo "Starting Active services:"
   for s in $SERVICES; do
     service "$s" start

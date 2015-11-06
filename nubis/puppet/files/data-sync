@@ -20,7 +20,7 @@ S3_SYNC="aws s3 sync \
   $* \
 "
 
-if bugzilla-active; then
+if /usr/local/bin/bugzilla-active; then
   # Push
   $S3_SYNC "$DATA/" "s3://$S3DataBucket/"
 else

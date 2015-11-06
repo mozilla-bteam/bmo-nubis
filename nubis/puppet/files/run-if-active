@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if bugzilla-active; then
+if /usr/local/bin/bugzilla-active; then
   exec "$@"
 else
   echo "Skipping, we are not active"
