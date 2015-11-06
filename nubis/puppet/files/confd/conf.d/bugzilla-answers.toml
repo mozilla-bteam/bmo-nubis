@@ -5,7 +5,7 @@ prefix = "/%%STACK%%/%%ENVIRONMENT%%"
 
 uid = 0
 gid = 48
-mode = "0640"
+mode = "0600"
 
 keys = [
     "/config"
