@@ -129,4 +129,5 @@ $site_wide_secret = '{{ if exists "/config/SiteWideSecret" }}{{ getv "/config/Si
 
 # This is the max amount of unshared memory the apache process is allowed to use
 # before Apache::SizeLimit kills it. This is only applicable when run under mod_perl.
-$apache_size_limit = 750_000;
+$apache_size_limit = {{ if exists "/config/ApacheSizeLimit" }}{{ getv "/config/ApacheSizeLimit" }}{{ else }}750000{{ end }};
+
