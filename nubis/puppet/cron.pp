@@ -1,6 +1,6 @@
 cron { 'data-sync':
   ensure => 'present',
-  command => "/usr/local/bin/bugzilla-data-sync 2>&1 | logger -t bugzilla-cron-data-sync",
+  command => "consul-do bugzilla-cron-data-sync $(hostname) && /usr/local/bin/bugzilla-data-sync 2>&1 | logger -t bugzilla-cron-data-sync",
   hour => '*',
   minute => '*/15',
   user => 'root',
