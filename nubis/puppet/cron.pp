@@ -1,8 +1,8 @@
 cron { 'data-sync':
   ensure => 'present',
-  command => "consul-do bugzilla-cron-data-sync $(hostname) && /usr/local/bin/bugzilla-data-sync 2>&1 | logger -t bugzilla-cron-data-sync",
+  command => "/usr/local/bin/bugzilla-data-sync 2>&1 | logger -t bugzilla-cron-data-sync",
   hour => '*',
-  minute => '30',
+  minute => '*/15',
   user => 'root',
   environment => [
     "PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin:/opt/aws/bin",
