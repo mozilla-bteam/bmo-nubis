@@ -17,6 +17,7 @@ S3_SYNC="aws s3 sync \
   --sse \
   --exclude=mod_perl_preload \
   --exclude=webdot/ \
+  --delete \
   $* \
 "
 
