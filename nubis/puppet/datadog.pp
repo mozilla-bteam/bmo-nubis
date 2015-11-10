@@ -9,7 +9,7 @@ class { 'datadog_agent::integrations::process':
   processes   => [
       {
           'name'          => 'httpd',
-          'search_string' => ['/usr/sbin/httpd'],
+          'search_string' => ['httpd'],
           'exact_match'   => true,
       },
   ],
