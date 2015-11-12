@@ -754,6 +754,15 @@
           "SecretAccessKey"
         ]
       }
+    },
+    "EC2SecurityGroup": {
+      "Description": "SecurityGroup for EC2 nodes",
+      "Value": {
+        "Fn::GetAtt": [
+          "EC2Stack",
+          "Outputs.EC2SecurityGroup"
+        ]
+      }
     }
   }
 }
