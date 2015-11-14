@@ -3,7 +3,7 @@ cron { 'data-sync':
   command => "consul-do bugzilla-cron-data-sync $(hostname) && /usr/local/bin/bugzilla-data-sync 2>&1 | logger -t bugzilla-cron-data-sync",
   hour => '*',
   minute => '*/15',
-  user => 'root',
+  user => 'apache',
   environment => [
     "PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin:/opt/aws/bin",
   ],
