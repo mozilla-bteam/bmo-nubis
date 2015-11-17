@@ -6,6 +6,9 @@ set -e
 echo "Monkey patching for bug 1221998"
 curl 'http://git.mozilla.org/?p=webtools/bmo/bugzilla.git;a=blobdiff_plain;f=Bugzilla/Install/Localconfig.pm;h=2e2eb893266bc8f718bdc10e85139cdfb1830870;hp=0ca40ed1b365bb562e15d8e3dc366bdb0f56b41c;hb=60bde01b7ffc861a7bfba352af015b2b154e6f1e;hpb=534fc2123e40b7517aeaffd709faf72af97ac3b8' | ( cd /var/www/bugzilla ; patch -p1 )
 
+echo "Monkey patching for issue https://github.com/btrott/Crypt-OpenPGP/issues/30"
+curl 'https://patch-diff.githubusercontent.com/raw/btrott/Crypt-OpenPGP/pull/31.diff' | ( cd /usr/local/share/perl5 ; patch -p2 )
+
 DISTS=/var/www/dists
 if [ ! -d $DISTS ]; then
   mkdir $DISTS
