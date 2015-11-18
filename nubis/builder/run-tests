@@ -1,0 +1,11 @@
+#!/bin/bash
+sudo gem install bundler --no-ri --no-rdoc
+sudo gem install io-console --no-ri --no-rdoc
+
+cd /tmp/tests
+bundle install --path=vendor
+bundle exec rake spec
+
+# Cleanup after ourselves
+cd /tmp
+rm -rf /tmp/tests

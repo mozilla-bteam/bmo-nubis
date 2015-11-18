@@ -32,6 +32,17 @@
        "sudo chkconfig bugzilla-queue off"
     ],
     "order": "20"
+  },
+  {
+    "type": "file",
+    "source": "nubis/tests",
+    "destination": "/tmp",
+    "order": "21"
+  },
+  {
+    "type": "shell",
+    "script": "nubis/builder/run-tests",
+    "order": "21"
   }
 ]
 }
