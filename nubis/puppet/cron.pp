@@ -44,7 +44,7 @@ cron { 'moco-ldap-check':
 
 cron { 'whine':
   ensure => 'present',
-  command => "cd /var/www/bugzilla && consul-do bugzilla-cron-whine $(hostname) && bugzilla-run-if-active perl -Mlib=lib whine.pl 2>&1 | logger -t bugzilla-cron-whine",
+  command => "cd /var/www/bugzilla && consul-do bugzilla-cron-whine $(hostname) && bugzilla-run-if-active perl -T -Mlib=lib whine.pl 2>&1 | logger -t bugzilla-cron-whine",
   minute => '*/15',
   user => 'apache',
   environment => [
@@ -54,7 +54,7 @@ cron { 'whine':
 
 cron { 'prune-last-visit':
   ensure => 'present',
-  command => "cd /var/www/bugzilla && consul-do bugzilla-cron-prune-last-visit $(hostname) && bugzilla-run-if-active perl -Mlib=lib clean-bug-user-last-visit.pl 2>&1 | logger -t bugzilla-cron-prune-last-visit",
+  command => "cd /var/www/bugzilla && consul-do bugzilla-cron-prune-last-visit $(hostname) && bugzilla-run-if-active perl -T -Mlib=lib clean-bug-user-last-visit.pl 2>&1 | logger -t bugzilla-cron-prune-last-visit",
   hour => '0',
   minute => '0',
   user => 'apache',
