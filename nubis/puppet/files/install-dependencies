@@ -11,11 +11,11 @@ if [ ! -d $DISTS ]; then
   mkdir $DISTS
 fi
 
-CPANM="cpanm --save-dists $DISTS"
+CPANM="cpanm --configure-timeout 300 --save-dists $DISTS"
 
 # Force install, this is failing some tests
-$CPANM --force --configure-timeout 300 Math::BigInt::Pari
-$CPANM --force --configure-timeout 300 Math::BigInt::GMP
+$CPANM --force Math::BigInt::Pari
+$CPANM --force Math::BigInt::GMP
 
 for pkg in \
    Math::Random::ISAAC \
@@ -40,6 +40,10 @@ for pkg in \
    Auth::GoogleAuth \
    Net::SFTP \
    File::Copy::Recursive \
+   Email::Simple@2.100 \
+   Email::MIME@1.910 \
+   Email::Reply@1.202 \
+   Email::MIME::Attachment::Stripper@1.316 \
   ; do
   echo "Installing $pkg"
   $CPANM $pkg
