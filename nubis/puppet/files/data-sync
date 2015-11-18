@@ -12,6 +12,8 @@ else
   exit 1
 fi
 
+find $DATA -user root -print0 | xargs chown apache
+
 S3_SYNC="aws s3 sync \
   --no-guess-mime-type \
   --sse \
@@ -23,8 +25,8 @@ S3_SYNC="aws s3 sync \
 
 if /usr/local/bin/bugzilla-active; then
   # Push
-  $S3_SYNC "$DATA/" "s3://$S3DataBucket/"
+  sudo -u apache $S3_SYNC "$DATA/" "s3://$S3DataBucket/"
 else
   # Pull
-  $S3_SYNC "s3://$S3DataBucket/" "$DATA/"
+  sudo -u apache $S3_SYNC "s3://$S3DataBucket/" "$DATA/"
 fi
