@@ -36,7 +36,6 @@ package {
     'perl-DateTime',
     'perl-Digest-SHA',
     'perl-Email-MIME-Encodings',
-    'perl-Email-Send',
     'perl-Encode-Detect',
     'perl-File-Find-Rule',
     'perl-GD',

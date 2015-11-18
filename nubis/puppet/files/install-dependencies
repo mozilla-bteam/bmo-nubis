@@ -34,6 +34,7 @@ for pkg in \
    Net::SFTP \
    File::Copy::Recursive \
    Email::Simple@2.100 \
+   Email::Send@2.198 \
    Email::MIME@1.910 \
    Email::MIME::Attachment::Stripper@1.316 \
    Email::Reply@1.202 \
