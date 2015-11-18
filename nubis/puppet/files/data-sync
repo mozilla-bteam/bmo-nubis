@@ -12,7 +12,7 @@ else
   exit 1
 fi
 
-find $DATA -user root -print0 | xargs chown apache
+find $DATA -user root -print0 | xargs -r0 chown apache
 
 S3_SYNC="aws s3 sync \
   --no-guess-mime-type \
