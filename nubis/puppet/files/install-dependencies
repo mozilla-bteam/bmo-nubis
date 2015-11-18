@@ -13,10 +13,6 @@ fi
 
 CPANM="cpanm --configure-timeout 300 --save-dists $DISTS"
 
-# Force install, this is failing some tests
-$CPANM --force Math::BigInt::Pari
-$CPANM --force Math::BigInt::GMP
-
 for pkg in \
    Math::Random::ISAAC \
    File::MimeInfo::Magic \
@@ -42,15 +38,24 @@ for pkg in \
    File::Copy::Recursive \
    Email::Simple@2.100 \
    Email::MIME@1.910 \
-   Email::Reply@1.202 \
    Email::MIME::Attachment::Stripper@1.316 \
+   Email::Reply@1.202 \
   ; do
   echo "Installing $pkg"
   $CPANM $pkg
 done
 
+# Force install, this is failing some tests
+for pkg in \
+    Math::BigInt::Pari \
+    Math::BigInt::GMP \
+   ; do
+   echo "Installing --force $pkg"
+  $CPANM --force $pkg
+done
+
 echo "Monkey patching for issue https://github.com/btrott/Crypt-OpenPGP/issues/30"
 curl 'https://patch-diff.githubusercontent.com/raw/btrott/Crypt-OpenPGP/pull/31.diff' | ( cd /usr/local/share/perl5 ; patch -p2 )
 
-tar -C $(dirname $DISTS) -zcvf $DISTS.tar.gz $(basename $DISTS)
+tar -C "$(dirname $DISTS)" -zcvf $DISTS.tar.gz "$(basename $DISTS)"
 rm -rf $DISTS
