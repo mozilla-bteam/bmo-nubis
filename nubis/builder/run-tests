@@ -6,6 +6,10 @@ cd /tmp/tests
 bundle install --path=vendor
 bundle exec rake spec
 
+STATUS=$?
+
 # Cleanup after ourselves
 cd /tmp
 rm -rf /tmp/tests
+
+exit $STATUS
