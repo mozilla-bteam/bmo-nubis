@@ -1,0 +1,7 @@
+#!/bin/bash
+
+REGION=`curl -s http://169.254.169.254/latest/dynamic/instance-identity/document | jq '.region' -r`
+
+SIZE=$(perl /var/www/bugzilla/jobqueue.pl check 2>/dev/null | perl -lne'print $1 if /(\d+) jobs in the queue/'i || echo 0)
+
+aws --region $REGION cloudwatch put-metric-data --metric-name QueueSize --namespace Bugzilla --unit Count --value $SIZE
