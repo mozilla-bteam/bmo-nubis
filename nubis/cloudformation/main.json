@@ -201,6 +201,8 @@
         "TemplateURL": { "Fn::Join": [ "/", [ "https://s3.amazonaws.com/nubis-stacks", { "Ref": "StacksVersion" }, "autoscaling-cpu.template" ] ] },
         "TimeoutInMinutes": "60",
         "Parameters": {
+          "CPUAlarmHighThreshold": "75",
+          "CPUAlarmLowThreshold": "25",
           "AutoScalingGroup": {
             "Fn::GetAtt": [
               "EC2Stack",
