@@ -1,7 +1,12 @@
 #!/bin/bash
 
-REGION=`curl -s http://169.254.169.254/latest/dynamic/instance-identity/document | jq '.region' -r`
+REGION=$(curl -fqs http://169.254.169.254/latest/dynamic/instance-identity/document | jq '.region' -r)
+USER_DATA=$(curl -fqs http://169.254.169.254/latest/user-data)
+
+eval $USER_DATA
 
 SIZE=$(perl /var/www/bugzilla/jobqueue.pl check 2>/dev/null | perl -lne'print $1 if /(\d+) jobs in the queue/'i || echo 0)
 
-aws --region $REGION cloudwatch put-metric-data --metric-name QueueSize --namespace Bugzilla --unit Count --value $SIZE
+DIMENSIONS="Environment=$NUBIS_ENVIRONMENT"
+
+aws --region $REGION cloudwatch put-metric-data --dimensions $DIMENSIONS --metric-name QueueSize --namespace Bugzilla --unit Count --value $SIZE
