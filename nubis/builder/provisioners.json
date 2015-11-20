@@ -25,7 +25,7 @@
     "type": "shell",
     "inline": [
        "sudo /usr/local/bin/bugzilla-install-dependencies",
-       "sudo perl -I/var/www/bugzilla /var/www/bugzilla/checksetup.pl /var/www/bugzilla/answers.txt",
+       "sudo perl -I/var/www/bugzilla /var/www/bugzilla/checksetup.pl /var/www/bugzilla/answers.txt"
     ],
     "order": "20"
   },
