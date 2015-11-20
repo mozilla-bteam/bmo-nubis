@@ -14,14 +14,15 @@ file { "/usr/local/bin/bugzilla-cloudwatch-queue-size":
   mode   => '0755',
 }
 
-cron { 'cloudwatch-queue-size':
-  ensure => 'present',
-  command => "consul-do bugzilla-cloudwatch-queue-size $(hostname) && /usr/local/bin/bugzilla-cloudwatch-queue-size 2>&1 | logger -t bugzilla-cloudwatch-queue-size",
-  hour => '*',
-  minute => '*',
-  user => 'root',
-  environment => [
-    "PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin:/opt/aws/bin",
-  ],
-}
+# XXX: Missing CloudWatch IAM permissions
+#cron { 'cloudwatch-queue-size':
+#  ensure => 'present',
+#  command => "consul-do bugzilla-cloudwatch-queue-size $(hostname) && /usr/local/bin/bugzilla-cloudwatch-queue-size 2>&1 | logger -t bugzilla-cloudwatch-queue-size",
+#  hour => '*',
+#  minute => '*',
+#  user => 'root',
+#  environment => [
+#    "PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin:/opt/aws/bin",
+#  ],
+#}
 
