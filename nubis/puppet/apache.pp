@@ -26,6 +26,7 @@ class {
         default_confd_files => false,
         service_manage      => true,
         service_enable      => false,
+        keepalive           => 'Off',
         service_ensure      => false;
     'apache::mod::remoteip':
         proxy_ips => [ '127.0.0.1', '10.0.0.0/8' ];
