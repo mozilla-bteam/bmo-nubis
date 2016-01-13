@@ -44,7 +44,7 @@
     "EnvironmentMap": {
       "prod": {
         "InstanceType": "m4.xlarge",
-        "DBInstanceClass": "db.t2.small"
+        "DBInstanceClass": "db.t2.small",
         "DBName": "bugs",
         "DBStorage": "256",
         "DBStorageType": "gp2",
