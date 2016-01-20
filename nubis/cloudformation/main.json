@@ -49,8 +49,8 @@
         "DBStorage": "256",
         "DBStorageType": "gp2",
         "SSLCertificate": "arn:aws:iam::230871113385:server-certificate/bugzilla.mozilla.org",
-        "AutoScalingGroupMinSize": "4",
-        "AutoScalingGroupDesiredCapacity": "4",
+        "AutoScalingGroupMinSize": "2",
+        "AutoScalingGroupDesiredCapacity": "2",
         "AutoScalingGroupMaxSize": "8"
       },
       "stage": {
