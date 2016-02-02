@@ -1,29 +1,14 @@
 #!/bin/bash
 
-# Services to stop/start
-SERVICES="\
-bugzilla-queue \
-bugzilla-push \
-"
-
-SUPERVISOR_SERVICES="\
-bugzilla-pulse-shim \
-"
-
 if /usr/local/bin/bugzilla-active; then
   echo "Starting Active services:"
-  for s in $SERVICES; do
-    service "$s" start
-  done
-  for s in $SUPERVISOR_SERVICES; do
-    supervisorctl start "$s"
+  nubis-purpose "Queue Worker" service bugzilla-queue start
+  nubis-purpose "Push Worker" service bugzilla-push start
+  nubis-purpose "Push Worker" supervisorctl start bugzilla-pulse-shim
   done
 else
   echo "Stopping Passive services:"
-  for s in $SERVICES; do
-    service "$s" stop
-  done
-  for s in $SUPERVISOR_SERVICES; do
-    supervisorctl stop "$s"
-  done
+  service bugzilla-queue stop
+  service bugzilla-push stop
+  supervisorctl stop bugzilla-pulse-shim
 fi
