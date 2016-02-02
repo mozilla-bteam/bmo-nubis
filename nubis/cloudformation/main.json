@@ -156,6 +156,12 @@
             "Ref": "BugzillaRole"
           },
           "Purpose": "Queue Worker",
+          "SecurityGroup": {
+            "Fn::GetAtt": [
+              "EC2Stack",
+              "Outputs.EC2SecurityGroup"
+            ]
+          },
           "RollingUpgradePauseTime": "PT4M",
           "InstanceType": {
             "Fn::FindInMap": [
@@ -224,6 +230,12 @@
             "Ref": "BugzillaRole"
           },
           "Purpose": "Push Worker",
+          "SecurityGroup": {
+            "Fn::GetAtt": [
+              "EC2Stack",
+              "Outputs.EC2SecurityGroup"
+            ]
+          },
           "RollingUpgradePauseTime": "PT4M",
           "InstanceType": {
             "Fn::FindInMap": [
