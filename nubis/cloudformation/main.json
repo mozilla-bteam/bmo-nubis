@@ -43,7 +43,9 @@
   "Mappings": {
     "EnvironmentMap": {
       "prod": {
-        "InstanceType": "m4.xlarge",
+        "WebInstanceType": "m4.xlarge",
+        "PushInstanceType": "m4.xlarge",
+        "QueueInstanceType": "m4.xlarge",
         "DBInstanceClass": "db.t2.small",
         "DBName": "bugs",
         "DBStorage": "256",
@@ -54,7 +56,9 @@
         "AutoScalingGroupMaxSize": "8"
       },
       "stage": {
-        "InstanceType": "t2.medium",
+        "WebInstanceType": "t2.medium",
+        "PushInstanceType": "t2.medium",
+        "QueueInstanceType": "t2.medium",
         "DBInstanceClass": "db.t2.medium",
         "DBName": "bugzilla_allizom_org",
         "DBStorage": "128",
@@ -65,7 +69,9 @@
         "AutoScalingGroupMaxSize": "4"
       },
       "sandbox": {
-        "InstanceType": "t2.small",
+        "WebInstanceType": "t2.small",
+        "PushInstanceType": "t2.small",
+        "QueueInstanceType": "t2.small",
         "DBInstanceClass": "db.t2.small",
         "DBName": "bugzilla",
         "DBStorage": "32",
@@ -122,6 +128,142 @@
         }
       }
     },
+     "EC2StackQueue": {
+      "Type": "AWS::CloudFormation::Stack",
+      "Properties": {
+        "TemplateURL": { "Fn::Join": [ "/", [ "https://s3.amazonaws.com/nubis-stacks", { "Ref": "StacksVersion" }, "ec2.template" ] ] },
+        "TimeoutInMinutes": "60",
+        "Parameters": {
+          "StackName": {
+            "Ref": "AWS::StackName"
+          },
+          "ServiceName": {
+            "Ref": "ServiceName"
+          },
+          "TechnicalOwner": {
+            "Ref": "TechnicalOwner"
+          },
+          "Environment": {
+            "Ref": "Environment"
+          },
+          "AmiId": {
+            "Ref": "AmiId"
+          },
+          "SSHKeyName": {
+            "Ref": "SSHKeyName"
+          },
+          "IamRole": {
+            "Ref": "BugzillaRole"
+          },
+          "Purpose": "Queue Worker",
+          "RollingUpgradePauseTime": "PT4M",
+          "InstanceType": {
+            "Fn::FindInMap": [
+              "EnvironmentMap",
+              {
+                "Ref": "Environment"
+              },
+              "QueueInstanceType"
+            ]
+          },
+          "AutoScalingGroupMinSize": {
+            "Fn::FindInMap": [
+              "EnvironmentMap",
+              {
+                "Ref": "Environment"
+              },
+              "AutoScalingGroupMinSize"
+            ]
+          },
+          "AutoScalingGroupDesiredCapacity": {
+            "Fn::FindInMap": [
+              "EnvironmentMap",
+              {
+                "Ref": "Environment"
+              },
+              "AutoScalingGroupDesiredCapacity"
+            ]
+          },
+          "AutoScalingGroupMaxSize": {
+            "Fn::FindInMap": [
+              "EnvironmentMap",
+              {
+                "Ref": "Environment"
+              },
+              "AutoScalingGroupMaxSize"
+            ]
+          }
+        }
+      }
+    },
+     "EC2StackPush": {
+      "Type": "AWS::CloudFormation::Stack",
+      "Properties": {
+        "TemplateURL": { "Fn::Join": [ "/", [ "https://s3.amazonaws.com/nubis-stacks", { "Ref": "StacksVersion" }, "ec2.template" ] ] },
+        "TimeoutInMinutes": "60",
+        "Parameters": {
+          "StackName": {
+            "Ref": "AWS::StackName"
+          },
+          "ServiceName": {
+            "Ref": "ServiceName"
+          },
+          "TechnicalOwner": {
+            "Ref": "TechnicalOwner"
+          },
+          "Environment": {
+            "Ref": "Environment"
+          },
+          "AmiId": {
+            "Ref": "AmiId"
+          },
+          "SSHKeyName": {
+            "Ref": "SSHKeyName"
+          },
+          "IamRole": {
+            "Ref": "BugzillaRole"
+          },
+          "Purpose": "Push Worker",
+          "RollingUpgradePauseTime": "PT4M",
+          "InstanceType": {
+            "Fn::FindInMap": [
+              "EnvironmentMap",
+              {
+                "Ref": "Environment"
+              },
+              "PushInstanceType"
+            ]
+          },
+          "AutoScalingGroupMinSize": {
+            "Fn::FindInMap": [
+              "EnvironmentMap",
+              {
+                "Ref": "Environment"
+              },
+              "AutoScalingGroupMinSize"
+            ]
+          },
+          "AutoScalingGroupDesiredCapacity": {
+            "Fn::FindInMap": [
+              "EnvironmentMap",
+              {
+                "Ref": "Environment"
+              },
+              "AutoScalingGroupDesiredCapacity"
+            ]
+          },
+          "AutoScalingGroupMaxSize": {
+            "Fn::FindInMap": [
+              "EnvironmentMap",
+              {
+                "Ref": "Environment"
+              },
+              "AutoScalingGroupMaxSize"
+            ]
+          }
+        }
+      }
+    },
     "EC2Stack": {
       "Type": "AWS::CloudFormation::Stack",
       "Properties": {
@@ -156,7 +298,7 @@
               {
                 "Ref": "Environment"
               },
-              "InstanceType"
+              "WebInstanceType"
             ]
           },
           "ELB": {
@@ -206,6 +348,40 @@
           "AutoScalingGroup": {
             "Fn::GetAtt": [
               "EC2Stack",
+              "Outputs.AutoScalingGroup"
+            ]
+          }
+        }
+      }
+    },
+    "AutoScalingStackQueue": {
+      "Type": "AWS::CloudFormation::Stack",
+      "Properties": {
+        "TemplateURL": { "Fn::Join": [ "/", [ "https://s3.amazonaws.com/nubis-stacks", { "Ref": "StacksVersion" }, "autoscaling-cpu.template" ] ] },
+        "TimeoutInMinutes": "60",
+        "Parameters": {
+          "CPUAlarmHighThreshold": "75",
+          "CPUAlarmLowThreshold": "25",
+          "AutoScalingGroup": {
+            "Fn::GetAtt": [
+              "EC2StackQueue",
+              "Outputs.AutoScalingGroup"
+            ]
+          }
+        }
+      }
+    },
+    "AutoScalingStackPush": {
+      "Type": "AWS::CloudFormation::Stack",
+      "Properties": {
+        "TemplateURL": { "Fn::Join": [ "/", [ "https://s3.amazonaws.com/nubis-stacks", { "Ref": "StacksVersion" }, "autoscaling-cpu.template" ] ] },
+        "TimeoutInMinutes": "60",
+        "Parameters": {
+          "CPUAlarmHighThreshold": "75",
+          "CPUAlarmLowThreshold": "25",
+          "AutoScalingGroup": {
+            "Fn::GetAtt": [
+              "EC2StackPush",
               "Outputs.AutoScalingGroup"
             ]
           }
