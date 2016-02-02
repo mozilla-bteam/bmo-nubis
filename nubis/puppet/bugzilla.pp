@@ -137,6 +137,14 @@ file { "/usr/local/bin/bugzilla-run-if-active":
   mode   => '0755',
 }
 
+file { "/usr/local/bin/bugzilla-purpose":
+  ensure => present,
+  source => "puppet:///nubis/files/purpose",
+  owner  => 'root',
+  group  => 'root',
+  mode   => '0755',
+}
+
 file { "/usr/local/bin/bugzilla-active":
   ensure => present,
   source => "puppet:///nubis/files/active",
