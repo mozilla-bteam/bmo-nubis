@@ -26,7 +26,7 @@ python::pip { "mozlog":
 
 # Haxor for borked package
 exec { "install-supervisord":
-  command => "yum -y install supervisor",
+  command => "yum -y install --nogpgcheck supervisor",
   path => ['/sbin','/bin','/usr/sbin','/usr/bin','/usr/local/sbin','/usr/local/bin'],
 }->
 exec { "fix-supervisor-shebang":
