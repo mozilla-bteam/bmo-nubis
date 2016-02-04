@@ -20,10 +20,10 @@ consul lock $NUBIS_STACK/$NUBIS_ENVIRONMENT/checksetup \
 /usr/local/bin/bugzilla-data-sync
 
 # Restart dependent services
-nubis-purpose "Web Server" service httpd restart
+/usr/local/bin/nubis-purpose "Web Server" service httpd restart
 
-/usr/local/bin/bugzilla-run-if-active nubis-purpose "Queue Worker" service bugzilla-queue restart
-/usr/local/bin/bugzilla-run-if-active nubis-purpose "Push Worker"  service bugzilla-push  restart
+/usr/local/bin/bugzilla-run-if-active /usr/local/bin/nubis-purpose "Queue Worker" service bugzilla-queue restart
+/usr/local/bin/bugzilla-run-if-active /usr/local/bin/nubis-purpose "Push Worker"  service bugzilla-push  restart
 
 # Success!
 exit 0
