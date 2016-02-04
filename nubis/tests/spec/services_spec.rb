@@ -12,7 +12,3 @@ end
 describe service('bugzilla-push') do
   it { should_not be_enabled }
 end
-
-describe service('supervisord') do
-  it { should be_enabled }
-end
