@@ -11,4 +11,4 @@ keys = [
     "/config"
 ]
 
-reload_cmd = "/usr/local/bin/bugzilla-run-if-active /usr/local/bin/nubis-purpose 'Push Worker' /usr/bin/supervisorctl restart bugzilla-pulse-shim"
+reload_cmd = "/usr/local/bin/bugzilla-run-if-active /usr/local/bin/nubis-purpose 'push-worker' /usr/bin/supervisorctl restart bugzilla-pulse-shim"

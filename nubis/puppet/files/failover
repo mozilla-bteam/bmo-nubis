@@ -2,9 +2,9 @@
 
 if /usr/local/bin/bugzilla-active; then
   echo "Starting Active services:"
-  /usr/local/bin/nubis-purpose "Queue Worker" service bugzilla-queue start
-  /usr/local/bin/nubis-purpose "Push Worker" service bugzilla-push start
-  /usr/local/bin/nubis-purpose "Push Worker" supervisorctl start bugzilla-pulse-shim
+  /usr/local/bin/nubis-purpose "queue-worker" service bugzilla-queue start
+  /usr/local/bin/nubis-purpose "push-worker" service bugzilla-push start
+  /usr/local/bin/nubis-purpose "push-worker" supervisorctl start bugzilla-pulse-shim
 else
   echo "Stopping Passive services:"
   service bugzilla-queue stop

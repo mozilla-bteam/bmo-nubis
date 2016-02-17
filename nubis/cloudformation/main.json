@@ -155,7 +155,7 @@
           "IamRole": {
             "Ref": "BugzillaRole"
           },
-          "Purpose": "Queue Worker",
+          "Purpose": "queue-worker",
           "SecurityGroup": {
             "Fn::GetAtt": [
               "EC2Stack",
@@ -229,7 +229,7 @@
           "IamRole": {
             "Ref": "BugzillaRole"
           },
-          "Purpose": "Push Worker",
+          "Purpose": "push-worker",
           "SecurityGroup": {
             "Fn::GetAtt": [
               "EC2Stack",
