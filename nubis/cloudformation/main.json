@@ -288,6 +288,7 @@
           "ServiceName": {
             "Ref": "ServiceName"
           },
+          "Purpose": "webserver",
           "TechnicalOwner": {
             "Ref": "TechnicalOwner"
           },
