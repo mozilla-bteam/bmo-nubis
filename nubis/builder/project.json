@@ -1,13 +1,12 @@
 {
   "variables": {
-    "automatic_version_bump": "1",
-    "automatic_version_verify": "1",
     "builders": [
       "amazon-ebs-amazon-linux"
     ],
     "project_description": "bugzilla.mozilla.org",
     "project_name": "bugzilla",
-    "project_version": "0.99",
+    "source_ami_project_version": "v1.0.1-sec1",
+    "project_version": "{{user `source_ami_project_version`}} {{user `git_commit_sha`}}",
     "source_ami_project_name": "nubis-base"
   }
 }
