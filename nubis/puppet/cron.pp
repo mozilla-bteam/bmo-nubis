@@ -85,3 +85,15 @@ cron { 'userprofile':
   ],
 }
 
+cron { 'sentry':
+  ensure => 'present',
+  command => '/var/www/bugzilla/sentry.pl',
+  hour => '*',
+  minute => '*',
+  user => 'apache',
+  environment => [
+    "PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin:/opt/aws/bin",
+    "MAILTO=cron-bugzilla@mozilla.com" ,
+  ],
+}
+
