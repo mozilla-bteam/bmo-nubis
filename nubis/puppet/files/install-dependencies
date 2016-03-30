@@ -33,7 +33,7 @@ for pkg in \
    Auth::GoogleAuth \
    Net::SFTP \
    File::Copy::Recursive \
-   MIME::Tools@5.002 \
+   MIME::Tools@5.502 \
    Email::Simple@2.100 \
    Email::Send@2.198 \
    Email::MIME::ContentType@1.011 \
