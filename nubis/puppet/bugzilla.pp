@@ -49,7 +49,6 @@ package {
     'perl-JSON-XS',
     'perl-LDAP',
     'perl-Linux-Pid',
-    'perl-MIME-tools',
     'perl-Mozilla-CA',
     'perl-Regexp-Common',
     'perl-SOAP-Lite',
