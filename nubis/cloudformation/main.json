@@ -19,7 +19,7 @@
     },
     "SSHKeyName": {
       "Description": "Existing ssh key to deploy to EC2 instances",
-      "Type": "String"
+      "Type": "AWS::EC2::KeyPair::KeyName"
     },
     "TechnicalOwner": {
       "Description": "A valid LDAP email",
@@ -27,7 +27,7 @@
     },
     "AmiId": {
       "Description": "The id of the ami for this region",
-      "Type": "String"
+      "Type": "AWS::EC2::Image::Id"
     },
     "StorageVolumeSize": {
       "Description": "The storage size (in GB) of each member of the storage cluster",
