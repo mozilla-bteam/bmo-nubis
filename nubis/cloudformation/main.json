@@ -50,7 +50,7 @@
         "DBName": "bugs",
         "DBStorage": "256",
         "DBStorageType": "gp2",
-        "SSLCertificate": "arn:aws:iam::230871113385:server-certificate/bugzilla.mozilla.org",
+        "SSLCertificate": "bugzilla.mozilla.org",
         "AutoScalingGroupMinSize": "2",
         "AutoScalingGroupDesiredCapacity": "2",
         "AutoScalingGroupMaxSize": "8"
@@ -63,7 +63,7 @@
         "DBName": "bugzilla_allizom_org",
         "DBStorage": "128",
         "DBStorageType": "gp2",
-        "SSLCertificate": "arn:aws:iam::230871113385:server-certificate/wildcard.allizom.org",
+        "SSLCertificate": "wildcard.allizom.org",
         "AutoScalingGroupMinSize": "2",
         "AutoScalingGroupDesiredCapacity": "2",
         "AutoScalingGroupMaxSize": "4"
@@ -81,6 +81,16 @@
         "AutoScalingGroupDesiredCapacity": "1",
         "AutoScalingGroupMaxSize": "2"
       }
+    }
+  },
+  "Conditions": {
+    "DefaultSSLCertificate": {
+      "Fn::Equals": [
+        {
+          "Ref": "Environment"
+        },
+        "sandbox"
+      ]
     }
   },
   "Resources": {
@@ -128,10 +138,21 @@
         }
       }
     },
-     "EC2StackQueue": {
+    "EC2StackQueue": {
       "Type": "AWS::CloudFormation::Stack",
       "Properties": {
-        "TemplateURL": { "Fn::Join": [ "/", [ "https://s3.amazonaws.com/nubis-stacks", { "Ref": "StacksVersion" }, "ec2.template" ] ] },
+        "TemplateURL": {
+          "Fn::Join": [
+            "/",
+            [
+              "https://s3.amazonaws.com/nubis-stacks",
+              {
+                "Ref": "StacksVersion"
+              },
+              "ec2.template"
+            ]
+          ]
+        },
         "TimeoutInMinutes": "60",
         "Parameters": {
           "StackName": {
@@ -202,10 +223,21 @@
         }
       }
     },
-     "EC2StackPush": {
+    "EC2StackPush": {
       "Type": "AWS::CloudFormation::Stack",
       "Properties": {
-        "TemplateURL": { "Fn::Join": [ "/", [ "https://s3.amazonaws.com/nubis-stacks", { "Ref": "StacksVersion" }, "ec2.template" ] ] },
+        "TemplateURL": {
+          "Fn::Join": [
+            "/",
+            [
+              "https://s3.amazonaws.com/nubis-stacks",
+              {
+                "Ref": "StacksVersion"
+              },
+              "ec2.template"
+            ]
+          ]
+        },
         "TimeoutInMinutes": "60",
         "Parameters": {
           "StackName": {
@@ -279,7 +311,18 @@
     "EC2Stack": {
       "Type": "AWS::CloudFormation::Stack",
       "Properties": {
-        "TemplateURL": { "Fn::Join": [ "/", [ "https://s3.amazonaws.com/nubis-stacks", { "Ref": "StacksVersion" }, "ec2.template" ] ] },
+        "TemplateURL": {
+          "Fn::Join": [
+            "/",
+            [
+              "https://s3.amazonaws.com/nubis-stacks",
+              {
+                "Ref": "StacksVersion"
+              },
+              "ec2.template"
+            ]
+          ]
+        },
         "TimeoutInMinutes": "60",
         "Parameters": {
           "StackName": {
@@ -353,7 +396,18 @@
     "AutoScalingStack": {
       "Type": "AWS::CloudFormation::Stack",
       "Properties": {
-        "TemplateURL": { "Fn::Join": [ "/", [ "https://s3.amazonaws.com/nubis-stacks", { "Ref": "StacksVersion" }, "autoscaling-cpu.template" ] ] },
+        "TemplateURL": {
+          "Fn::Join": [
+            "/",
+            [
+              "https://s3.amazonaws.com/nubis-stacks",
+              {
+                "Ref": "StacksVersion"
+              },
+              "autoscaling-cpu.template"
+            ]
+          ]
+        },
         "TimeoutInMinutes": "60",
         "Parameters": {
           "CPUAlarmHighThreshold": "75",
@@ -370,7 +424,18 @@
     "AutoScalingStackQueue": {
       "Type": "AWS::CloudFormation::Stack",
       "Properties": {
-        "TemplateURL": { "Fn::Join": [ "/", [ "https://s3.amazonaws.com/nubis-stacks", { "Ref": "StacksVersion" }, "autoscaling-cpu.template" ] ] },
+        "TemplateURL": {
+          "Fn::Join": [
+            "/",
+            [
+              "https://s3.amazonaws.com/nubis-stacks",
+              {
+                "Ref": "StacksVersion"
+              },
+              "autoscaling-cpu.template"
+            ]
+          ]
+        },
         "TimeoutInMinutes": "60",
         "Parameters": {
           "CPUAlarmHighThreshold": "75",
@@ -387,7 +452,18 @@
     "AutoScalingStackPush": {
       "Type": "AWS::CloudFormation::Stack",
       "Properties": {
-        "TemplateURL": { "Fn::Join": [ "/", [ "https://s3.amazonaws.com/nubis-stacks", { "Ref": "StacksVersion" }, "autoscaling-cpu.template" ] ] },
+        "TemplateURL": {
+          "Fn::Join": [
+            "/",
+            [
+              "https://s3.amazonaws.com/nubis-stacks",
+              {
+                "Ref": "StacksVersion"
+              },
+              "autoscaling-cpu.template"
+            ]
+          ]
+        },
         "TimeoutInMinutes": "60",
         "Parameters": {
           "CPUAlarmHighThreshold": "75",
@@ -404,7 +480,18 @@
     "ELBStack": {
       "Type": "AWS::CloudFormation::Stack",
       "Properties": {
-        "TemplateURL": { "Fn::Join": [ "/", [ "https://s3.amazonaws.com/nubis-stacks", { "Ref": "StacksVersion" }, "elb.template" ] ] },
+        "TemplateURL": {
+          "Fn::Join": [
+            "/",
+            [
+              "https://s3.amazonaws.com/nubis-stacks",
+              {
+                "Ref": "StacksVersion"
+              },
+              "elb.template"
+            ]
+          ]
+        },
         "TimeoutInMinutes": "60",
         "Parameters": {
           "ServiceName": {
@@ -417,12 +504,38 @@
             "Ref": "Environment"
           },
           "SSLCertificate": {
-            "Fn::FindInMap": [
-              "EnvironmentMap",
+            "Fn::If": [
+              "DefaultSSLCertificate",
               {
-                "Ref": "Environment"
+                "Fn::FindInMap": [
+                  "EnvironmentMap",
+                  {
+                    "Ref": "Environment"
+                  },
+                  "SSLCertificate"
+                ]
               },
-              "SSLCertificate"
+              {
+                "Fn::Join": [
+                  "",
+                  [
+                    "arn:aws:iam::",
+                    {
+                      "Ref": "AWS::AccountId"
+                    },
+                    ":server-certificate/",
+                    {
+                      "Fn::FindInMap": [
+                        "EnvironmentMap",
+                        {
+                          "Ref": "Environment"
+                        },
+                        "SSLCertificate"
+                      ]
+                    }
+                  ]
+                ]
+              }
             ]
           },
           "ElbHealthTarget": "HTTP:80/?no-ssl-rewrite&elb-health-check"
@@ -432,7 +545,18 @@
     "RDSStack": {
       "Type": "AWS::CloudFormation::Stack",
       "Properties": {
-        "TemplateURL": { "Fn::Join": [ "/", [ "https://s3.amazonaws.com/nubis-stacks", { "Ref": "StacksVersion" }, "rds-mysql.template" ] ] },
+        "TemplateURL": {
+          "Fn::Join": [
+            "/",
+            [
+              "https://s3.amazonaws.com/nubis-stacks",
+              {
+                "Ref": "StacksVersion"
+              },
+              "rds-mysql.template"
+            ]
+          ]
+        },
         "TimeoutInMinutes": "60",
         "Parameters": {
           "StacksVersion": {
@@ -497,7 +621,18 @@
     "MemcacheStack": {
       "Type": "AWS::CloudFormation::Stack",
       "Properties": {
-        "TemplateURL": { "Fn::Join": [ "/", [ "https://s3.amazonaws.com/nubis-stacks", { "Ref": "StacksVersion" }, "memcache.template" ] ] },
+        "TemplateURL": {
+          "Fn::Join": [
+            "/",
+            [
+              "https://s3.amazonaws.com/nubis-stacks",
+              {
+                "Ref": "StacksVersion"
+              },
+              "memcache.template"
+            ]
+          ]
+        },
         "TimeoutInMinutes": "60",
         "Parameters": {
           "ServiceName": {
@@ -521,7 +656,18 @@
     "Route53Stack": {
       "Type": "AWS::CloudFormation::Stack",
       "Properties": {
-        "TemplateURL": { "Fn::Join": [ "/", [ "https://s3.amazonaws.com/nubis-stacks", { "Ref": "StacksVersion" }, "route53.template" ] ] },
+        "TemplateURL": {
+          "Fn::Join": [
+            "/",
+            [
+              "https://s3.amazonaws.com/nubis-stacks",
+              {
+                "Ref": "StacksVersion"
+              },
+              "route53.template"
+            ]
+          ]
+        },
         "TimeoutInMinutes": "60",
         "Parameters": {
           "DNSName": {
@@ -542,7 +688,18 @@
     "StorageStack": {
       "Type": "AWS::CloudFormation::Stack",
       "Properties": {
-        "TemplateURL": { "Fn::Join": [ "/", [ "https://s3.amazonaws.com/nubis-stacks", { "Ref": "StacksVersion" }, "storage.template" ] ] },
+        "TemplateURL": {
+          "Fn::Join": [
+            "/",
+            [
+              "https://s3.amazonaws.com/nubis-stacks",
+              {
+                "Ref": "StacksVersion"
+              },
+              "storage.template"
+            ]
+          ]
+        },
         "TimeoutInMinutes": "60",
         "Parameters": {
           "StacksVersion": {
@@ -579,7 +736,18 @@
     "DataBucket": {
       "Type": "AWS::CloudFormation::Stack",
       "Properties": {
-        "TemplateURL": { "Fn::Join": [ "/", [ "https://s3.amazonaws.com/nubis-stacks", { "Ref": "StacksVersion" }, "s3-bucket.template" ] ] },
+        "TemplateURL": {
+          "Fn::Join": [
+            "/",
+            [
+              "https://s3.amazonaws.com/nubis-stacks",
+              {
+                "Ref": "StacksVersion"
+              },
+              "s3-bucket.template"
+            ]
+          ]
+        },
         "Parameters": {
           "ServiceName": {
             "Ref": "ServiceName"
@@ -618,7 +786,18 @@
     "AttachmentsBucket": {
       "Type": "AWS::CloudFormation::Stack",
       "Properties": {
-        "TemplateURL": { "Fn::Join": [ "/", [ "https://s3.amazonaws.com/nubis-stacks", { "Ref": "StacksVersion" }, "s3-bucket.template" ] ] },
+        "TemplateURL": {
+          "Fn::Join": [
+            "/",
+            [
+              "https://s3.amazonaws.com/nubis-stacks",
+              {
+                "Ref": "StacksVersion"
+              },
+              "s3-bucket.template"
+            ]
+          ]
+        },
         "Parameters": {
           "ServiceName": {
             "Ref": "ServiceName"
@@ -716,36 +895,36 @@
                     "s3:ListBucket"
                   ],
                   "Resource": [
-                  {
-                    "Fn::Join": [
-                      "",
-                      [
-                        "arn:aws:s3:::",
-                        {
-                          "Fn::GetAtt": [
-                            "DataBucket",
-                            "Outputs.S3Bucket"
-                          ]
-                        },
-                        "/*"
+                    {
+                      "Fn::Join": [
+                        "",
+                        [
+                          "arn:aws:s3:::",
+                          {
+                            "Fn::GetAtt": [
+                              "DataBucket",
+                              "Outputs.S3Bucket"
+                            ]
+                          },
+                          "/*"
+                        ]
                       ]
-                    ]
-                  },
-                  {
-                    "Fn::Join": [
-                      "",
-                      [
-                        "arn:aws:s3:::",
-                        {
-                          "Fn::GetAtt": [
-                            "DataBucket",
-                            "Outputs.S3Bucket"
-                          ]
-                        }
+                    },
+                    {
+                      "Fn::Join": [
+                        "",
+                        [
+                          "arn:aws:s3:::",
+                          {
+                            "Fn::GetAtt": [
+                              "DataBucket",
+                              "Outputs.S3Bucket"
+                            ]
+                          }
+                        ]
                       ]
-                    ]
-                  }
-                 ]
+                    }
+                  ]
                 }
               ]
             }
