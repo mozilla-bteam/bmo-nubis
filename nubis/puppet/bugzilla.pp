@@ -11,7 +11,6 @@ yumrepo { 'epel':
 }->
 package {
   [
-    'ImageMagick-perl',
     'graphviz',
     'patchutils',
     'mod24_perl',
