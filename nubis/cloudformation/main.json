@@ -46,7 +46,7 @@
         "WebInstanceType": "m4.xlarge",
         "PushInstanceType": "m4.xlarge",
         "QueueInstanceType": "m4.xlarge",
-        "DBInstanceClass": "db.m4.xlarge",
+        "DBInstanceClass": "db.r3.4xlarge",
         "DBName": "bugs",
         "DBStorage": "256",
         "DBStorageType": "gp2",
