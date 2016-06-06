@@ -8,7 +8,7 @@ if [ ! -d $DISTS ]; then
   mkdir $DISTS
 fi
 
-CPANM="cpanm -v --configure-timeout 300 --save-dists $DISTS"
+CPANM="cpanm --configure-timeout 300 --save-dists $DISTS"
 
 for pkg in \
    Math::Random::ISAAC \
