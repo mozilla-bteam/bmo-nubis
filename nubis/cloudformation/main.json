@@ -947,6 +947,31 @@
           "Ref": "DataBucketUser"
         }
       }
+    },
+    "MySQLParameterGroup": {
+      "Type": "AWS::RDS::DBParameterGroup",
+      "Properties": {
+        "Description": "Bugzilla DB Parameter group for MySql 5.6",
+        "Family": "MySQL5.6",
+        "Parameters": {
+          "innodb_log_file_size": "536870912",
+          "max_allowed_packet": "536870912"
+        },
+        "Tags": [
+          {
+            "Key": "ServiceName",
+            "Value": {
+              "Ref": "ServiceName"
+            }
+          },
+          {
+            "Key": "TechnicalOwner",
+            "Value": {
+              "Ref": "TechnicalOwner"
+            }
+          }
+        ]
+      }
     }
   },
   "Outputs": {
