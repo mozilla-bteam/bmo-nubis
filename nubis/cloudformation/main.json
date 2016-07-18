@@ -61,7 +61,7 @@
         "QueueInstanceType": "t2.medium",
         "DBInstanceClass": "db.t2.medium",
         "DBName": "bugzilla_allizom_org",
-        "DBStorage": "128",
+        "DBStorage": "256",
         "DBStorageType": "gp2",
         "SSLCertificate": "wildcard.allizom.org",
         "AutoScalingGroupMinSize": "2",
