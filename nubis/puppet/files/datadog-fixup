@@ -1,0 +1,15 @@
+#!/bin/bash
+
+export PATH=/usr/local/bin:$PATH
+
+# If we are a webserver, bail
+nubis-purpose webserver && exit
+
+# Otherwise, cleanup datadog
+echo "Removing Datadog httpd/apache checks, not our job"
+
+# Remove configs
+rm -f /etc/dd-agent/conf.d/apache.yaml /etc/dd-agent/conf.d/process.yaml
+
+# Kick datadog just in case
+/usr/local/bin/datadog-discover

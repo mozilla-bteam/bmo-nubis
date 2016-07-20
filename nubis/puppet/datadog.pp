@@ -14,3 +14,10 @@ class { 'datadog_agent::integrations::process':
       },
   ],
 }
+
+file { '/etc/nubis.d/datadog-fixup':
+  source => 'puppet:///nubis/files/datadog-fixup',
+  owner => 'root',
+  group => 'root',
+  mode  => '0755',
+}
