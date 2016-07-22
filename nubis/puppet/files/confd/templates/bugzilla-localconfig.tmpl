@@ -54,17 +54,17 @@ $db_host = '{{ if exists "/config/Override/DBserver" }}{{ getv "/config/Override
 
 # The name of the database. For Oracle, this is the database's SID. For
 # SQLite, this is a name (or path) for the DB file.
-$db_name = '{{ if exists "/config/DBname" }}{{ getv "/config/DBname" }}{{ else }}bugzilla{{ end }}';
+$db_name = '{{ if exists "/config/Override/DBname" }}{{ getv "/config/Override/DBname" }}{{ else }}{{ if exists "/config/DBname" }}{{ getv "/config/DBname" }}{{ else }}bugzilla{{ end }}{{ end }}';
 
 # Who we connect to the database as.
-$db_user = '{{ if exists "/config/DBuser" }}{{ getv "/config/DBuser" }}{{ else }}bugzilla{{ end }}';
+$db_user = '{{ if exists "/config/Override/DBuser"}}{{ getv "/config/Override/DBuser" }}{{ else }}{{ if exists "/config/DBuser" }}{{ getv "/config/DBuser" }}{{ else }}bugzilla{{ end }}{{ end }}';
 
 # Enter your database password here. It's normally advisable to specify
 # a password for your bugzilla database user.
 # If you use apostrophe (') or a backslash (\) in your password, you'll
 # need to escape it by preceding it with a '\' character. (\') or (\)
 # (It is far simpler to just not use those characters.)
-$db_pass = '{{ if exists "/config/DBpassword" }}{{ getv "/config/DBpassword" }}{{ else }}provisioner_password{{ end }}';
+$db_pass = '{{ if exists "/config/Override/DBpassword" }}{{ getv "/config/Override/DBpassword" }}{{ else }}{{ if exists "/config/DBpassword" }}{{ getv "/config/DBpassword" }}{{ else }}provisioner_password{{ end }}{{ end }}';
 
 # Sometimes the database server is running on a non-standard port. If that's
 # the case for your database server, set this to the port number that your
@@ -145,7 +145,7 @@ $site_wide_secret = '{{ if exists "/config/SiteWideSecret" }}{{ getv "/config/Si
                     'inbound_proxies' => '{{ if exists "/config/InboundProxies" }}{{ getv "/config/InboundProxies" }}{{ else }}*{{ end }}',
                     'memcached_namespace' => '{{ if exists "/config/MemCachedNamespace" }}{{ getv "/config/MemCachedNamespace" }}{{ else }}bugzilla{{ end }}:',
                     'memcached_servers' => '{{ getv "/config/MemCachedEndpoint" }}:{{ getv "/config/MemCachedPort" }}',
-                    'shadowdb' => {{ if exists "/config/ShadowDBName" }}'{{ getv "/config/ShadowDBName" }}'{{ else }}undef{{ end }},
+                    'shadowdb' => {{ if exists "/config/Override/ShadowDBName" }}{{ getv "/config/Override/ShadowDBName" }}{{ else }}{{ if exists "/config/ShadowDBName" }}'{{ getv "/config/ShadowDBName" }}'{{ else }}undef{{ end }}{{ end }},
                     'shadowdbhost' => {{ if exists "/config/Override/ShadowDBHost" }}'{{ getv "/config/Override/ShadowDBHost" }}'{{else}}{{ if exists "/config/ShadowDBHost" }}'{{ getv "/config/ShadowDBHost" }}'{{ else }}undef{{ end }}{{end}},
                     'shadowdbport' => {{ if exists "/config/ShadowDBPort" }}{{ getv "/config/ShadowDBPort" }}{{ else }}3306{{ end }},
                     'shadowdbsock' => undef
