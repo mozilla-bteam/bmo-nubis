@@ -3,5 +3,3 @@ forge "https://forgeapi.puppetlabs.com"
 ####################### NOTE #############################
 # All modules *must* be pinned to a specific version/tag #
 ##########################################################
-
-mod 'bashtoni/timezone', '1.0.0'
