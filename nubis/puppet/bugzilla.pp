@@ -1,8 +1,3 @@
-class { 'timezone':
-  region   => 'America',
-  locality => 'Los_Angeles',
-}
-
 package { 'epel-release':
   ensure => present,
 }->
