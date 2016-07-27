@@ -34,10 +34,10 @@ for pkg in \
    Net::SFTP \
    File::Copy::Recursive \
    MIME::Tools@5.502 \
-   Email::Simple@2.100 \
+   Email::Simple@2.102 \
    Email::Send@2.198 \
    Email::MIME::ContentType@1.011 \
-   Email::MIME@1.910 \
+   Email::MIME@1.911 \
    Email::MIME::Attachment::Stripper@1.316 \
    Email::Reply@1.202 \
   ; do
