@@ -57,7 +57,8 @@ $db_host = '{{ if exists "/config/Override/DBserver" }}{{ getv "/config/Override
 $db_name = '{{ if exists "/config/Override/DBname" }}{{ getv "/config/Override/DBname" }}{{ else }}{{ if exists "/config/DBname" }}{{ getv "/config/DBname" }}{{ else }}bugzilla{{ end }}{{ end }}';
 
 # Who we connect to the database as.
-$db_user = '{{ if exists "/config/Override/DBuser"}}{{ getv "/config/Override/DBuser" }}{{ else }}{{ if exists "/config/DBuser" }}{{ getv "/config/DBuser" }}{{ else }}bugzilla{{ end }}{{ end }}';
+# When *not* active, we use the username 'read-only'
+$db_user = '{{ if or ( not ( exists "/config/Active" ) ) ( ne ( getv "/config/Actuve") "1" ) }}read-only{{ else }}{{ if exists "/config/Override/DBuser"}}{{ getv "/config/Override/DBuser" }}{{ else }}{{ if exists "/config/DBuser" }}{{ getv "/config/DBuser" }}{{ else }}bugzilla{{ end }}{{ end }}{{ end }}';
 
 # Enter your database password here. It's normally advisable to specify
 # a password for your bugzilla database user.
