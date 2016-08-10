@@ -882,6 +882,54 @@
         "Path": "/",
         "Policies": [
           {
+            "PolicyName": "SyncAttachments",
+            "PolicyDocument": {
+              "Version": "2012-10-17",
+              "Statement": [
+                {
+                  "Effect": "Allow",
+                  "Action": [
+                    "s3:PutObject",
+                    "s3:GetObject",
+                    "s3:DeleteObject",
+                    "s3:ListBucket"
+                  ],
+                  "Resource": [
+                    {
+                      "Fn::Join": [
+                        "",
+                        [
+                          "arn:aws:s3:::",
+                          {
+                            "Fn::GetAtt": [
+                              "AttachmentsBucket",
+                              "Outputs.S3Bucket"
+                            ]
+                          },
+                          "/*"
+                        ]
+                      ]
+                    },
+                    {
+                      "Fn::Join": [
+                        "",
+                        [
+                          "arn:aws:s3:::",
+                          {
+                            "Fn::GetAtt": [
+                              "AttachmentsBucket",
+                              "Outputs.S3Bucket"
+                            ]
+                          }
+                        ]
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          {
             "PolicyName": "SyncData",
             "PolicyDocument": {
               "Version": "2012-10-17",
