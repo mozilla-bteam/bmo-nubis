@@ -559,6 +559,9 @@
         },
         "TimeoutInMinutes": "60",
         "Parameters": {
+          "StackName": {
+            "Ref": "AWS::StackName"
+          },
           "StacksVersion": {
             "Ref": "StacksVersion"
           },
