@@ -1,4 +1,4 @@
 [submodule "code"]
 	path = code
-	url = https://git.mozilla.org/webtools/bmo/bugzilla.git
+	url = https://github.com/mozilla-bteam/bmo.git
 	branch = production
