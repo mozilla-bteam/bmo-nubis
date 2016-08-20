@@ -1,6 +1,6 @@
 [template]
 src = "bugzilla-localconfig.tmpl"
-dest = "/var/www/bugzilla/localconfig"
+dest = "/var/www/bugzilla/localconfig.confd"
 prefix = "/%%STACK%%/%%ENVIRONMENT%%"
 
 uid = 0

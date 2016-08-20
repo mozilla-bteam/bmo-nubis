@@ -54,17 +54,19 @@ $db_host = '{{ if exists "/config/Override/DBserver" }}{{ getv "/config/Override
 
 # The name of the database. For Oracle, this is the database's SID. For
 # SQLite, this is a name (or path) for the DB file.
-$db_name = '{{ if exists "/config/DBname" }}{{ getv "/config/DBname" }}{{ else }}bugzilla{{ end }}';
+$db_name = '{{ if exists "/config/Override/DBname" }}{{ getv "/config/Override/DBname" }}{{ else }}{{ if exists "/config/DBname" }}{{ getv "/config/DBname" }}{{ else }}bugzilla{{ end }}{{ end }}';
 
 # Who we connect to the database as.
-$db_user = '{{ if exists "/config/DBuser" }}{{ getv "/config/DBuser" }}{{ else }}bugzilla{{ end }}';
+# When *not* active, we use the username 'read-only'
+
+$db_user = '{{ if or  ( not ( exists "/config/Active" ) ) ( ne ( getv "/config/Active" ) "1" ) }}read-only{{ else }}{{ if exists "/config/Override/DBuser"}}{{ getv "/config/Override/DBuser" }}{{ else }}{{ if exists "/config/DBuser" }}{{ getv "/config/DBuser" }}{{ else }}bugzilla{{ end }}{{ end }}{{ end }}';
 
 # Enter your database password here. It's normally advisable to specify
 # a password for your bugzilla database user.
 # If you use apostrophe (') or a backslash (\) in your password, you'll
 # need to escape it by preceding it with a '\' character. (\') or (\)
 # (It is far simpler to just not use those characters.)
-$db_pass = '{{ if exists "/config/DBpassword" }}{{ getv "/config/DBpassword" }}{{ else }}provisioner_password{{ end }}';
+$db_pass = '{{ if exists "/config/Override/DBpassword" }}{{ getv "/config/Override/DBpassword" }}{{ else }}{{ if exists "/config/DBpassword" }}{{ getv "/config/DBpassword" }}{{ else }}provisioner_password{{ end }}{{ end }}';
 
 # Sometimes the database server is running on a non-standard port. If that's
 # the case for your database server, set this to the port number that your
@@ -107,6 +109,30 @@ $interdiffbin = '/usr/bin/interdiff';
 # are using that feature of the Patch Viewer.)
 $diffpath = '/usr/bin';
 
+# You can specify the full path to a TrueType or OpenType font file, which will
+# be used to display text (labels, legends, ...) in charts and graphical reports.
+# To support as many languages as possible, we recommend to specify a font such as
+# Unifont (http://unifoundry.com/unifont.html), which supports all printable
+# characters in the Basic Multilingual Plane. If you leave this parameter empty,
+# a default font will be used, but its support is limited to English characters
+# only and so other characters will be displayed incorrectly.
+$font_file = '';
+
+# It is possible to show graphs of dependent bugs. You may set this parameter to
+# any of the following:
+# 
+# - A complete file path to 'dot' (part of GraphViz (http://www.graphviz.org/))
+#   will generate the graphs locally.
+# - A URL prefix pointing to an installation of the webdot package will generate
+#   the graphs remotely. (append "/%urlbase%" to the URL prefix)
+# - A blank value will disable dependency graphing.
+# 
+# If you use a webdot URL prefix, make certain that the webdot server can read
+# files from your webdot directory. On Apache you do this by editing the
+# .htaccess file, for other systems the needed measures may vary. You can run
+# checksetup.pl to recreate the .htaccess file if it has been lost.
+$webdotbase = '';
+
 # This secret key is used by your installation for the creation and
 # validation of encrypted tokens. These tokens are used to implement
 # security features in Bugzilla, to protect against certain types of attacks.
@@ -121,7 +147,7 @@ $site_wide_secret = '{{ if exists "/config/SiteWideSecret" }}{{ getv "/config/Si
                     'inbound_proxies' => '{{ if exists "/config/InboundProxies" }}{{ getv "/config/InboundProxies" }}{{ else }}*{{ end }}',
                     'memcached_namespace' => '{{ if exists "/config/MemCachedNamespace" }}{{ getv "/config/MemCachedNamespace" }}{{ else }}bugzilla{{ end }}:',
                     'memcached_servers' => '{{ getv "/config/MemCachedEndpoint" }}:{{ getv "/config/MemCachedPort" }}',
-                    'shadowdb' => {{ if exists "/config/ShadowDBName" }}'{{ getv "/config/ShadowDBName" }}'{{ else }}undef{{ end }},
+                    'shadowdb' => {{ if exists "/config/Override/ShadowDBName" }}{{ getv "/config/Override/ShadowDBName" }}{{ else }}{{ if exists "/config/ShadowDBName" }}'{{ getv "/config/ShadowDBName" }}'{{ else }}undef{{ end }}{{ end }},
                     'shadowdbhost' => {{ if exists "/config/Override/ShadowDBHost" }}'{{ getv "/config/Override/ShadowDBHost" }}'{{else}}{{ if exists "/config/ShadowDBHost" }}'{{ getv "/config/ShadowDBHost" }}'{{ else }}undef{{ end }}{{end}},
                     'shadowdbport' => {{ if exists "/config/ShadowDBPort" }}{{ getv "/config/ShadowDBPort" }}{{ else }}3306{{ end }},
                     'shadowdbsock' => undef

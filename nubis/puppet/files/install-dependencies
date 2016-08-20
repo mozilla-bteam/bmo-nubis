@@ -34,10 +34,10 @@ for pkg in \
    Net::SFTP \
    File::Copy::Recursive \
    MIME::Tools@5.502 \
-   Email::Simple@2.100 \
+   Email::Simple@2.102 \
    Email::Send@2.198 \
    Email::MIME::ContentType@1.011 \
-   Email::MIME@1.910 \
+   Email::MIME@1.911 \
    Email::MIME::Attachment::Stripper@1.316 \
    Email::Reply@1.202 \
   ; do
@@ -56,6 +56,9 @@ done
 
 echo "Monkey patching for issue https://github.com/btrott/Crypt-OpenPGP/issues/30"
 curl 'https://patch-diff.githubusercontent.com/raw/btrott/Crypt-OpenPGP/pull/31.diff' | ( cd /usr/local/share/perl5 ; patch -p2 )
+
+echo "Monkey patching for SES issue https://bugzilla.mozilla.org/show_bug.cgi?id=1259942"
+curl 'https://bug1259942.bmoattachments.org/attachment.cgi?id=8775692' | ( cd /var/www/bugzilla; patch -p1 )
 
 tar -C "$(dirname $DISTS)" -zcvf $DISTS.tar.gz "$(basename $DISTS)"
 rm -rf $DISTS

@@ -1,8 +1,3 @@
-class { 'timezone':
-  region   => 'America',
-  locality => 'Los_Angeles',
-}
-
 package { 'epel-release':
   ensure => present,
 }->
@@ -11,7 +6,6 @@ yumrepo { 'epel':
 }->
 package {
   [
-    'ImageMagick-perl',
     'graphviz',
     'patchutils',
     'mod24_perl',
