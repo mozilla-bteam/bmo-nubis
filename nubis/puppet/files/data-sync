@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -l
 
 CONFIG=/etc/nubis-config/bugzilla.sh
 
@@ -25,8 +25,8 @@ S3_SYNC="aws s3 sync \
 
 if /usr/local/bin/bugzilla-active; then
   # Push
-  sudo -u apache $S3_SYNC "$DATA/" "s3://$S3DataBucket/"
+  sudo -E -u apache $S3_SYNC "$DATA/" "s3://$S3DataBucket/"
 else
   # Pull
-  sudo -u apache $S3_SYNC "s3://$S3DataBucket/" "$DATA/"
+  sudo -E -u apache $S3_SYNC "s3://$S3DataBucket/" "$DATA/"
 fi
