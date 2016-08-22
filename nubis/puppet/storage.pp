@@ -1,9 +1,19 @@
 include nubis_storage
 nubis::storage { "$project_name": }
 
+yumrepo { 'ceph':
+  descr    => 'Ceph',
+  baseurl  => "http://download.ceph.com/rpm-hammer/el6/x86_64",
+  priority => 2,
+  enabled  => 1,
+  gpgcheck => 1,
+  gpgkey   => 'https://download.ceph.com/keys/release.asc',
+}
+
 ### This should be in puppet-nubis-storage
 package { "ceph":
-  ensure => present,
+  ensure => latest,
+  require => Yumrepo['ceph'],
 }
 
 # need to fix #! to use python26
