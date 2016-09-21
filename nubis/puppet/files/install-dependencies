@@ -40,7 +40,7 @@ for pkg in \
    Email::Reply@1.202 \
   ; do
   echo "Installing $pkg"
-  $CPANM $pkg
+  $CPANM $pkg < /dev/null
 done
 
 # Force install, this is failing some tests
@@ -49,7 +49,7 @@ for pkg in \
     Math::BigInt::GMP \
    ; do
    echo "Installing --force $pkg"
-  $CPANM --force $pkg
+  $CPANM --force $pkg < /dev/null
 done
 
 echo "Monkey patching for issue https://github.com/btrott/Crypt-OpenPGP/issues/30"
