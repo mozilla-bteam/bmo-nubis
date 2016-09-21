@@ -3,6 +3,9 @@
 # Exit if anything fails
 set -e
 
+# Verbose
+set -x
+
 CPANM="cpanm --configure-timeout 300"
 
 for pkg in \
@@ -54,3 +57,4 @@ curl 'https://patch-diff.githubusercontent.com/raw/btrott/Crypt-OpenPGP/pull/31.
 
 echo "Monkey patching for SES issue https://bugzilla.mozilla.org/show_bug.cgi?id=1259942"
 curl 'https://bug1259942.bmoattachments.org/attachment.cgi?id=8775692' | ( cd /var/www/bugzilla; patch -p1 )
+
