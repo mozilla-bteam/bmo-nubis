@@ -3,12 +3,7 @@
 # Exit if anything fails
 set -e
 
-DISTS=/var/www/dists
-if [ ! -d $DISTS ]; then
-  mkdir $DISTS
-fi
-
-CPANM="cpanm --configure-timeout 300 --save-dists $DISTS"
+CPANM="cpanm --configure-timeout 300"
 
 for pkg in \
    Math::Random::ISAAC \
@@ -59,6 +54,3 @@ curl 'https://patch-diff.githubusercontent.com/raw/btrott/Crypt-OpenPGP/pull/31.
 
 echo "Monkey patching for SES issue https://bugzilla.mozilla.org/show_bug.cgi?id=1259942"
 curl 'https://bug1259942.bmoattachments.org/attachment.cgi?id=8775692' | ( cd /var/www/bugzilla; patch -p1 )
-
-tar -C "$(dirname $DISTS)" -zcvf $DISTS.tar.gz "$(basename $DISTS)"
-rm -rf $DISTS
