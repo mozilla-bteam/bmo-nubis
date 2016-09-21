@@ -3,10 +3,7 @@
 # Exit if anything fails
 set -e
 
-# Verbose
-set -x
-
-CPANM="cpanm --configure-timeout 900 --verbose"
+CPANM="cpanm --configure-timeout 900"
 
 for pkg in \
    Math::Random::ISAAC \
@@ -55,10 +52,8 @@ done
 
 echo "Monkey patching for issue https://github.com/btrott/Crypt-OpenPGP/issues/30"
 curl 'https://patch-diff.githubusercontent.com/raw/btrott/Crypt-OpenPGP/pull/31.diff' | ( cd /usr/local/share/perl5 ; patch -p2 )
-SUCCESS=$?
 
 echo "Monkey patching for SES issue https://bugzilla.mozilla.org/show_bug.cgi?id=1259942"
 curl 'https://bug1259942.bmoattachments.org/attachment.cgi?id=8775692' | ( cd /var/www/bugzilla; patch -p1 )
-SUCCESS=$?
 
 exit 0
