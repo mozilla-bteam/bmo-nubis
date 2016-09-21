@@ -11,6 +11,7 @@ CPANM="cpanm --configure-timeout 900 --verbose"
 for pkg in \
    Math::Random::ISAAC \
    File::MimeInfo::Magic \
+   File::Flock@2013.06 \
    Daemon::Generic \
    Crypt::OpenPGP \
    Crypt::SMIME \
