@@ -6,7 +6,7 @@ set -e
 # Verbose
 set -x
 
-CPANM="cpanm --configure-timeout 300"
+CPANM="cpanm --configure-timeout 900"
 
 for pkg in \
    Math::Random::ISAAC \
