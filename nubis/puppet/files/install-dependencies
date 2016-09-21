@@ -3,7 +3,7 @@
 # Exit if anything fails
 set -e
 
-CPANM="cpanm --configure-timeout 900"
+CPANM="cpanm --configure-timeout 900 --verbose"
 
 for pkg in \
    Math::Random::ISAAC \
