@@ -538,7 +538,7 @@
               }
             ]
           },
-          "ElbHealthTarget": "HTTP:80/?no-ssl-rewrite&elb-health-check"
+          "ElbHealthTarget": "HTTP:80/robots.txt?no-ssl-rewrite&elb-health-check"
         }
       }
     },
