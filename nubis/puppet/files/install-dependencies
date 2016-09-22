@@ -1,16 +1,14 @@
 #!/bin/bash
 
 # Exit if anything fails
-set -e
+#set -e
 
-# Verbose
-set -x
-
-CPANM="cpanm --configure-timeout 300"
+CPANM="cpanm --configure-timeout 900 --verbose"
 
 for pkg in \
    Math::Random::ISAAC \
    File::MimeInfo::Magic \
+   File::Flock@2013.06 \
    Daemon::Generic \
    Crypt::OpenPGP \
    Crypt::SMIME \
@@ -40,7 +38,7 @@ for pkg in \
    Email::Reply@1.202 \
   ; do
   echo "Installing $pkg"
-  $CPANM $pkg
+  $CPANM $pkg < /dev/null
 done
 
 # Force install, this is failing some tests
@@ -49,7 +47,7 @@ for pkg in \
     Math::BigInt::GMP \
    ; do
    echo "Installing --force $pkg"
-  $CPANM --force $pkg
+  $CPANM --force $pkg < /dev/null
 done
 
 exit 0
