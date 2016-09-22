@@ -18,6 +18,7 @@
     "type": "shell",
     "inline": [
        "sudo /usr/local/bin/bugzilla-install-dependencies",
+       "sudo /usr/local/bin/bugzilla-monkeypatch",
        "sudo perl -I/var/www/bugzilla /var/www/bugzilla/checksetup.pl /var/www/bugzilla/answers.txt"
     ],
     "order": "20"
