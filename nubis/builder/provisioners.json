@@ -18,21 +18,27 @@
     "type": "shell",
     "inline": [
        "sudo /usr/local/bin/bugzilla-install-dependencies",
-       "sudo /usr/local/bin/bugzilla-monkeypatch",
-       "sudo perl -I/var/www/bugzilla /var/www/bugzilla/checksetup.pl /var/www/bugzilla/answers.txt"
+       "sudo /usr/local/bin/bugzilla-monkeypatch"
     ],
     "order": "20"
+  },
+  {
+    "type": "shell",
+    "inline": [
+       "sudo perl -I/var/www/bugzilla /var/www/bugzilla/checksetup.pl /var/www/bugzilla/answers.txt"
+    ],
+    "order": "21"
   },
   {
     "type": "file",
     "source": "nubis/tests",
     "destination": "/tmp",
-    "order": "21"
+    "order": "22"
   },
   {
     "type": "shell",
     "script": "nubis/builder/run-tests",
-    "order": "21"
+    "order": "22"
   }
 ]
 }
