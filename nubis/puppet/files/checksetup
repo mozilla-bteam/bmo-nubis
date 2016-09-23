@@ -6,6 +6,10 @@ set -e
 # Verbose
 set -x
 
-perl -I/var/www/bugzilla /var/www/bugzilla/checksetup.pl /var/www/bugzilla/answers.txt
+cd /var/www/bugzilla
+
+cat /var/www/bugzilla/answers.txt
+
+perl checksetup.pl /var/www/bugzilla/answers.txt
 
 exit 0
