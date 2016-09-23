@@ -10,6 +10,6 @@ cd /var/www/bugzilla
 
 cat /var/www/bugzilla/answers.txt
 
-perl checksetup.pl /var/www/bugzilla/answers.txt
+perl checksetup.pl --verbose /var/www/bugzilla/answers.txt
 
 exit 0
