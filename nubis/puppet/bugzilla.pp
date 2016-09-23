@@ -123,6 +123,14 @@ file { "/usr/local/bin/bugzilla-monkeypatch":
   mode   => '0755',
 }
 
+file { "/usr/local/bin/bugzilla-checksetup":
+  ensure => present,
+  source => "puppet:///nubis/files/checksetup",
+  owner  => 'root',
+  group  => 'root',
+  mode   => '0755',
+}
+
 file { "/usr/local/bin/bugzilla-update":
   ensure => present,
   source => "puppet:///nubis/files/update",

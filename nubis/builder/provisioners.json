@@ -25,7 +25,7 @@
   {
     "type": "shell",
     "inline": [
-       "sudo perl -I/var/www/bugzilla /var/www/bugzilla/checksetup.pl /var/www/bugzilla/answers.txt"
+       "sudo /usr/local/bin/bugzilla-checksetup"
     ],
     "order": "21"
   },
