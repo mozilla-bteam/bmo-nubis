@@ -5,52 +5,17 @@
 
 CPANM="cpanm --configure-timeout 900 --verbose"
 
-for pkg in \
-   Module::Metadata@1.000033 \
-   DateTime::TimeZone@1.64 \
-   Math::Random::ISAAC \
-   File::MimeInfo::Magic \
-   File::Flock@2013.06 \
-   Daemon::Generic \
-   Crypt::OpenPGP \
-   Crypt::SMIME \
-   TheSchwartz \
-   Any::URI::Escape \
-   Chart::Base \
-   HTTP::Lite \
-   JSON::RPC \
-   PatchReader \
-   Authen::Radius \
-   Template::Plugin::GD \
-   Math::BigInt \
-   ElasticSearch@0.68 \
-   Test::Number::Delta \
-   Math::Random::MT \
-   Devel::StackTrace \
-   Convert::Base32 \
-   Auth::GoogleAuth \
-   Net::SFTP \
-   File::Copy::Recursive \
-   MIME::Tools@5.502 \
-   Email::Simple@2.102 \
-   Email::Send@2.198 \
-   Email::MIME::ContentType@1.011 \
-   Email::MIME@1.911 \
-   Email::MIME::Attachment::Stripper@1.316 \
-   Email::Reply@1.202 \
-   Moo~2.000 \
-  ; do
-  echo "Installing $pkg"
-  $CPANM $pkg < /dev/null
-done
+wget -q -O/vendor.tar.gz https://s3.amazonaws.com/moz-devservices-bmocartons/bmo/vendor.tar.gz
+tar -C /opt -zxvf /vendor.tar.gz bmo/vendor/ bmo/cpanfile bmo/cpanfile.snapshot
 
-# Force install, this is failing some tests
-for pkg in \
-    Math::BigInt::Pari \
-    Math::BigInt::GMP \
-   ; do
-   echo "Installing --force $pkg"
-  $CPANM --force $pkg < /dev/null
-done
+# next three lines allow pari to install without downloading it from
+# the broken french university FTP.
+wget -q -O/pari-2.1.7.tgz http://s3.amazonaws.com/moz-devservices-bmocartons/third-party/pari-2.1.7.tgz
+mkdir -p /root/.cpanm/work
+tar -zxf /pari-2.1.7.tgz -C /root/.cpanm/work
+
+./vendor/bin/carton install --cached --deployment
+# putting this into /usr/local/ means it will be in the normal perl path.
+rsync -a /opt/bmo/local/lib/perl5 /usr/local/share/perl5
 
 exit 0
