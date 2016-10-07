@@ -14,6 +14,7 @@ wget -q -O/pari-2.1.7.tgz http://s3.amazonaws.com/moz-devservices-bmocartons/thi
 mkdir -p /root/.cpanm/work
 tar -zxf /pari-2.1.7.tgz -C /root/.cpanm/work
 
+cd /opt/bmo
 ./vendor/bin/carton install --cached --deployment
 # putting this into /usr/local/ means it will be in the normal perl path.
 rsync -a /opt/bmo/local/lib/perl5 /usr/local/share/perl5
