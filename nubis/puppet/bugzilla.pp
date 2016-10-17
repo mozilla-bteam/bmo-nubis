@@ -16,7 +16,6 @@ package {
     'mysql-devel',
     'openssl',
     'openssl-devel',
-    'openssl-devel',
     'patchutils',
     'perl',
     'perl-App-cpanminus',

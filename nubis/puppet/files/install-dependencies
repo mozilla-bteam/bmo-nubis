@@ -5,8 +5,10 @@
 
 CPANM="cpanm --configure-timeout 900 --verbose"
 
-wget -q -O/vendor.tar.gz https://s3.amazonaws.com/moz-devservices-bmocartons/bmo/vendor.tar.gz
-tar -C /opt -zxvf /vendor.tar.gz bmo/vendor/ bmo/cpanfile bmo/cpanfile.snapshot
+wget -q -O/vendor.tar.gz https://s3.amazonaws.com/moz-devservices-bmocartons/bmo7/vendor.tar.gz
+tar -C /opt \
+    --transform 's/^bmo7/bmo/' \
+    -zxvf /vendor.tar.gz bmo/vendor/ bmo/cpanfile bmo/cpanfile.snapshot
 
 # next three lines allow pari to install without downloading it from
 # the broken french university FTP.
