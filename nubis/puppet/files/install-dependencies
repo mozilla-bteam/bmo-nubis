@@ -1,24 +1,47 @@
 #!/bin/bash
 
+PARI_VERSION=2.1.7
+
 # Exit if anything fails
-#set -e
+set -e
 
-CPANM="cpanm --configure-timeout 900 --verbose"
+# Cleanup after ourselves
 
-wget -q -O/vendor.tar.gz https://s3.amazonaws.com/moz-devservices-bmocartons/bmo7/vendor.tar.gz
+function finish {
+  rm -f /tmp/vendor.tar.gz
+  rm -f /tmp/pari-$PARI_VERSION.tgz
+
+  # Cleanup development tools
+  yum -y --setopt=groupremove_leaf_only=1 groupremove 'Development Tools'
+}
+
+trap finish EXIT
+
+# Install development tools
+yum -y groupinstall 'Development Tools'
+
+wget -q -O/tmp/vendor.tar.gz https://s3.amazonaws.com/moz-devservices-bmocartons/bmo7/vendor.tar.gz
 tar -C /opt \
     --transform 's/^bmo7/bmo/' \
-    -zxvf /vendor.tar.gz bmo/vendor/ bmo/cpanfile bmo/cpanfile.snapshot
+    -zxvf /tmp/vendor.tar.gz bmo7/vendor/ bmo7/cpanfile bmo7/cpanfile.snapshot
 
 # next three lines allow pari to install without downloading it from
 # the broken french university FTP.
-wget -q -O/pari-2.1.7.tgz http://s3.amazonaws.com/moz-devservices-bmocartons/third-party/pari-2.1.7.tgz
+wget -q -O//tmp/pari-$PARI_VERSION.tgz http://s3.amazonaws.com/moz-devservices-bmocartons/third-party/pari-$PARI_VERSION.tgz
 mkdir -p /root/.cpanm/work
-tar -zxf /pari-2.1.7.tgz -C /root/.cpanm/work
+tar -zxf /tmp/pari-2.1.7.tgz -C /root/.cpanm/work
 
 cd /opt/bmo
+
+# Install bundled dependencies
 ./vendor/bin/carton install --cached --deployment
+
 # putting this into /usr/local/ means it will be in the normal perl path.
-rsync -a /opt/bmo/local/lib/perl5 /usr/local/share/perl5
+mkdir -p /usr/local/share/perl5
+
+# Need to plaster over archlib, as RHEL/AmazonLinux doesn't use it,
+# yet somehow carbon does
+rsync -a /opt/bmo/local/lib/perl5/ /usr/local/share/perl5/
+rsync -a "/opt/bmo/local/lib/perl5/$(perl -MConfig -e'print $Config{archname}')/" /usr/local/share/perl5/
 
 exit 0
