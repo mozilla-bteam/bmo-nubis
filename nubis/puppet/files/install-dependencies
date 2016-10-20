@@ -21,13 +21,17 @@ trap finish EXIT
 yum -y groupinstall 'Development Tools'
 
 wget -q -O/tmp/vendor.tar.gz https://s3.amazonaws.com/moz-devservices-bmocartons/bmo7/vendor.tar.gz
+sha256sum -O/tmp/vendor.tar.gz
+
 tar -C /opt \
     --transform 's/^bmo7/bmo/' \
     -zxvf /tmp/vendor.tar.gz bmo7/vendor/ bmo7/cpanfile bmo7/cpanfile.snapshot
 
 # next three lines allow pari to install without downloading it from
 # the broken french university FTP.
-wget -q -O//tmp/pari-$PARI_VERSION.tgz http://s3.amazonaws.com/moz-devservices-bmocartons/third-party/pari-$PARI_VERSION.tgz
+wget -q -O/tmp/pari-$PARI_VERSION.tgz http://s3.amazonaws.com/moz-devservices-bmocartons/third-party/pari-$PARI_VERSION.tgz
+sha256sum /tmp/pari-$PARI_VERSION.tgz
+
 mkdir -p /root/.cpanm/work
 tar -zxf /tmp/pari-2.1.7.tgz -C /root/.cpanm/work
 
