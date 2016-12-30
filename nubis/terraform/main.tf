@@ -63,7 +63,8 @@ module "database" {
   client_security_groups = "${module.worker.security_group}"
   replica_count          = 1
   multi_az               = true
-  allocated_storage      = "${lookup(var.allocated_storage, var.environment)}"
+  instance_class         = "${lookup(var.db_instance_class, var.environment)}"
+  allocated_storage      = "${lookup(var.db_allocated_storage, var.environment)}"
 }
 
 module "dns" {

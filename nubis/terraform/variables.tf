@@ -31,11 +31,20 @@ variable "instance_types" {
   }
 }
 
-variable "allocated_storage" {
+variable "db_allocated_storage" {
   type = "map"
 
   default = {
     stage = "64"
     prod  = "128"
+  }
+}
+
+variable "db_instance_class" {
+  type = "map"
+
+  default = {
+    stage = "db.t2.medium"
+    prod  = "db.r3.4xlarge"
   }
 }
