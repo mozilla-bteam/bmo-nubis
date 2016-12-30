@@ -92,6 +92,11 @@ apache::vhost { $service:
     access_log_pipe             => '|/usr/local/bin/apache-syslog.pl',
     error_log_pipe              => '|/usr/local/bin/apache-syslog.pl',
     custom_fragment             => 'PerlChildInitHandler "sub { Bugzilla::RNG::srand(); srand(); }"',
+    headers            => [
+      "set X-Nubis-Version ${project_version}",
+      "set X-Nubis-Project ${project_name}",
+      "set X-Nubis-Build   ${packer_build_name}",
+    ],
     directories => [
       {
         path => $install_root,
