@@ -28,6 +28,27 @@ variable "instance_types" {
   default = {
     stage = "t2.medium"
     prod  = "m4.xlarge"
+    any   = "t2.nano"
+  }
+}
+
+variable "min_instances" {
+  type = "map"
+
+  default = {
+    stage = 2
+    prod  = 2
+    any   = 2
+  }
+}
+
+variable "max_instances" {
+  type = "map"
+
+  default = {
+    stage = 4
+    prod  = 8
+    any   = 4
   }
 }
 
@@ -35,8 +56,9 @@ variable "db_allocated_storage" {
   type = "map"
 
   default = {
-    stage = "64"
-    prod  = "128"
+    stage = "256"
+    prod  = "256"
+    any   = "64"
   }
 }
 
@@ -46,5 +68,16 @@ variable "db_instance_class" {
   default = {
     stage = "db.t2.medium"
     prod  = "db.r3.4xlarge"
+    any   = "db.t2.small"
+  }
+}
+
+variable "db_name" {
+  type = "map"
+
+  default = {
+    stage = "bugzilla_allizom_org"
+    prod  = "bugs"
+    any   = "bugs"
   }
 }

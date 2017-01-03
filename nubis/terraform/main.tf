@@ -1,3 +1,7 @@
+# Using a poor-man's lookup(map, value, [default]) implemented with regexp and coalesce until TF > 0.7
+# lookup(map, coalesce(replace(replace(env, "/^(stage|prod|any)$/",""), "/.+/", "any"), env)
+# So we pick the 'any' key when its not prod or stage
+
 module "worker" {
   source       = "github.com/nubisproject/nubis-terraform//worker?ref=v1.3.0"
   region       = "${var.region}"
@@ -8,7 +12,9 @@ module "worker" {
   elb          = "${module.load_balancer.name}"
   purpose      = "webserver"
 
-  instance_type = "${lookup(var.instance_types, var.environment)}"
+  min_instances = "${lookup(var.min_instances, coalesce(replace(replace(var.environment, "/^(stage|prod|any)$/",""), "/.+/", "any"), var.environment))}"
+  max_instances = "${lookup(var.max_instances, coalesce(replace(replace(var.environment, "/^(stage|prod|any)$/",""), "/.+/", "any"), var.environment))}"
+  instance_type = "${lookup(var.instance_types, coalesce(replace(replace(var.environment, "/^(stage|prod|any)$/",""), "/.+/", "any"), var.environment))}"
 
   # CPU utilisation based autoscaling (with good defaults)
   scale_load_defaults = true
@@ -23,7 +29,9 @@ module "queue-worker" {
   ami          = "${var.ami}"
   purpose      = "queue-worker"
 
-  instance_type = "${lookup(var.instance_types, var.environment)}"
+  min_instances = "${lookup(var.min_instances, coalesce(replace(replace(var.environment, "/^(stage|prod|any)$/",""), "/.+/", "any"), var.environment))}"
+  max_instances = "${lookup(var.max_instances, coalesce(replace(replace(var.environment, "/^(stage|prod|any)$/",""), "/.+/", "any"), var.environment))}"
+  instance_type = "${lookup(var.instance_types, coalesce(replace(replace(var.environment, "/^(stage|prod|any)$/",""), "/.+/", "any"), var.environment))}"
 
   # CPU utilisation based autoscaling (with good defaults)
   scale_load_defaults = true
@@ -38,7 +46,9 @@ module "push-worker" {
   ami          = "${var.ami}"
   purpose      = "push-worker"
 
-  instance_type = "${lookup(var.instance_types, var.environment)}"
+  min_instances = "${lookup(var.min_instances, coalesce(replace(replace(var.environment, "/^(stage|prod|any)$/",""), "/.+/", "any"), var.environment))}"
+  max_instances = "${lookup(var.max_instances, coalesce(replace(replace(var.environment, "/^(stage|prod|any)$/",""), "/.+/", "any"), var.environment))}"
+  instance_type = "${lookup(var.instance_types, coalesce(replace(replace(var.environment, "/^(stage|prod|any)$/",""), "/.+/", "any"), var.environment))}"
 
   # CPU utilisation based autoscaling (with good defaults)
   scale_load_defaults = true
@@ -63,8 +73,9 @@ module "database" {
   client_security_groups = "${module.worker.security_group}"
   replica_count          = 1
   multi_az               = true
-  instance_class         = "${lookup(var.db_instance_class, var.environment)}"
-  allocated_storage      = "${lookup(var.db_allocated_storage, var.environment)}"
+  name                   = "${lookup(var.db_name, coalesce(replace(replace(var.environment, "/^(stage|prod|any)$/",""), "/.+/", "any"), var.environment))}"
+  instance_class         = "${lookup(var.db_instance_class, coalesce(replace(replace(var.environment, "/^(stage|prod|any)$/",""), "/.+/", "any"), var.environment))}"
+  allocated_storage      = "${lookup(var.db_allocated_storage, coalesce(replace(replace(var.environment, "/^(stage|prod|any)$/",""), "/.+/", "any"), var.environment))}"
 }
 
 module "dns" {
