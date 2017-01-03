@@ -11,16 +11,16 @@ $port = 80
 include nubis_discovery
 
 nubis::discovery::service { $service:
-  tags => [ 'apache','backend' ],
-  port => $port,
-  check => "/usr/bin/curl -I http://localhost:$port",
-  interval => "30s",
+  tags     => [ 'apache','backend' ],
+  port     => $port,
+  check    => "/usr/bin/curl -I http://localhost:${port}",
+  interval => '30s',
 }
 
 class {
     'apache':
         apache_version      => '2.4',
-        apache_name         => 'httpd24', 
+        apache_name         => 'httpd24',
         default_mods        => true,
         default_vhost       => false,
         default_confd_files => false,
@@ -35,11 +35,11 @@ class {
 }
 
 # Enable /server-status
-class { "apache::mod::status":
+class { 'apache::mod::status':
 }
 
 # Enable /server-info
-class { "apache::mod::info":
+class { 'apache::mod::info':
 }
 
 
@@ -81,25 +81,25 @@ apache::custom_config { 'mod_perl':
 
 
 apache::vhost { $service:
-    port                        => $port,
-    default_vhost               => true,
-    docroot                     => $::install_root,
-    docroot_owner               => 'root',
-    docroot_group               => 'apache',
-    block                       => ['scm'],
-    setenvif                    => 'X_FORWARDED_PROTO https HTTPS=on',
-    access_log_format           => '%{X-Forwarded-For}i %l %{Bugzilla_login}C %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\" %T %v %D',
-    access_log_pipe             => '|/usr/local/bin/apache-syslog.pl',
-    error_log_pipe              => '|/usr/local/bin/apache-syslog.pl',
-    custom_fragment             => 'PerlChildInitHandler "sub { Bugzilla::RNG::srand(); srand(); }"',
-    headers            => [
+    port              => $port,
+    default_vhost     => true,
+    docroot           => $::install_root,
+    docroot_owner     => 'root',
+    docroot_group     => 'apache',
+    block             => ['scm'],
+    setenvif          => 'X_FORWARDED_PROTO https HTTPS=on',
+    access_log_format => '%{X-Forwarded-For}i %l %{Bugzilla_login}C %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\" %T %v %D',
+    access_log_pipe   => '|/usr/local/bin/apache-syslog.pl',
+    error_log_pipe    => '|/usr/local/bin/apache-syslog.pl',
+    custom_fragment   => 'PerlChildInitHandler "sub { Bugzilla::RNG::srand(); srand(); }"',
+    headers           => [
       "set X-Nubis-Version ${project_version}",
       "set X-Nubis-Project ${project_name}",
       "set X-Nubis-Build   ${packer_build_name}",
     ],
-    directories => [
+    directories       => [
       {
-        path => $install_root,
+        path            => $install_root,
         custom_fragment => '
     AddHandler perl-script .cgi
     # Fixup SSL detection
@@ -114,8 +114,8 @@ apache::vhost { $service:
 	'
       },
     ],
-    serveradmin   => 'bugzilla-admin@mozilla.org',
-    serveraliases => [
+    serveradmin       => 'bugzilla-admin@mozilla.org',
+    serveraliases     => [
       '*.bugzilla.mozilla.org',
       '*.bmoattachments.org',
       'test1.bugzilla.mozilla.org',
@@ -124,16 +124,16 @@ apache::vhost { $service:
       'sub2.test1.bugzilla.mozilla.org',
       'sub1.test2.bugzilla.mozilla.org'
     ],
-    redirect_status  => [
+    redirect_status   => [
       'gone',
     ],
-    redirect_source  => [
+    redirect_source   => [
       '/localconfig.js',
     ],
-    redirect_dest    => [
+    redirect_dest     => [
       '',
     ],
-    rewrites         => [
+    rewrites          => [
       {
         comment      => 'Redirect invalid domains to the main one (but not ELB health checks)',
         rewrite_cond => [

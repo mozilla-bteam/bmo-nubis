@@ -9,12 +9,12 @@
 
 file { '/etc/update-motd.d/55-nubis-welcome':
   source => 'puppet:///nubis/files/nubis-welcome',
-  owner => 'root',
-  group => 'root',
-  mode  => '0755',
+  owner  => 'root',
+  group  => 'root',
+  mode   => '0755',
 }
 
 exec { 'motd update':
   command => '/usr/sbin/update-motd',
-  require  => File['/etc/update-motd.d/55-nubis-welcome'],
+  require => File['/etc/update-motd.d/55-nubis-welcome'],
 }
