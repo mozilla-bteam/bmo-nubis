@@ -101,7 +101,7 @@ resource "consul_keys" "config" {
   key {
     name   = "smtp_password"
     path   = "${module.consul.config_prefix}/SMTP/SESPassword"
-    value = = "${module.mail.smtp_password}"
+    value  = "${module.mail.smtp_password}"
     delete = true
   }
   key {
