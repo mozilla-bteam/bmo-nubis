@@ -87,7 +87,7 @@ cron { 'userprofile':
 
 cron { 'sentry':
   ensure      => 'present',
-  command     => 'nubis-cron bugzilla-sentry /var/www/bugzilla/sentry.pl',
+  command     => 'cd /var/www/bugzilla && nubis-cron bugzilla-sentry ./sentry.pl',
   hour        => '*',
   minute      => '*',
   user        => 'apache',
