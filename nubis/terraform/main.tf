@@ -122,7 +122,8 @@ module "data" {
   account      = "${var.account}"
   service_name = "${var.service_name}"
   purpose      = "data"
-  role         = "${module.worker.role}"
+  role_cnt     = 3
+  role         = "${module.worker.role},${module.push-worker.role},${module.queue-worker.role}"
 }
 
 module "attachments" {
@@ -132,5 +133,6 @@ module "attachments" {
   account      = "${var.account}"
   service_name = "${var.service_name}"
   purpose      = "attachments"
-  role         = "${module.worker.role}"
+  role_cnt     = 3
+  role         = "${module.worker.role},${module.push-worker.role},${module.queue-worker.role}"
 }
