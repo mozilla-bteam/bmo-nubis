@@ -85,6 +85,7 @@ resource "consul_keys" "config" {
     value  = "${module.attachments.name}"
     delete = true
   }
+
   key {
     name   = "data_bucket"
     path   = "${module.consul.config_prefix}/S3DataBucket"
@@ -98,18 +99,21 @@ resource "consul_keys" "config" {
     value  = "${module.mail.smtp_user}"
     delete = true
   }
+
   key {
     name   = "smtp_password"
     path   = "${module.consul.config_prefix}/SMTP/SESPassword"
     value  = "${module.mail.smtp_password}"
     delete = true
   }
+
   key {
     name   = "smtp_host"
     path   = "${module.consul.config_prefix}/SMTP/SESServer"
     value  = "${module.mail.smtp_host}"
     delete = true
   }
+
   key {
     name   = "canonical_server"
     path   = "${module.consul.config_prefix}/CanonicalServer"

@@ -1,5 +1,7 @@
 # Using a poor-man's lookup(map, value, [default]) implemented with regexp and coalesce until TF > 0.7
+
 # lookup(map, coalesce(replace(replace(env, "/^(stage|prod|any)$/",""), "/.+/", "any"), env)
+
 # So we pick the 'any' key when its not prod or stage
 
 module "worker" {
@@ -61,6 +63,7 @@ module "load_balancer" {
   account             = "${var.account}"
   service_name        = "${var.service_name}"
   health_check_target = "HTTP:80/robots.txt?no-ssl-rewrite&elb-health-check"
+
   #ssl_cert_name_prefix = "bugzilla"
 }
 
@@ -107,29 +110,29 @@ module "cache" {
 }
 
 module "mail" {
-  source                 = "github.com/nubisproject/nubis-terraform//mail?ref=v1.3.0"
-  region                 = "${var.region}"
-  environment            = "${var.environment}"
-  account                = "${var.account}"
-  service_name           = "${var.service_name}"
+  source       = "github.com/nubisproject/nubis-terraform//mail?ref=v1.3.0"
+  region       = "${var.region}"
+  environment  = "${var.environment}"
+  account      = "${var.account}"
+  service_name = "${var.service_name}"
 }
 
 module "data" {
-  source                 = "github.com/nubisproject/nubis-terraform//bucket?ref=v1.3.0"
-  region                 = "${var.region}"
-  environment            = "${var.environment}"
-  account                = "${var.account}"
-  service_name           = "${var.service_name}"
-  purpose                = "data"
-  role                  = "${module.worker.role}"
+  source       = "github.com/nubisproject/nubis-terraform//bucket?ref=v1.3.0"
+  region       = "${var.region}"
+  environment  = "${var.environment}"
+  account      = "${var.account}"
+  service_name = "${var.service_name}"
+  purpose      = "data"
+  role         = "${module.worker.role}"
 }
 
 module "attachments" {
-  source                 = "github.com/nubisproject/nubis-terraform//bucket?ref=v1.3.0"
-  region                 = "${var.region}"
-  environment            = "${var.environment}"
-  account                = "${var.account}"
-  service_name           = "${var.service_name}"
-  purpose                = "attachments"
-  role                  = "${module.worker.role}"
+  source       = "github.com/nubisproject/nubis-terraform//bucket?ref=v1.3.0"
+  region       = "${var.region}"
+  environment  = "${var.environment}"
+  account      = "${var.account}"
+  service_name = "${var.service_name}"
+  purpose      = "attachments"
+  role         = "${module.worker.role}"
 }
