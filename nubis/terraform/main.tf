@@ -1,7 +1,5 @@
 # Using a poor-man's lookup(map, value, [default]) implemented with regexp and coalesce until TF > 0.7
-
 # lookup(map, coalesce(replace(replace(env, "/^(stage|prod|any)$/",""), "/.+/", "any"), env)
-
 # So we pick the 'any' key when its not prod or stage
 
 module "worker" {
@@ -73,7 +71,7 @@ module "database" {
   environment            = "${var.environment}"
   account                = "${var.account}"
   service_name           = "${var.service_name}"
-  client_security_groups = "${module.worker.security_group}"
+  client_security_groups = "${module.worker.security_group},${module.queue-worker.security_group},${module.push-worker.security_group}"
   replica_count          = 1
   multi_az               = true
   name                   = "${lookup(var.db_name, coalesce(replace(replace(var.environment, "/^(stage|prod|any)$/",""), "/.+/", "any"), var.environment))}"
@@ -97,7 +95,7 @@ module "storage" {
   account                = "${var.account}"
   service_name           = "${var.service_name}"
   storage_name           = "bugzilla"
-  client_security_groups = "${module.worker.security_group}"
+  client_security_groups = "${module.worker.security_group},${module.queue-worker.security_group},${module.push-worker.security_group}"
 }
 
 module "cache" {
@@ -106,7 +104,7 @@ module "cache" {
   environment            = "${var.environment}"
   account                = "${var.account}"
   service_name           = "${var.service_name}"
-  client_security_groups = "${module.worker.security_group}"
+  client_security_groups = "${module.worker.security_group},${module.queue-worker.security_group},${module.push-worker.security_group}"
 }
 
 module "mail" {
