@@ -1,3 +1,7 @@
+provider "aws" {
+  region = "${var.region}"
+}
+
 resource "aws_iam_user" "data_bucket" {
   name = "${var.service_name}-${var.environment}-data_bucket"
   path = "/applicaton/${var.service_name}/"
