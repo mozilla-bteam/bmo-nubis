@@ -11,7 +11,7 @@ cron { 'data-sync':
 
 cron { 'remove-idle-group-members':
   ensure      => 'present',
-  command     => "cd /var/www/bugzilla && consul-do bugzilla-cron-idle-group $(hostname) && nubis-cron bugzilla-cron-idle-group perl -Mlib=lib scripts/remove_idle_group_members.pl 2>&1 | logger -t bugzilla-cron-idle-group",
+  command     => "cd /var/www/bugzilla && consul-do bugzilla-cron-idle-group $(hostname) && bugzilla-run-if-active nubis-cron bugzilla-cron-idle-group perl -Mlib=lib scripts/remove_idle_group_members.pl 2>&1 | logger -t bugzilla-cron-idle-group",
   hour        => '0',
   minute      => '0',
   user        => 'root',
@@ -22,7 +22,7 @@ cron { 'remove-idle-group-members':
 
 cron { 'collectstats':
   ensure      => 'present',
-  command     => "cd /var/www/bugzilla && consul-do bugzilla-cron-collectstats $(hostname) && nubis-cron bugzilla-cron-collectstats perl -Mlib=lib collectstats.pl 2>&1 | logger -t bugzilla-cron-collectstats",
+  command     => "cd /var/www/bugzilla && consul-do bugzilla-cron-collectstats $(hostname) && bugzilla-run-if-active nubis-cron bugzilla-cron-collectstats perl -Mlib=lib collectstats.pl 2>&1 | logger -t bugzilla-cron-collectstats",
   hour        => '0',
   minute      => '0',
   user        => 'root',
