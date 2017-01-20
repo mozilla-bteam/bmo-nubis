@@ -75,7 +75,6 @@ module "database" {
   replica_count          = 1
   multi_az               = true
   name                   = "${lookup(var.db_name, coalesce(replace(replace(var.environment, "/^(stage|prod|any)$/",""), "/.+/", "any"), var.environment))}"
-  username               = "${var.service_name}"
   instance_class         = "${lookup(var.db_instance_class, coalesce(replace(replace(var.environment, "/^(stage|prod|any)$/",""), "/.+/", "any"), var.environment))}"
   allocated_storage      = "${lookup(var.db_allocated_storage, coalesce(replace(replace(var.environment, "/^(stage|prod|any)$/",""), "/.+/", "any"), var.environment))}"
 }
