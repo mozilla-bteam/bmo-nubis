@@ -1,7 +1,3 @@
-provider "aws" {
-  region = "${var.region}"
-}
-
 # Discover Consul settings
 module "consul" {
   source       = "github.com/nubisproject/nubis-terraform//consul?ref=v1.3.0"
