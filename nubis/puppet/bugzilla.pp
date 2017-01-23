@@ -195,6 +195,14 @@ file { '/usr/local/bin/apache-syslog.pl':
   mode   => '0755',
 }
 
+file { '/usr/local/bin/bugzilla-healthz':
+  ensure => present,
+  source => 'puppet:///nubis/files/healthz',
+  owner  => 'root',
+  group  => 'root',
+  mode   => '0755',
+}
+
 file { '/etc/confd':
   ensure  => directory,
   recurse => true,

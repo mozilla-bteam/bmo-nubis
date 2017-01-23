@@ -1,0 +1,26 @@
+#!/bin/bash
+
+PATH=/usr/local/bin:$PATH
+export PATH
+
+PURPOSE=$(nubis-purpose)
+
+case $PURPOSE in
+  webserver)
+    /usr/bin/curl -I http://localhost:80
+  ;;
+  queue-worker)
+    if /usr/local/bin/bugzilla-active; then
+      /etc/init.d/bugzilla-queue status
+    fi
+  ;;
+  push-worker)
+    if /usr/local/bin/bugzilla-active; then
+      /etc/init.d/bugzilla-push status
+    fi
+  ;;
+  *)
+  echo "No health check known for purpose '$PURPOSE'"
+  exit 1
+  ;;
+esac

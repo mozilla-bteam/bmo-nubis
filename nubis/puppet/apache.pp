@@ -11,9 +11,8 @@ $port = 80
 include nubis_discovery
 
 nubis::discovery::service { $service:
-  tags     => [ 'apache','backend' ],
   port     => $port,
-  check    => "/usr/bin/curl -I http://localhost:${port}",
+  check    => "/usr/local/bin/bugzilla-healthz",
   interval => '30s',
 }
 
