@@ -1,0 +1,1363 @@
+[0m[1mmodule.database.tls_private_key.random: Creating...[21m
+  algorithm:          "" => "ECDSA"
+  ecdsa_curve:        "" => "P224"
+  private_key_pem:    "" => "<computed>"
+  public_key_openssh: "" => "<computed>"
+  public_key_pem:     "" => "<computed>"
+  rsa_bits:           "" => "2048"[0m
+[0m[1mmodule.data.tls_private_key.random: Creating...[21m
+  algorithm:          "" => "ECDSA"
+  ecdsa_curve:        "" => "P224"
+  private_key_pem:    "" => "<computed>"
+  public_key_openssh: "" => "<computed>"
+  public_key_pem:     "" => "<computed>"
+  rsa_bits:           "" => "2048"[0m
+[0m[1mmodule.database.tls_private_key.random: Creation complete[21m[0m
+[0m[1mmodule.data.tls_private_key.random: Creation complete[21m[0m
+[0m[1mmodule.attachments.tls_private_key.random: Creating...[21m
+  algorithm:          "" => "ECDSA"
+  ecdsa_curve:        "" => "P224"
+  private_key_pem:    "" => "<computed>"
+  public_key_openssh: "" => "<computed>"
+  public_key_pem:     "" => "<computed>"
+  rsa_bits:           "" => "2048"[0m
+[0m[1mmodule.mail.aws_iam_user.email: Creating...[21m
+  arn:       "" => "<computed>"
+  name:      "" => "bugzilla-stage-ses"
+  path:      "" => "/"
+  unique_id: "" => "<computed>"[0m
+[0m[1mmodule.worker.template_file.user_data: Creating...[21m
+  rendered:               "" => "<computed>"
+  template:               "" => "NUBIS_ACCOUNT=\"${NUBIS_ACCOUNT}\"\nNUBIS_DOMAIN=\"${NUBIS_DOMAIN}\"\nNUBIS_ENVIRONMENT=\"${NUBIS_ENVIRONMENT}\"\nNUBIS_PROJECT=\"${NUBIS_PROJECT}\"\nNUBIS_PURPOSE=\"${NUBIS_PURPOSE}\"\nNUBIS_STACK=\"${NUBIS_STACK}\"\nNUBIS_MIGRATE=\"${NUBIS_MIGRATE}\"\nCONSUL_ACL_TOKEN=\"${CONSUL_ACL_TOKEN}\"\nNUBIS_SUDO_GROUPS=\"${NUBIS_SUDO_GROUPS}\"\nNUBIS_USER_GROUPS=\"${NUBIS_USER_GROUPS}\"\n"
+  vars.#:                 "" => "10"
+  vars.CONSUL_ACL_TOKEN:  "" => "anonymous"
+  vars.NUBIS_ACCOUNT:     "" => "nubis-training-2016"
+  vars.NUBIS_DOMAIN:      "" => "nubis.allizom.org"
+  vars.NUBIS_ENVIRONMENT: "" => "stage"
+  vars.NUBIS_MIGRATE:     "" => "1"
+  vars.NUBIS_PROJECT:     "" => "bugzilla"
+  vars.NUBIS_PURPOSE:     "" => "webserver"
+  vars.NUBIS_STACK:       "" => "bugzilla-stage"
+  vars.NUBIS_SUDO_GROUPS: "" => "nubis_global_admins"
+  vars.NUBIS_USER_GROUPS: "" => ""[0m
+[0m[1mmodule.queue-worker.template_file.user_data: Creating...[21m
+  rendered:               "" => "<computed>"
+  template:               "" => "NUBIS_ACCOUNT=\"${NUBIS_ACCOUNT}\"\nNUBIS_DOMAIN=\"${NUBIS_DOMAIN}\"\nNUBIS_ENVIRONMENT=\"${NUBIS_ENVIRONMENT}\"\nNUBIS_PROJECT=\"${NUBIS_PROJECT}\"\nNUBIS_PURPOSE=\"${NUBIS_PURPOSE}\"\nNUBIS_STACK=\"${NUBIS_STACK}\"\nNUBIS_MIGRATE=\"${NUBIS_MIGRATE}\"\nCONSUL_ACL_TOKEN=\"${CONSUL_ACL_TOKEN}\"\nNUBIS_SUDO_GROUPS=\"${NUBIS_SUDO_GROUPS}\"\nNUBIS_USER_GROUPS=\"${NUBIS_USER_GROUPS}\"\n"
+  vars.#:                 "" => "10"
+  vars.CONSUL_ACL_TOKEN:  "" => "anonymous"
+  vars.NUBIS_ACCOUNT:     "" => "nubis-training-2016"
+  vars.NUBIS_DOMAIN:      "" => "nubis.allizom.org"
+  vars.NUBIS_ENVIRONMENT: "" => "stage"
+  vars.NUBIS_MIGRATE:     "" => "1"
+  vars.NUBIS_PROJECT:     "" => "bugzilla"
+  vars.NUBIS_PURPOSE:     "" => "queue-worker"
+  vars.NUBIS_STACK:       "" => "bugzilla-stage"
+  vars.NUBIS_SUDO_GROUPS: "" => "nubis_global_admins"
+  vars.NUBIS_USER_GROUPS: "" => ""[0m
+[0m[1mmodule.attachments.tls_private_key.random: Creation complete[21m[0m
+[0m[1mmodule.database.info.terraform_remote_state.info: Creating...[21m
+  backend:        "" => "http"
+  config.#:       "" => "1"
+  config.address: "" => "http://state.nubis.nubis-training-2016.nubis.allizom.org/aws/us-west-2/stage.tfstate"
+  output.#:       "" => "<computed>"[0m
+[0m[1mmodule.dns.info.terraform_remote_state.info: Creating...[21m
+  backend:        "" => "http"
+  config.#:       "" => "1"
+  config.address: "" => "http://state.nubis.nubis-training-2016.nubis.allizom.org/aws/us-west-2/stage.tfstate"
+  output.#:       "" => "<computed>"[0m
+[0m[1mmodule.worker.info.terraform_remote_state.info: Creating...[21m
+  backend:        "" => "http"
+  config.#:       "" => "1"
+  config.address: "" => "http://state.nubis.nubis-training-2016.nubis.allizom.org/aws/us-west-2/stage.tfstate"
+  output.#:       "" => "<computed>"[0m
+[0m[1mmodule.queue-worker.info.terraform_remote_state.info: Creating...[21m
+  backend:        "" => "http"
+  config.#:       "" => "1"
+  config.address: "" => "http://state.nubis.nubis-training-2016.nubis.allizom.org/aws/us-west-2/stage.tfstate"
+  output.#:       "" => "<computed>"[0m
+[0m[1mmodule.storage.info.terraform_remote_state.info: Creating...[21m
+  backend:        "" => "http"
+  config.#:       "" => "1"
+  config.address: "" => "http://state.nubis.nubis-training-2016.nubis.allizom.org/aws/us-west-2/stage.tfstate"
+  output.#:       "" => "<computed>"[0m
+[0m[1mmodule.queue-worker.template_file.user_data: Creation complete[21m[0m
+[0m[1mmodule.worker.template_file.user_data: Creation complete[21m[0m
+[0m[1mmodule.mail.aws_iam_user.email: Creation complete[21m[0m
+[0m[1mmodule.database.info.terraform_remote_state.info: Creation complete[21m[0m
+[0m[1mmodule.push-worker.template_file.user_data: Creating...[21m
+  rendered:               "" => "<computed>"
+  template:               "" => "NUBIS_ACCOUNT=\"${NUBIS_ACCOUNT}\"\nNUBIS_DOMAIN=\"${NUBIS_DOMAIN}\"\nNUBIS_ENVIRONMENT=\"${NUBIS_ENVIRONMENT}\"\nNUBIS_PROJECT=\"${NUBIS_PROJECT}\"\nNUBIS_PURPOSE=\"${NUBIS_PURPOSE}\"\nNUBIS_STACK=\"${NUBIS_STACK}\"\nNUBIS_MIGRATE=\"${NUBIS_MIGRATE}\"\nCONSUL_ACL_TOKEN=\"${CONSUL_ACL_TOKEN}\"\nNUBIS_SUDO_GROUPS=\"${NUBIS_SUDO_GROUPS}\"\nNUBIS_USER_GROUPS=\"${NUBIS_USER_GROUPS}\"\n"
+  vars.#:                 "" => "10"
+  vars.CONSUL_ACL_TOKEN:  "" => "anonymous"
+  vars.NUBIS_ACCOUNT:     "" => "nubis-training-2016"
+  vars.NUBIS_DOMAIN:      "" => "nubis.allizom.org"
+  vars.NUBIS_ENVIRONMENT: "" => "stage"
+  vars.NUBIS_MIGRATE:     "" => "1"
+  vars.NUBIS_PROJECT:     "" => "bugzilla"
+  vars.NUBIS_PURPOSE:     "" => "push-worker"
+  vars.NUBIS_STACK:       "" => "bugzilla-stage"
+  vars.NUBIS_SUDO_GROUPS: "" => "nubis_global_admins"
+  vars.NUBIS_USER_GROUPS: "" => ""[0m
+[0m[1mmodule.queue-worker.info.terraform_remote_state.info: Creation complete[21m[0m
+[0m[1mmodule.storage.info.terraform_remote_state.info: Creation complete[21m[0m
+[0m[1mmodule.worker.info.terraform_remote_state.info: Creation complete[21m[0m
+[0m[1mmodule.dns.info.terraform_remote_state.info: Creation complete[21m[0m
+[0m[1mmodule.push-worker.aws_iam_role.extra: Creating...[21m
+  arn:                "" => "<computed>"
+  assume_role_policy: "" => "{\n    \"Version\": \"2012-10-17\",\n    \"Statement\": [\n        {\n            \"Action\": \"sts:AssumeRole\",\n            \"Principal\": {\n               \"Service\": \"ec2.amazonaws.com\"\n            },\n            \"Effect\": \"Allow\",\n            \"Sid\": \"\"\n        }\n    ]\n}\n"
+  name:               "" => "bugzilla-stage-us-west-2-push-worker-role"
+  path:               "" => "/"
+  unique_id:          "" => "<computed>"[0m
+[0m[1mmodule.data.info.terraform_remote_state.info: Creating...[21m
+  backend:        "" => "http"
+  config.#:       "" => "1"
+  config.address: "" => "http://state.nubis.nubis-training-2016.nubis.allizom.org/aws/us-west-2/stage.tfstate"
+  output.#:       "" => "<computed>"[0m
+[0m[1mmodule.cache.info.terraform_remote_state.info: Creating...[21m
+  backend:        "" => "http"
+  config.#:       "" => "1"
+  config.address: "" => "http://state.nubis.nubis-training-2016.nubis.allizom.org/aws/us-west-2/stage.tfstate"
+  output.#:       "" => "<computed>"[0m
+[0m[1mmodule.mail.info.terraform_remote_state.info: Creating...[21m
+  backend:        "" => "http"
+  config.#:       "" => "1"
+  config.address: "" => "http://state.nubis.nubis-training-2016.nubis.allizom.org/aws/us-west-2/stage.tfstate"
+  output.#:       "" => "<computed>"[0m
+[0m[1mmodule.push-worker.template_file.user_data: Creation complete[21m[0m
+[0m[1mmodule.load_balancer.info.terraform_remote_state.info: Creating...[21m
+  backend:        "" => "http"
+  config.#:       "" => "1"
+  config.address: "" => "http://state.nubis.nubis-training-2016.nubis.allizom.org/aws/us-west-2/stage.tfstate"
+  output.#:       "" => "<computed>"[0m
+[0m[1mmodule.data.info.terraform_remote_state.info: Creation complete[21m[0m
+[0m[1mmodule.mail.info.terraform_remote_state.info: Creation complete[21m[0m
+[0m[1mmodule.cache.info.terraform_remote_state.info: Creation complete[21m[0m
+[0m[1mmodule.push-worker.info.terraform_remote_state.info: Creating...[21m
+  backend:        "" => "http"
+  config.#:       "" => "1"
+  config.address: "" => "http://state.nubis.nubis-training-2016.nubis.allizom.org/aws/us-west-2/stage.tfstate"
+  output.#:       "" => "<computed>"[0m
+[0m[1mmodule.attachments.info.terraform_remote_state.info: Creating...[21m
+  backend:        "" => "http"
+  config.#:       "" => "1"
+  config.address: "" => "http://state.nubis.nubis-training-2016.nubis.allizom.org/aws/us-west-2/stage.tfstate"
+  output.#:       "" => "<computed>"[0m
+[0m[1mmodule.attachments.info.terraform_remote_state.info: Creation complete[21m[0m
+[0m[1mmodule.push-worker.aws_iam_role.extra: Creation complete[21m[0m
+[0m[1mmodule.push-worker.info.terraform_remote_state.info: Creation complete[21m[0m
+[0m[1mmodule.load_balancer.info.terraform_remote_state.info: Creation complete[21m[0m
+[0m[1mmodule.database.template_file.password: Creating...[21m
+  rendered:        "" => "<computed>"
+  template:        "" => "${password32}"
+  vars.#:          "" => "1"
+  vars.password32: "" => "40096cfd34a3d4599bceded4b0026d03"[0m
+[0m[1mmodule.worker.aws_iam_role.extra: Creating...[21m
+  arn:                "" => "<computed>"
+  assume_role_policy: "" => "{\n    \"Version\": \"2012-10-17\",\n    \"Statement\": [\n        {\n            \"Action\": \"sts:AssumeRole\",\n            \"Principal\": {\n               \"Service\": \"ec2.amazonaws.com\"\n            },\n            \"Effect\": \"Allow\",\n            \"Sid\": \"\"\n        }\n    ]\n}\n"
+  name:               "" => "bugzilla-stage-us-west-2-webserver-role"
+  path:               "" => "/"
+  unique_id:          "" => "<computed>"[0m
+[0m[1mmodule.database.template_file.password: Creation complete[21m[0m
+[0m[1mmodule.data.template_file.random: Creating...[21m
+  rendered:      "" => "<computed>"
+  template:      "" => "${bucket}-${random40}"
+  vars.#:        "" => "2"
+  vars.bucket:   "" => "bugzilla-stage-data"
+  vars.random40: "" => "8cf1b35cfb45a6a2432f33724fc7eb0544289b5e"[0m
+[0m[1mmodule.storage.aws_efs_file_system.storage: Creating...[21m
+  tags.#:              "0" => "4"
+  tags.Environment:    "" => "stage"
+  tags.Name:           "" => "bugzilla-stage-storage"
+  tags.Region:         "" => "us-west-2"
+  tags.TechnicalOwner: "" => "infra-aws@mozilla.com"[0m
+[0m[1mmodule.data.template_file.random: Creation complete[21m[0m
+[0m[1mmodule.attachments.template_file.random: Creating...[21m
+  rendered:      "" => "<computed>"
+  template:      "" => "${bucket}-${random40}"
+  vars.#:        "" => "2"
+  vars.bucket:   "" => "bugzilla-stage-attachments"
+  vars.random40: "" => "8e07bfb098deaf5655829890052f1a1da0929ae1"[0m
+[0m[1mmodule.attachments.template_file.random: Creation complete[21m[0m
+[0m[1mmodule.worker.aws_iam_role.extra: Creation complete[21m[0m
+[0m[1mmodule.queue-worker.aws_iam_role.extra: Creating...[21m
+  arn:                "" => "<computed>"
+  assume_role_policy: "" => "{\n    \"Version\": \"2012-10-17\",\n    \"Statement\": [\n        {\n            \"Action\": \"sts:AssumeRole\",\n            \"Principal\": {\n               \"Service\": \"ec2.amazonaws.com\"\n            },\n            \"Effect\": \"Allow\",\n            \"Sid\": \"\"\n        }\n    ]\n}\n"
+  name:               "" => "bugzilla-stage-us-west-2-queue-worker-role"
+  path:               "" => "/"
+  unique_id:          "" => "<computed>"[0m
+[0m[1mmodule.mail.aws_iam_user_policy.email: Creating...[21m
+  name:   "" => "bugzilla-stage-ses-policy"
+  policy: "" => "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n       \"Effect\": \"Allow\",\n       \"Action\": [\"ses:SendEmail\", \"ses:SendRawEmail\"],\n       \"Resource\":\"*\"\n     }\n  ]\n}\n"
+  user:   "" => "bugzilla-stage-ses"[0m
+[0m[1mmodule.mail.aws_iam_access_key.email: Creating...[21m
+  secret:            "" => "<computed>"
+  ses_smtp_password: "" => "<computed>"
+  status:            "" => "<computed>"
+  user:              "" => "bugzilla-stage-ses"[0m
+[0m[1mmodule.load_balancer.template_file.ssl_cert_id: Creating...[21m
+  rendered: "" => "<computed>"
+  template: "" => "${ONE},${TWO}"
+  vars.#:   "" => "2"
+  vars.ONE: "" => "arn:aws:iam::517826968395:server-certificate/us-west-2.nubis-training-2016.nubis.allizom.org"
+  vars.TWO: "" => "arn:aws:iam::517826968395:server-certificate/-stage"[0m
+[0m[1mmodule.cache.aws_elasticache_subnet_group.clients: Creating...[21m
+  description:           "" => "Subnet Group for Cache bugzilla-stage"
+  name:                  "" => "bugzilla-stage-cache-subnetgroup"
+  subnet_ids.#:          "" => "3"
+  subnet_ids.2505097701: "" => "subnet-73c48a05"
+  subnet_ids.2512987730: "" => "subnet-ce4670aa"
+  subnet_ids.3195748641: "" => "subnet-fa65e8a2"[0m
+[0m[1mmodule.load_balancer.template_file.ssl_cert_id: Creation complete[21m[0m
+[0m[1mmodule.database.aws_db_subnet_group.database: Creating...[21m
+  arn:                   "" => "<computed>"
+  description:           "" => "bugzilla-stage-rds-subnet-group"
+  name:                  "" => "bugzilla-stage-rds-subnet-group"
+  subnet_ids.#:          "" => "3"
+  subnet_ids.2505097701: "" => "subnet-73c48a05"
+  subnet_ids.2512987730: "" => "subnet-ce4670aa"
+  subnet_ids.3195748641: "" => "subnet-fa65e8a2"
+  tags.#:                "" => "5"
+  tags.Backup:           "" => "true"
+  tags.Environment:      "" => "stage"
+  tags.Region:           "" => "us-west-2"
+  tags.Shutdown:         "" => "never"
+  tags.TechnicalOwner:   "" => "infra-aws@mozilla.com"[0m
+[0m[1mmodule.push-worker.aws_iam_instance_profile.extra: Creating...[21m
+  arn:             "" => "<computed>"
+  create_date:     "" => "<computed>"
+  name:            "" => "bugzilla-stage-us-west-2-push-worker-profile"
+  path:            "" => "/"
+  roles.#:         "" => "1"
+  roles.910739163: "" => "bugzilla-stage-us-west-2-push-worker-role"
+  unique_id:       "" => "<computed>"[0m
+[0m[1mmodule.worker.aws_security_group.extra: Creating...[21m
+  description:                          "" => "Managed by Terraform"
+  egress.#:                             "" => "1"
+  egress.482069346.cidr_blocks.#:       "" => "1"
+  egress.482069346.cidr_blocks.0:       "" => "0.0.0.0/0"
+  egress.482069346.from_port:           "" => "0"
+  egress.482069346.protocol:            "" => "-1"
+  egress.482069346.security_groups.#:   "" => "0"
+  egress.482069346.self:                "" => "false"
+  egress.482069346.to_port:             "" => "0"
+  ingress.#:                            "" => "2"
+  ingress.2214680975.cidr_blocks.#:     "" => "1"
+  ingress.2214680975.cidr_blocks.0:     "" => "0.0.0.0/0"
+  ingress.2214680975.from_port:         "" => "80"
+  ingress.2214680975.protocol:          "" => "tcp"
+  ingress.2214680975.security_groups.#: "" => "0"
+  ingress.2214680975.self:              "" => "false"
+  ingress.2214680975.to_port:           "" => "80"
+  ingress.2541437006.cidr_blocks.#:     "" => "1"
+  ingress.2541437006.cidr_blocks.0:     "" => "0.0.0.0/0"
+  ingress.2541437006.from_port:         "" => "22"
+  ingress.2541437006.protocol:          "" => "tcp"
+  ingress.2541437006.security_groups.#: "" => "0"
+  ingress.2541437006.self:              "" => "false"
+  ingress.2541437006.to_port:           "" => "22"
+  name:                                 "" => "<computed>"
+  owner_id:                             "" => "<computed>"
+  tags.#:                               "" => "6"
+  tags.Backup:                          "" => "true"
+  tags.Environment:                     "" => "stage"
+  tags.Name:                            "" => "bugzilla-stage-webserver"
+  tags.Region:                          "" => "us-west-2"
+  tags.Shutdown:                        "" => "never"
+  tags.TechnicalOwner:                  "" => "infra-aws@mozilla.com"
+  vpc_id:                               "" => "vpc-0f000c6b"[0m
+[0m[1mmodule.push-worker.aws_security_group.extra: Creating...[21m
+  description:                          "" => "Managed by Terraform"
+  egress.#:                             "" => "1"
+  egress.482069346.cidr_blocks.#:       "" => "1"
+  egress.482069346.cidr_blocks.0:       "" => "0.0.0.0/0"
+  egress.482069346.from_port:           "" => "0"
+  egress.482069346.protocol:            "" => "-1"
+  egress.482069346.security_groups.#:   "" => "0"
+  egress.482069346.self:                "" => "false"
+  egress.482069346.to_port:             "" => "0"
+  ingress.#:                            "" => "2"
+  ingress.2214680975.cidr_blocks.#:     "" => "1"
+  ingress.2214680975.cidr_blocks.0:     "" => "0.0.0.0/0"
+  ingress.2214680975.from_port:         "" => "80"
+  ingress.2214680975.protocol:          "" => "tcp"
+  ingress.2214680975.security_groups.#: "" => "0"
+  ingress.2214680975.self:              "" => "false"
+  ingress.2214680975.to_port:           "" => "80"
+  ingress.2541437006.cidr_blocks.#:     "" => "1"
+  ingress.2541437006.cidr_blocks.0:     "" => "0.0.0.0/0"
+  ingress.2541437006.from_port:         "" => "22"
+  ingress.2541437006.protocol:          "" => "tcp"
+  ingress.2541437006.security_groups.#: "" => "0"
+  ingress.2541437006.self:              "" => "false"
+  ingress.2541437006.to_port:           "" => "22"
+  name:                                 "" => "<computed>"
+  owner_id:                             "" => "<computed>"
+  tags.#:                               "" => "6"
+  tags.Backup:                          "" => "true"
+  tags.Environment:                     "" => "stage"
+  tags.Name:                            "" => "bugzilla-stage-push-worker"
+  tags.Region:                          "" => "us-west-2"
+  tags.Shutdown:                        "" => "never"
+  tags.TechnicalOwner:                  "" => "infra-aws@mozilla.com"
+  vpc_id:                               "" => "vpc-0f000c6b"[0m
+[0m[1mmodule.load_balancer.aws_security_group.load_balancer: Creating...[21m
+  description:                          "" => "Managed by Terraform"
+  egress.#:                             "" => "1"
+  egress.482069346.cidr_blocks.#:       "" => "1"
+  egress.482069346.cidr_blocks.0:       "" => "0.0.0.0/0"
+  egress.482069346.from_port:           "" => "0"
+  egress.482069346.protocol:            "" => "-1"
+  egress.482069346.security_groups.#:   "" => "0"
+  egress.482069346.self:                "" => "false"
+  egress.482069346.to_port:             "" => "0"
+  ingress.#:                            "" => "2"
+  ingress.2214680975.cidr_blocks.#:     "" => "1"
+  ingress.2214680975.cidr_blocks.0:     "" => "0.0.0.0/0"
+  ingress.2214680975.from_port:         "" => "80"
+  ingress.2214680975.protocol:          "" => "tcp"
+  ingress.2214680975.security_groups.#: "" => "0"
+  ingress.2214680975.self:              "" => "false"
+  ingress.2214680975.to_port:           "" => "80"
+  ingress.2617001939.cidr_blocks.#:     "" => "1"
+  ingress.2617001939.cidr_blocks.0:     "" => "0.0.0.0/0"
+  ingress.2617001939.from_port:         "" => "443"
+  ingress.2617001939.protocol:          "" => "tcp"
+  ingress.2617001939.security_groups.#: "" => "0"
+  ingress.2617001939.self:              "" => "false"
+  ingress.2617001939.to_port:           "" => "443"
+  name:                                 "" => "<computed>"
+  owner_id:                             "" => "<computed>"
+  tags.#:                               "" => "6"
+  tags.Backup:                          "" => "true"
+  tags.Environment:                     "" => "stage"
+  tags.Name:                            "" => "bugzilla-stage"
+  tags.Region:                          "" => "us-west-2"
+  tags.Shutdown:                        "" => "never"
+  tags.TechnicalOwner:                  "" => "infra-aws@mozilla.com"
+  vpc_id:                               "" => "vpc-0f000c6b"[0m
+[0m[1mmodule.mail.aws_iam_user_policy.email: Creation complete[21m[0m
+[0m[1mmodule.data.aws_s3_bucket.bucket: Creating...[21m
+  acl:                         "" => "private"
+  arn:                         "" => "<computed>"
+  bucket:                      "" => "bugzilla-stage-data-8cf1b35cfb45a6a2432f33724fc7eb0544289b5e"
+  force_destroy:               "" => "true"
+  hosted_zone_id:              "" => "<computed>"
+  region:                      "" => "<computed>"
+  tags.#:                      "" => "4"
+  tags.Environment:            "" => "stage"
+  tags.Name:                   "" => "bugzilla-stage-data"
+  tags.Region:                 "" => "us-west-2"
+  tags.TechnicalOwner:         "" => "infra-aws@mozilla.com"
+  versioning.#:                "" => "1"
+  versioning.69840937.enabled: "" => "true"
+  website_domain:              "" => "<computed>"
+  website_endpoint:            "" => "<computed>"[0m
+[0m[1mmodule.queue-worker.aws_iam_role.extra: Creation complete[21m[0m
+[0m[1mmodule.mail.aws_iam_access_key.email: Creation complete[21m[0m
+[0m[1mmodule.worker.aws_iam_instance_profile.extra: Creating...[21m
+  arn:             "" => "<computed>"
+  create_date:     "" => "<computed>"
+  name:            "" => "bugzilla-stage-us-west-2-webserver-profile"
+  path:            "" => "/"
+  roles.#:         "" => "1"
+  roles.723337679: "" => "bugzilla-stage-us-west-2-webserver-role"
+  unique_id:       "" => "<computed>"[0m
+[0m[1mmodule.attachments.aws_s3_bucket.bucket: Creating...[21m
+  acl:                         "" => "private"
+  arn:                         "" => "<computed>"
+  bucket:                      "" => "bugzilla-stage-attachments-8e07bfb098deaf5655829890052f1a1da092"
+  force_destroy:               "" => "true"
+  hosted_zone_id:              "" => "<computed>"
+  region:                      "" => "<computed>"
+  tags.#:                      "" => "4"
+  tags.Environment:            "" => "stage"
+  tags.Name:                   "" => "bugzilla-stage-attachments"
+  tags.Region:                 "" => "us-west-2"
+  tags.TechnicalOwner:         "" => "infra-aws@mozilla.com"
+  versioning.#:                "" => "1"
+  versioning.69840937.enabled: "" => "true"
+  website_domain:              "" => "<computed>"
+  website_endpoint:            "" => "<computed>"[0m
+[0m[1mmodule.push-worker.aws_iam_instance_profile.extra: Creation complete[21m[0m
+[0m[1mmodule.queue-worker.aws_security_group.extra: Creating...[21m
+  description:                          "" => "Managed by Terraform"
+  egress.#:                             "" => "1"
+  egress.482069346.cidr_blocks.#:       "" => "1"
+  egress.482069346.cidr_blocks.0:       "" => "0.0.0.0/0"
+  egress.482069346.from_port:           "" => "0"
+  egress.482069346.protocol:            "" => "-1"
+  egress.482069346.security_groups.#:   "" => "0"
+  egress.482069346.self:                "" => "false"
+  egress.482069346.to_port:             "" => "0"
+  ingress.#:                            "" => "2"
+  ingress.2214680975.cidr_blocks.#:     "" => "1"
+  ingress.2214680975.cidr_blocks.0:     "" => "0.0.0.0/0"
+  ingress.2214680975.from_port:         "" => "80"
+  ingress.2214680975.protocol:          "" => "tcp"
+  ingress.2214680975.security_groups.#: "" => "0"
+  ingress.2214680975.self:              "" => "false"
+  ingress.2214680975.to_port:           "" => "80"
+  ingress.2541437006.cidr_blocks.#:     "" => "1"
+  ingress.2541437006.cidr_blocks.0:     "" => "0.0.0.0/0"
+  ingress.2541437006.from_port:         "" => "22"
+  ingress.2541437006.protocol:          "" => "tcp"
+  ingress.2541437006.security_groups.#: "" => "0"
+  ingress.2541437006.self:              "" => "false"
+  ingress.2541437006.to_port:           "" => "22"
+  name:                                 "" => "<computed>"
+  owner_id:                             "" => "<computed>"
+  tags.#:                               "" => "6"
+  tags.Backup:                          "" => "true"
+  tags.Environment:                     "" => "stage"
+  tags.Name:                            "" => "bugzilla-stage-queue-worker"
+  tags.Region:                          "" => "us-west-2"
+  tags.Shutdown:                        "" => "never"
+  tags.TechnicalOwner:                  "" => "infra-aws@mozilla.com"
+  vpc_id:                               "" => "vpc-0f000c6b"[0m
+[0m[1mmodule.worker.aws_iam_instance_profile.extra: Creation complete[21m[0m
+[0m[1mmodule.queue-worker.aws_iam_instance_profile.extra: Creating...[21m
+  arn:              "" => "<computed>"
+  create_date:      "" => "<computed>"
+  name:             "" => "bugzilla-stage-us-west-2-queue-worker-profile"
+  path:             "" => "/"
+  roles.#:          "" => "1"
+  roles.3099592262: "" => "bugzilla-stage-us-west-2-queue-worker-role"
+  unique_id:        "" => "<computed>"[0m
+[0m[1mmodule.cache.aws_elasticache_subnet_group.clients: Creation complete[21m[0m
+[0m[1mmodule.queue-worker.aws_iam_instance_profile.extra: Creation complete[21m[0m
+[0m[1mmodule.database.aws_db_subnet_group.database: Creation complete[21m[0m
+[0m[1mmodule.push-worker.aws_security_group.extra: Creation complete[21m[0m
+[0m[1mmodule.push-worker.template_file.monitoring: Creating...[21m
+  rendered: "" => "<computed>"
+  template: "" => "${ONE},${TWO}"
+  vars.#:   "" => "2"
+  vars.ONE: "" => "sg-ed629995"
+  vars.TWO: "" => "sg-056ea67c"[0m
+[0m[1mmodule.push-worker.template_file.monitoring: Creation complete[21m[0m
+[0m[1mmodule.worker.aws_security_group.extra: Creation complete[21m[0m
+[0m[1mmodule.load_balancer.aws_security_group.load_balancer: Creation complete[21m[0m
+[0m[1mmodule.queue-worker.aws_security_group.extra: Creation complete[21m[0m
+[0m[1mmodule.worker.template_file.monitoring: Creating...[21m
+  rendered: "" => "<computed>"
+  template: "" => "${ONE},${TWO}"
+  vars.#:   "" => "2"
+  vars.ONE: "" => "sg-ef629997"
+  vars.TWO: "" => "sg-056ea67c"[0m
+[0m[1mmodule.queue-worker.template_file.monitoring: Creating...[21m
+  rendered: "" => "<computed>"
+  template: "" => "${ONE},${TWO}"
+  vars.#:   "" => "2"
+  vars.ONE: "" => "sg-e0629998"
+  vars.TWO: "" => "sg-056ea67c"[0m
+[0m[1mmodule.push-worker.aws_launch_configuration.launch_config: Creating...[21m
+  associate_public_ip_address: "" => "false"
+  ebs_block_device.#:          "" => "<computed>"
+  ebs_optimized:               "" => "<computed>"
+  enable_monitoring:           "" => "true"
+  iam_instance_profile:        "" => "bugzilla-stage-us-west-2-push-worker-profile"
+  image_id:                    "" => "ami-8a9726ea"
+  instance_type:               "" => "t2.medium"
+  key_name:                    "" => "nubis"
+  name:                        "" => "<computed>"
+  name_prefix:                 "" => "bugzilla-stage-us-west-2-push-worker-"
+  root_block_device.#:         "" => "<computed>"
+  security_groups.#:           "" => "4"
+  security_groups.1549538865:  "" => "sg-ed629995"
+  security_groups.1870019939:  "" => "sg-046ea67d"
+  security_groups.2311369213:  "" => "sg-616fa718"
+  security_groups.3705069367:  "" => "sg-e16ea698"
+  user_data:                   "" => "a6ea216b41ecc64ff11256f6c94fa155d050fd78"[0m
+[0m[1mmodule.worker.template_file.monitoring: Creation complete[21m[0m
+[0m[1mmodule.load_balancer.aws_elb.load_balancer: Creating...[21m
+  availability_zones.#:                   "" => "<computed>"
+  connection_draining:                    "" => "true"
+  connection_draining_timeout:            "" => "60"
+  cross_zone_load_balancing:              "" => "true"
+  dns_name:                               "" => "<computed>"
+  health_check.#:                         "" => "1"
+  health_check.0.healthy_threshold:       "" => "2"
+  health_check.0.interval:                "" => "30"
+  health_check.0.target:                  "" => "HTTP:80/robots.txt?no-ssl-rewrite&elb-health-check"
+  health_check.0.timeout:                 "" => "3"
+  health_check.0.unhealthy_threshold:     "" => "2"
+  idle_timeout:                           "" => "60"
+  instances.#:                            "" => "<computed>"
+  internal:                               "" => "<computed>"
+  listener.#:                             "" => "2"
+  listener.2857742984.instance_port:      "" => "80"
+  listener.2857742984.instance_protocol:  "" => "http"
+  listener.2857742984.lb_port:            "" => "443"
+  listener.2857742984.lb_protocol:        "" => "https"
+  listener.2857742984.ssl_certificate_id: "" => "arn:aws:iam::517826968395:server-certificate/us-west-2.nubis-training-2016.nubis.allizom.org"
+  listener.3057123346.instance_port:      "" => "80"
+  listener.3057123346.instance_protocol:  "" => "http"
+  listener.3057123346.lb_port:            "" => "80"
+  listener.3057123346.lb_protocol:        "" => "http"
+  listener.3057123346.ssl_certificate_id: "" => ""
+  name:                                   "" => "bugzilla-stage"
+  security_groups.#:                      "" => "3"
+  security_groups.1663192127:             "" => "sg-ee629996"
+  security_groups.1870019939:             "" => "sg-046ea67d"
+  security_groups.2311369213:             "" => "sg-616fa718"
+  source_security_group:                  "" => "<computed>"
+  source_security_group_id:               "" => "<computed>"
+  subnets.#:                              "" => "3"
+  subnets.3266681124:                     "" => "subnet-d565e88d"
+  subnets.4102575175:                     "" => "subnet-fb46709f"
+  subnets.4228865094:                     "" => "subnet-81c789f7"
+  tags.#:                                 "" => "6"
+  tags.Backup:                            "" => "true"
+  tags.Environment:                       "" => "stage"
+  tags.Name:                              "" => "bugzilla-stage"
+  tags.Region:                            "" => "us-west-2"
+  tags.Shutdown:                          "" => "never"
+  tags.TechnicalOwner:                    "" => "infra-aws@mozilla.com"
+  zone_id:                                "" => "<computed>"[0m
+[0m[1mmodule.cache.aws_security_group.clients: Creating...[21m
+  description:                                "" => "Managed by Terraform"
+  egress.#:                                   "" => "1"
+  egress.482069346.cidr_blocks.#:             "" => "1"
+  egress.482069346.cidr_blocks.0:             "" => "0.0.0.0/0"
+  egress.482069346.from_port:                 "" => "0"
+  egress.482069346.protocol:                  "" => "-1"
+  egress.482069346.security_groups.#:         "" => "0"
+  egress.482069346.self:                      "" => "false"
+  egress.482069346.to_port:                   "" => "0"
+  ingress.#:                                  "" => "1"
+  ingress.96725060.cidr_blocks.#:             "" => "0"
+  ingress.96725060.from_port:                 "" => "11211"
+  ingress.96725060.protocol:                  "" => "tcp"
+  ingress.96725060.security_groups.#:         "" => "1"
+  ingress.96725060.security_groups.634218036: "" => "sg-ef629997"
+  ingress.96725060.self:                      "" => "false"
+  ingress.96725060.to_port:                   "" => "11211"
+  name:                                       "" => "<computed>"
+  owner_id:                                   "" => "<computed>"
+  tags.#:                                     "" => "4"
+  tags.Environment:                           "" => "stage"
+  tags.Name:                                  "" => "bugzilla-stage-elasticache"
+  tags.Region:                                "" => "us-west-2"
+  tags.TechnicalOwner:                        "" => "infra-aws@mozilla.com"
+  vpc_id:                                     "" => "vpc-0f000c6b"[0m
+[0m[1mmodule.storage.aws_security_group.storage: Creating...[21m
+  description:                                  "" => "Managed by Terraform"
+  egress.#:                                     "" => "1"
+  egress.482069346.cidr_blocks.#:               "" => "1"
+  egress.482069346.cidr_blocks.0:               "" => "0.0.0.0/0"
+  egress.482069346.from_port:                   "" => "0"
+  egress.482069346.protocol:                    "" => "-1"
+  egress.482069346.security_groups.#:           "" => "0"
+  egress.482069346.self:                        "" => "false"
+  egress.482069346.to_port:                     "" => "0"
+  ingress.#:                                    "" => "1"
+  ingress.3093175794.cidr_blocks.#:             "" => "0"
+  ingress.3093175794.from_port:                 "" => "2049"
+  ingress.3093175794.protocol:                  "" => "tcp"
+  ingress.3093175794.security_groups.#:         "" => "1"
+  ingress.3093175794.security_groups.634218036: "" => "sg-ef629997"
+  ingress.3093175794.self:                      "" => "false"
+  ingress.3093175794.to_port:                   "" => "2049"
+  name:                                         "" => "<computed>"
+  owner_id:                                     "" => "<computed>"
+  tags.#:                                       "" => "4"
+  tags.Environment:                             "" => "stage"
+  tags.Name:                                    "" => "bugzilla-stage-efs"
+  tags.Region:                                  "" => "us-west-2"
+  tags.TechnicalOwner:                          "" => "infra-aws@mozilla.com"
+  vpc_id:                                       "" => "vpc-0f000c6b"[0m
+[0m[1mmodule.queue-worker.template_file.monitoring: Creation complete[21m[0m
+[0m[1mmodule.database.aws_security_group.database: Creating...[21m
+  description:                                  "" => "Managed by Terraform"
+  egress.#:                                     "" => "1"
+  egress.482069346.cidr_blocks.#:               "" => "1"
+  egress.482069346.cidr_blocks.0:               "" => "0.0.0.0/0"
+  egress.482069346.from_port:                   "" => "0"
+  egress.482069346.protocol:                    "" => "-1"
+  egress.482069346.security_groups.#:           "" => "0"
+  egress.482069346.self:                        "" => "false"
+  egress.482069346.to_port:                     "" => "0"
+  ingress.#:                                    "" => "1"
+  ingress.1944508063.cidr_blocks.#:             "" => "0"
+  ingress.1944508063.from_port:                 "" => "3306"
+  ingress.1944508063.protocol:                  "" => "tcp"
+  ingress.1944508063.security_groups.#:         "" => "1"
+  ingress.1944508063.security_groups.634218036: "" => "sg-ef629997"
+  ingress.1944508063.self:                      "" => "false"
+  ingress.1944508063.to_port:                   "" => "3306"
+  name:                                         "" => "<computed>"
+  owner_id:                                     "" => "<computed>"
+  tags.#:                                       "" => "6"
+  tags.Backup:                                  "" => "true"
+  tags.Environment:                             "" => "stage"
+  tags.Name:                                    "" => "bugzilla-stage-rds"
+  tags.Region:                                  "" => "us-west-2"
+  tags.Shutdown:                                "" => "never"
+  tags.TechnicalOwner:                          "" => "infra-aws@mozilla.com"
+  vpc_id:                                       "" => "vpc-0f000c6b"[0m
+[0m[1mmodule.queue-worker.aws_launch_configuration.launch_config: Creating...[21m
+  associate_public_ip_address: "" => "false"
+  ebs_block_device.#:          "" => "<computed>"
+  ebs_optimized:               "" => "<computed>"
+  enable_monitoring:           "" => "true"
+  iam_instance_profile:        "" => "bugzilla-stage-us-west-2-queue-worker-profile"
+  image_id:                    "" => "ami-8a9726ea"
+  instance_type:               "" => "t2.medium"
+  key_name:                    "" => "nubis"
+  name:                        "" => "<computed>"
+  name_prefix:                 "" => "bugzilla-stage-us-west-2-queue-worker-"
+  root_block_device.#:         "" => "<computed>"
+  security_groups.#:           "" => "4"
+  security_groups.1870019939:  "" => "sg-046ea67d"
+  security_groups.2311369213:  "" => "sg-616fa718"
+  security_groups.3705069367:  "" => "sg-e16ea698"
+  security_groups.4118259496:  "" => "sg-e0629998"
+  user_data:                   "" => "cb814b14588001a94767169b3b379cbd01ef4e1c"[0m
+[0m[1mmodule.worker.aws_launch_configuration.launch_config: Creating...[21m
+  associate_public_ip_address: "" => "false"
+  ebs_block_device.#:          "" => "<computed>"
+  ebs_optimized:               "" => "<computed>"
+  enable_monitoring:           "" => "true"
+  iam_instance_profile:        "" => "bugzilla-stage-us-west-2-webserver-profile"
+  image_id:                    "" => "ami-8a9726ea"
+  instance_type:               "" => "t2.medium"
+  key_name:                    "" => "nubis"
+  name:                        "" => "<computed>"
+  name_prefix:                 "" => "bugzilla-stage-us-west-2-webserver-"
+  root_block_device.#:         "" => "<computed>"
+  security_groups.#:           "" => "4"
+  security_groups.1870019939:  "" => "sg-046ea67d"
+  security_groups.2311369213:  "" => "sg-616fa718"
+  security_groups.3705069367:  "" => "sg-e16ea698"
+  security_groups.634218036:   "" => "sg-ef629997"
+  user_data:                   "" => "75938d5a71536e072beb0c7d63f2194620fcd785"[0m
+[0m[1mmodule.storage.aws_efs_file_system.storage: Creation complete[21m[0m
+[0m[1mmodule.data.aws_s3_bucket.bucket: Creation complete[21m[0m
+[0m[1mmodule.attachments.aws_s3_bucket.bucket: Creation complete[21m[0m
+[0m[1mmodule.storage.aws_security_group.storage: Creation complete[21m[0m
+[0m[1mmodule.database.aws_security_group.database: Creation complete[21m[0m
+[0m[1mmodule.push-worker.aws_launch_configuration.launch_config: Creation complete[21m[0m
+[0m[1mmodule.worker.aws_launch_configuration.launch_config: Creation complete[21m[0m
+[0m[1mmodule.data.aws_iam_role_policy.bucket: Creating...[21m
+  name:   "" => "bugzilla-stage-data-bucket-policy"
+  policy: "" => "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n  {\n  \"Effect\": \"Allow\",\n  \"Action\": \"s3:ListAllMyBuckets\",\n  \"Resource\": \"arn:aws:s3:::*\"\n   },\n   {\n   \"Effect\": \"Allow\",\n    \"Action\": [\n    \"s3:ListBucket\"\n        ],\n    \"Resource\": \"arn:aws:s3:::bugzilla-stage-data-8cf1b35cfb45a6a2432f33724fc7eb0544289b5e\"\n    },\n            {\n              \"Effect\": \"Allow\",\n              \"Action\": [\n                \"s3:PutObject\",\n                \"s3:GetObject\",\n                \"s3:DeleteObject\"\n              ],\n              \"Resource\": \"arn:aws:s3:::bugzilla-stage-data-8cf1b35cfb45a6a2432f33724fc7eb0544289b5e/*\"\n             }\n\n  ]\n}\n"
+  role:   "" => "bugzilla-stage-us-west-2-webserver-role"[0m
+[0m[1mmodule.cache.aws_security_group.clients: Creation complete[21m[0m
+[0m[1mmodule.storage.consul_keys.config: Creating...[21m
+  datacenter:             "" => "<computed>"
+  key.#:                  "" => "1"
+  key.3665509942.default: "" => ""
+  key.3665509942.delete:  "" => "true"
+  key.3665509942.name:    "" => "fsid"
+  key.3665509942.path:    "" => "bugzilla-stage/stage/config/storage/bugzilla/fsid"
+  key.3665509942.value:   "" => "fs-6eef2cc7"
+  var.#:                  "" => "<computed>"[0m
+[0m[1mmodule.attachments.aws_iam_role_policy.bucket: Creating...[21m
+  name:   "" => "bugzilla-stage-attachments-bucket-policy"
+  policy: "" => "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n  {\n  \"Effect\": \"Allow\",\n  \"Action\": \"s3:ListAllMyBuckets\",\n  \"Resource\": \"arn:aws:s3:::*\"\n   },\n   {\n   \"Effect\": \"Allow\",\n    \"Action\": [\n    \"s3:ListBucket\"\n        ],\n    \"Resource\": \"arn:aws:s3:::bugzilla-stage-attachments-8e07bfb098deaf5655829890052f1a1da092\"\n    },\n            {\n              \"Effect\": \"Allow\",\n              \"Action\": [\n                \"s3:PutObject\",\n                \"s3:GetObject\",\n                \"s3:DeleteObject\"\n              ],\n              \"Resource\": \"arn:aws:s3:::bugzilla-stage-attachments-8e07bfb098deaf5655829890052f1a1da092/*\"\n             }\n\n  ]\n}\n"
+  role:   "" => "bugzilla-stage-us-west-2-webserver-role"[0m
+[0m[1mmodule.storage.aws_efs_mount_target.storage.1: Creating...[21m
+  file_system_id:            "" => "fs-6eef2cc7"
+  ip_address:                "" => "<computed>"
+  network_interface_id:      "" => "<computed>"
+  security_groups.#:         "" => "1"
+  security_groups.784890871: "" => "sg-da6299a2"
+  subnet_id:                 "" => "subnet-73c48a05"[0m
+[0m[1mmodule.storage.aws_efs_mount_target.storage.2: Creating...[21m
+  file_system_id:            "" => "fs-6eef2cc7"
+  ip_address:                "" => "<computed>"
+  network_interface_id:      "" => "<computed>"
+  security_groups.#:         "" => "1"
+  security_groups.784890871: "" => "sg-da6299a2"
+  subnet_id:                 "" => "subnet-fa65e8a2"[0m
+[0m[1mmodule.storage.aws_efs_mount_target.storage.0: Creating...[21m
+  file_system_id:            "" => "fs-6eef2cc7"
+  ip_address:                "" => "<computed>"
+  network_interface_id:      "" => "<computed>"
+  security_groups.#:         "" => "1"
+  security_groups.784890871: "" => "sg-da6299a2"
+  subnet_id:                 "" => "subnet-ce4670aa"[0m
+[0m[1mmodule.cache.aws_elasticache_cluster.cache: Creating...[21m
+  apply_immediately:             "" => "true"
+  availability_zone:             "" => "<computed>"
+  az_mode:                       "" => "<computed>"
+  cache_nodes.#:                 "" => "<computed>"
+  cluster_id:                    "" => "bugzilla-stage"
+  configuration_endpoint:        "" => "<computed>"
+  engine:                        "" => "memcached"
+  engine_version:                "" => "<computed>"
+  maintenance_window:            "" => "<computed>"
+  node_type:                     "" => "cache.t2.micro"
+  num_cache_nodes:               "" => "1"
+  parameter_group_name:          "" => "<computed>"
+  port:                          "" => "11211"
+  security_group_ids.#:          "" => "1"
+  security_group_ids.1988867775: "" => "sg-d86299a0"
+  security_group_names.#:        "" => "<computed>"
+  snapshot_window:               "" => "<computed>"
+  subnet_group_name:             "" => "bugzilla-stage-cache-subnetgroup"
+  tags.#:                        "" => "4"
+  tags.Environment:              "" => "stage"
+  tags.Name:                     "" => "bugzilla-stage"
+  tags.Region:                   "" => "us-west-2"
+  tags.TechnicalOwner:           "" => "infra-aws@mozilla.com"[0m
+[0m[1mmodule.database.aws_db_instance.database: Creating...[21m
+  address:                           "" => "<computed>"
+  allocated_storage:                 "" => "64"
+  apply_immediately:                 "" => "true"
+  arn:                               "" => "<computed>"
+  auto_minor_version_upgrade:        "" => "true"
+  availability_zone:                 "" => "<computed>"
+  backup_retention_period:           "" => "7"
+  backup_window:                     "" => "<computed>"
+  copy_tags_to_snapshot:             "" => "false"
+  db_subnet_group_name:              "" => "bugzilla-stage-rds-subnet-group"
+  endpoint:                          "" => "<computed>"
+  engine:                            "" => "mysql"
+  engine_version:                    "" => "<computed>"
+  identifier:                        "" => "bugzilla-stage"
+  instance_class:                    "" => "db.t1.micro"
+  license_model:                     "" => "<computed>"
+  maintenance_window:                "" => "<computed>"
+  monitoring_interval:               "" => "0"
+  monitoring_role_arn:               "" => "<computed>"
+  multi_az:                          "" => "true"
+  name:                              "" => "bugzilla"
+  option_group_name:                 "" => "<computed>"
+  parameter_group_name:              "" => "<computed>"
+  password:                          "" => "40096cfd34a3d4599bceded4b0026d03"
+  port:                              "" => "<computed>"
+  publicly_accessible:               "" => "<computed>"
+  replicas.#:                        "" => "<computed>"
+  skip_final_snapshot:               "" => "true"
+  status:                            "" => "<computed>"
+  storage_type:                      "" => "gp2"
+  tags.#:                            "" => "3"
+  tags.Environment:                  "" => "stage"
+  tags.Region:                       "" => "us-west-2"
+  tags.TechnicalOwner:               "" => "infra-aws@mozilla.com"
+  username:                          "" => "admin"
+  vpc_security_group_ids.#:          "" => "1"
+  vpc_security_group_ids.2818280861: "" => "sg-d96299a1"[0m
+[0m[1mmodule.data.aws_iam_role_policy.bucket: Creation complete[21m[0m
+[0m[1mmodule.attachments.aws_iam_role_policy.bucket: Creation complete[21m[0m
+[0m[1mmodule.queue-worker.aws_launch_configuration.launch_config: Creation complete[21m[0m
+[0m[1mmodule.load_balancer.aws_elb.load_balancer: Creation complete[21m[0m
+[0m[1mmodule.dns.aws_route53_record.primary: Creating...[21m
+  fqdn:               "" => "<computed>"
+  name:               "" => "www.bugzilla-stage.stage"
+  records.#:          "" => "1"
+  records.3330423072: "" => "bugzilla-stage-90559475.us-west-2.elb.amazonaws.com"
+  ttl:                "" => "300"
+  type:               "" => "CNAME"
+  weight:             "" => "-1"
+  zone_id:            "" => "Z16HS7KT3VS0NB"[0m
+[0m[1mmodule.push-worker.aws_autoscaling_group.asg: Creating...[21m
+  availability_zones.#:               "" => "<computed>"
+  default_cooldown:                   "" => "<computed>"
+  desired_capacity:                   "" => "<computed>"
+  enabled_metrics.#:                  "" => "8"
+  enabled_metrics.119681000:          "" => "GroupStandbyInstances"
+  enabled_metrics.1940933563:         "" => "GroupTotalInstances"
+  enabled_metrics.308948767:          "" => "GroupPendingInstances"
+  enabled_metrics.3267518000:         "" => "GroupTerminatingInstances"
+  enabled_metrics.3394537085:         "" => "GroupDesiredCapacity"
+  enabled_metrics.3551801763:         "" => "GroupInServiceInstances"
+  enabled_metrics.4118539418:         "" => "GroupMinSize"
+  enabled_metrics.4136111317:         "" => "GroupMaxSize"
+  force_delete:                       "" => "false"
+  health_check_grace_period:          "" => "300"
+  health_check_type:                  "" => "ELB"
+  launch_configuration:               "" => "bugzilla-stage-us-west-2-push-worker-ce2rcbryyzgrdathsa23urok74"
+  load_balancers.#:                   "" => "1"
+  load_balancers.3654856471:          "" => "bugzilla-stage"
+  max_size:                           "" => "5"
+  metrics_granularity:                "" => "1Minute"
+  min_size:                           "" => "1"
+  name:                               "" => "bugzilla-stage-us-west-2-asg (push-worker) (LC bugzilla-stage-us-west-2-push-worker-ce2rcbryyzgrdathsa23urok74)"
+  tag.#:                              "" => "7"
+  tag.1251645102.key:                 "" => "ServiceName"
+  tag.1251645102.propagate_at_launch: "" => "true"
+  tag.1251645102.value:               "" => "bugzilla"
+  tag.129950345.key:                  "" => "Shutdown"
+  tag.129950345.propagate_at_launch:  "" => "true"
+  tag.129950345.value:                "" => "never"
+  tag.1866895668.key:                 "" => "TechnicalOwner"
+  tag.1866895668.propagate_at_launch: "" => "true"
+  tag.1866895668.value:               "" => "infra-aws@mozilla.com"
+  tag.279281898.key:                  "" => "Environment"
+  tag.279281898.propagate_at_launch:  "" => "true"
+  tag.279281898.value:                "" => "stage"
+  tag.3966987438.key:                 "" => "Backup"
+  tag.3966987438.propagate_at_launch: "" => "true"
+  tag.3966987438.value:               "" => "true"
+  tag.4019137662.key:                 "" => "Name"
+  tag.4019137662.propagate_at_launch: "" => "true"
+  tag.4019137662.value:               "" => "bugzilla (push-worker) (v1.3.0) for nubis-training-2016 in stage"
+  tag.4279558224.key:                 "" => "Region"
+  tag.4279558224.propagate_at_launch: "" => "true"
+  tag.4279558224.value:               "" => "us-west-2"
+  vpc_zone_identifier.#:              "" => "3"
+  vpc_zone_identifier.2505097701:     "" => "subnet-73c48a05"
+  vpc_zone_identifier.2512987730:     "" => "subnet-ce4670aa"
+  vpc_zone_identifier.3195748641:     "" => "subnet-fa65e8a2"
+  wait_for_capacity_timeout:          "" => "10m"
+  wait_for_elb_capacity:              "" => "1"[0m
+[0m[1mmodule.queue-worker.aws_autoscaling_group.asg: Creating...[21m
+  availability_zones.#:               "" => "<computed>"
+  default_cooldown:                   "" => "<computed>"
+  desired_capacity:                   "" => "<computed>"
+  enabled_metrics.#:                  "" => "8"
+  enabled_metrics.119681000:          "" => "GroupStandbyInstances"
+  enabled_metrics.1940933563:         "" => "GroupTotalInstances"
+  enabled_metrics.308948767:          "" => "GroupPendingInstances"
+  enabled_metrics.3267518000:         "" => "GroupTerminatingInstances"
+  enabled_metrics.3394537085:         "" => "GroupDesiredCapacity"
+  enabled_metrics.3551801763:         "" => "GroupInServiceInstances"
+  enabled_metrics.4118539418:         "" => "GroupMinSize"
+  enabled_metrics.4136111317:         "" => "GroupMaxSize"
+  force_delete:                       "" => "false"
+  health_check_grace_period:          "" => "300"
+  health_check_type:                  "" => "ELB"
+  launch_configuration:               "" => "bugzilla-stage-us-west-2-queue-worker-jtvirdhp3jbjrb2vvzptjxfzcq"
+  load_balancers.#:                   "" => "1"
+  load_balancers.3654856471:          "" => "bugzilla-stage"
+  max_size:                           "" => "5"
+  metrics_granularity:                "" => "1Minute"
+  min_size:                           "" => "1"
+  name:                               "" => "bugzilla-stage-us-west-2-asg (queue-worker) (LC bugzilla-stage-us-west-2-queue-worker-jtvirdhp3jbjrb2vvzptjxfzcq)"
+  tag.#:                              "" => "7"
+  tag.1251645102.key:                 "" => "ServiceName"
+  tag.1251645102.propagate_at_launch: "" => "true"
+  tag.1251645102.value:               "" => "bugzilla"
+  tag.129950345.key:                  "" => "Shutdown"
+  tag.129950345.propagate_at_launch:  "" => "true"
+  tag.129950345.value:                "" => "never"
+  tag.1866895668.key:                 "" => "TechnicalOwner"
+  tag.1866895668.propagate_at_launch: "" => "true"
+  tag.1866895668.value:               "" => "infra-aws@mozilla.com"
+  tag.207996208.key:                  "" => "Name"
+  tag.207996208.propagate_at_launch:  "" => "true"
+  tag.207996208.value:                "" => "bugzilla (queue-worker) (v1.3.0) for nubis-training-2016 in stage"
+  tag.279281898.key:                  "" => "Environment"
+  tag.279281898.propagate_at_launch:  "" => "true"
+  tag.279281898.value:                "" => "stage"
+  tag.3966987438.key:                 "" => "Backup"
+  tag.3966987438.propagate_at_launch: "" => "true"
+  tag.3966987438.value:               "" => "true"
+  tag.4279558224.key:                 "" => "Region"
+  tag.4279558224.propagate_at_launch: "" => "true"
+  tag.4279558224.value:               "" => "us-west-2"
+  vpc_zone_identifier.#:              "" => "3"
+  vpc_zone_identifier.2505097701:     "" => "subnet-73c48a05"
+  vpc_zone_identifier.2512987730:     "" => "subnet-ce4670aa"
+  vpc_zone_identifier.3195748641:     "" => "subnet-fa65e8a2"
+  wait_for_capacity_timeout:          "" => "10m"
+  wait_for_elb_capacity:              "" => "1"[0m
+[0m[1mmodule.worker.aws_autoscaling_group.asg: Creating...[21m
+  availability_zones.#:               "" => "<computed>"
+  default_cooldown:                   "" => "<computed>"
+  desired_capacity:                   "" => "<computed>"
+  enabled_metrics.#:                  "" => "8"
+  enabled_metrics.119681000:          "" => "GroupStandbyInstances"
+  enabled_metrics.1940933563:         "" => "GroupTotalInstances"
+  enabled_metrics.308948767:          "" => "GroupPendingInstances"
+  enabled_metrics.3267518000:         "" => "GroupTerminatingInstances"
+  enabled_metrics.3394537085:         "" => "GroupDesiredCapacity"
+  enabled_metrics.3551801763:         "" => "GroupInServiceInstances"
+  enabled_metrics.4118539418:         "" => "GroupMinSize"
+  enabled_metrics.4136111317:         "" => "GroupMaxSize"
+  force_delete:                       "" => "false"
+  health_check_grace_period:          "" => "300"
+  health_check_type:                  "" => "ELB"
+  launch_configuration:               "" => "bugzilla-stage-us-west-2-webserver-p65vggout5b6fas4qxeldfzxqm"
+  load_balancers.#:                   "" => "1"
+  load_balancers.3654856471:          "" => "bugzilla-stage"
+  max_size:                           "" => "5"
+  metrics_granularity:                "" => "1Minute"
+  min_size:                           "" => "1"
+  name:                               "" => "bugzilla-stage-us-west-2-asg (webserver) (LC bugzilla-stage-us-west-2-webserver-p65vggout5b6fas4qxeldfzxqm)"
+  tag.#:                              "" => "7"
+  tag.1251645102.key:                 "" => "ServiceName"
+  tag.1251645102.propagate_at_launch: "" => "true"
+  tag.1251645102.value:               "" => "bugzilla"
+  tag.129950345.key:                  "" => "Shutdown"
+  tag.129950345.propagate_at_launch:  "" => "true"
+  tag.129950345.value:                "" => "never"
+  tag.1866895668.key:                 "" => "TechnicalOwner"
+  tag.1866895668.propagate_at_launch: "" => "true"
+  tag.1866895668.value:               "" => "infra-aws@mozilla.com"
+  tag.279281898.key:                  "" => "Environment"
+  tag.279281898.propagate_at_launch:  "" => "true"
+  tag.279281898.value:                "" => "stage"
+  tag.3966987438.key:                 "" => "Backup"
+  tag.3966987438.propagate_at_launch: "" => "true"
+  tag.3966987438.value:               "" => "true"
+  tag.4279558224.key:                 "" => "Region"
+  tag.4279558224.propagate_at_launch: "" => "true"
+  tag.4279558224.value:               "" => "us-west-2"
+  tag.718085163.key:                  "" => "Name"
+  tag.718085163.propagate_at_launch:  "" => "true"
+  tag.718085163.value:                "" => "bugzilla (webserver) (v1.3.0) for nubis-training-2016 in stage"
+  vpc_zone_identifier.#:              "" => "3"
+  vpc_zone_identifier.2505097701:     "" => "subnet-73c48a05"
+  vpc_zone_identifier.2512987730:     "" => "subnet-ce4670aa"
+  vpc_zone_identifier.3195748641:     "" => "subnet-fa65e8a2"
+  wait_for_capacity_timeout:          "" => "10m"
+  wait_for_elb_capacity:              "" => "1"[0m
+[0m[1mmodule.storage.consul_keys.config: Still creating... (10s elapsed)[21m[0m
+[0m[1mmodule.storage.aws_efs_mount_target.storage.1: Still creating... (10s elapsed)[21m[0m
+[0m[1mmodule.storage.aws_efs_mount_target.storage.2: Still creating... (10s elapsed)[21m[0m
+[0m[1mmodule.storage.aws_efs_mount_target.storage.0: Still creating... (10s elapsed)[21m[0m
+[0m[1mmodule.cache.aws_elasticache_cluster.cache: Still creating... (10s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Still creating... (10s elapsed)[21m[0m
+[0m[1mmodule.dns.aws_route53_record.primary: Still creating... (10s elapsed)[21m[0m
+[0m[1mmodule.push-worker.aws_autoscaling_group.asg: Still creating... (10s elapsed)[21m[0m
+[0m[1mmodule.queue-worker.aws_autoscaling_group.asg: Still creating... (10s elapsed)[21m[0m
+[0m[1mmodule.worker.aws_autoscaling_group.asg: Still creating... (10s elapsed)[21m[0m
+[0m[1mmodule.storage.consul_keys.config: Still creating... (20s elapsed)[21m[0m
+[0m[1mmodule.storage.aws_efs_mount_target.storage.1: Still creating... (20s elapsed)[21m[0m
+[0m[1mmodule.storage.aws_efs_mount_target.storage.2: Still creating... (20s elapsed)[21m[0m
+[0m[1mmodule.storage.aws_efs_mount_target.storage.0: Still creating... (20s elapsed)[21m[0m
+[0m[1mmodule.cache.aws_elasticache_cluster.cache: Still creating... (20s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Still creating... (20s elapsed)[21m[0m
+[0m[1mmodule.dns.aws_route53_record.primary: Still creating... (20s elapsed)[21m[0m
+[0m[1mmodule.push-worker.aws_autoscaling_group.asg: Still creating... (20s elapsed)[21m[0m
+[0m[1mmodule.queue-worker.aws_autoscaling_group.asg: Still creating... (20s elapsed)[21m[0m
+[0m[1mmodule.worker.aws_autoscaling_group.asg: Still creating... (20s elapsed)[21m[0m
+[0m[1mmodule.storage.consul_keys.config: Still creating... (30s elapsed)[21m[0m
+[0m[1mmodule.storage.aws_efs_mount_target.storage.1: Still creating... (30s elapsed)[21m[0m
+[0m[1mmodule.storage.aws_efs_mount_target.storage.2: Still creating... (30s elapsed)[21m[0m
+[0m[1mmodule.storage.aws_efs_mount_target.storage.0: Still creating... (30s elapsed)[21m[0m
+[0m[1mmodule.cache.aws_elasticache_cluster.cache: Still creating... (30s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Still creating... (30s elapsed)[21m[0m
+[0m[1mmodule.dns.aws_route53_record.primary: Still creating... (30s elapsed)[21m[0m
+[0m[1mmodule.push-worker.aws_autoscaling_group.asg: Still creating... (30s elapsed)[21m[0m
+[0m[1mmodule.queue-worker.aws_autoscaling_group.asg: Still creating... (30s elapsed)[21m[0m
+[0m[1mmodule.worker.aws_autoscaling_group.asg: Still creating... (30s elapsed)[21m[0m
+[0m[1mmodule.storage.aws_efs_mount_target.storage.1: Still creating... (40s elapsed)[21m[0m
+[0m[1mmodule.storage.aws_efs_mount_target.storage.2: Still creating... (40s elapsed)[21m[0m
+[0m[1mmodule.storage.aws_efs_mount_target.storage.0: Still creating... (40s elapsed)[21m[0m
+[0m[1mmodule.cache.aws_elasticache_cluster.cache: Still creating... (40s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Still creating... (40s elapsed)[21m[0m
+[0m[1mmodule.dns.aws_route53_record.primary: Creation complete[21m[0m
+[0m[1mmodule.push-worker.aws_autoscaling_group.asg: Still creating... (40s elapsed)[21m[0m
+[0m[1mmodule.queue-worker.aws_autoscaling_group.asg: Still creating... (40s elapsed)[21m[0m
+[0m[1mmodule.worker.aws_autoscaling_group.asg: Still creating... (40s elapsed)[21m[0m
+[0m[1mmodule.storage.aws_efs_mount_target.storage.1: Still creating... (50s elapsed)[21m[0m
+[0m[1mmodule.storage.aws_efs_mount_target.storage.2: Still creating... (50s elapsed)[21m[0m
+[0m[1mmodule.storage.aws_efs_mount_target.storage.0: Still creating... (50s elapsed)[21m[0m
+[0m[1mmodule.cache.aws_elasticache_cluster.cache: Still creating... (50s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Still creating... (50s elapsed)[21m[0m
+[0m[1mmodule.push-worker.aws_autoscaling_group.asg: Still creating... (50s elapsed)[21m[0m
+[0m[1mmodule.queue-worker.aws_autoscaling_group.asg: Still creating... (50s elapsed)[21m[0m
+[0m[1mmodule.worker.aws_autoscaling_group.asg: Still creating... (50s elapsed)[21m[0m
+[0m[1mmodule.storage.aws_efs_mount_target.storage.1: Still creating... (1m0s elapsed)[21m[0m
+[0m[1mmodule.storage.aws_efs_mount_target.storage.2: Still creating... (1m0s elapsed)[21m[0m
+[0m[1mmodule.storage.aws_efs_mount_target.storage.0: Still creating... (1m0s elapsed)[21m[0m
+[0m[1mmodule.cache.aws_elasticache_cluster.cache: Still creating... (1m0s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Still creating... (1m0s elapsed)[21m[0m
+[0m[1mmodule.push-worker.aws_autoscaling_group.asg: Still creating... (1m0s elapsed)[21m[0m
+[0m[1mmodule.queue-worker.aws_autoscaling_group.asg: Still creating... (1m0s elapsed)[21m[0m
+[0m[1mmodule.worker.aws_autoscaling_group.asg: Still creating... (1m0s elapsed)[21m[0m
+[0m[1mmodule.storage.aws_efs_mount_target.storage.1: Still creating... (1m10s elapsed)[21m[0m
+[0m[1mmodule.storage.aws_efs_mount_target.storage.2: Still creating... (1m10s elapsed)[21m[0m
+[0m[1mmodule.storage.aws_efs_mount_target.storage.0: Still creating... (1m10s elapsed)[21m[0m
+[0m[1mmodule.cache.aws_elasticache_cluster.cache: Still creating... (1m10s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Still creating... (1m10s elapsed)[21m[0m
+[0m[1mmodule.push-worker.aws_autoscaling_group.asg: Still creating... (1m10s elapsed)[21m[0m
+[0m[1mmodule.queue-worker.aws_autoscaling_group.asg: Still creating... (1m10s elapsed)[21m[0m
+[0m[1mmodule.worker.aws_autoscaling_group.asg: Still creating... (1m10s elapsed)[21m[0m
+[0m[1mmodule.storage.aws_efs_mount_target.storage.1: Still creating... (1m20s elapsed)[21m[0m
+[0m[1mmodule.storage.aws_efs_mount_target.storage.2: Still creating... (1m20s elapsed)[21m[0m
+[0m[1mmodule.storage.aws_efs_mount_target.storage.0: Still creating... (1m20s elapsed)[21m[0m
+[0m[1mmodule.cache.aws_elasticache_cluster.cache: Still creating... (1m20s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Still creating... (1m20s elapsed)[21m[0m
+[0m[1mmodule.push-worker.aws_autoscaling_group.asg: Still creating... (1m20s elapsed)[21m[0m
+[0m[1mmodule.queue-worker.aws_autoscaling_group.asg: Still creating... (1m20s elapsed)[21m[0m
+[0m[1mmodule.worker.aws_autoscaling_group.asg: Still creating... (1m20s elapsed)[21m[0m
+[0m[1mmodule.storage.aws_efs_mount_target.storage.1: Still creating... (1m30s elapsed)[21m[0m
+[0m[1mmodule.storage.aws_efs_mount_target.storage.2: Still creating... (1m30s elapsed)[21m[0m
+[0m[1mmodule.storage.aws_efs_mount_target.storage.0: Still creating... (1m30s elapsed)[21m[0m
+[0m[1mmodule.cache.aws_elasticache_cluster.cache: Still creating... (1m30s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Still creating... (1m30s elapsed)[21m[0m
+[0m[1mmodule.push-worker.aws_autoscaling_group.asg: Still creating... (1m30s elapsed)[21m[0m
+[0m[1mmodule.queue-worker.aws_autoscaling_group.asg: Still creating... (1m30s elapsed)[21m[0m
+[0m[1mmodule.worker.aws_autoscaling_group.asg: Still creating... (1m30s elapsed)[21m[0m
+[0m[1mmodule.storage.aws_efs_mount_target.storage.1: Still creating... (1m40s elapsed)[21m[0m
+[0m[1mmodule.storage.aws_efs_mount_target.storage.2: Still creating... (1m40s elapsed)[21m[0m
+[0m[1mmodule.storage.aws_efs_mount_target.storage.0: Still creating... (1m40s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Still creating... (1m40s elapsed)[21m[0m
+[0m[1mmodule.cache.aws_elasticache_cluster.cache: Still creating... (1m40s elapsed)[21m[0m
+[0m[1mmodule.push-worker.aws_autoscaling_group.asg: Still creating... (1m40s elapsed)[21m[0m
+[0m[1mmodule.queue-worker.aws_autoscaling_group.asg: Still creating... (1m40s elapsed)[21m[0m
+[0m[1mmodule.worker.aws_autoscaling_group.asg: Still creating... (1m40s elapsed)[21m[0m
+[0m[1mmodule.storage.aws_efs_mount_target.storage.1: Still creating... (1m50s elapsed)[21m[0m
+[0m[1mmodule.storage.aws_efs_mount_target.storage.2: Still creating... (1m50s elapsed)[21m[0m
+[0m[1mmodule.storage.aws_efs_mount_target.storage.0: Still creating... (1m50s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Still creating... (1m50s elapsed)[21m[0m
+[0m[1mmodule.cache.aws_elasticache_cluster.cache: Still creating... (1m50s elapsed)[21m[0m
+[0m[1mmodule.push-worker.aws_autoscaling_group.asg: Still creating... (1m50s elapsed)[21m[0m
+[0m[1mmodule.queue-worker.aws_autoscaling_group.asg: Still creating... (1m50s elapsed)[21m[0m
+[0m[1mmodule.worker.aws_autoscaling_group.asg: Still creating... (1m50s elapsed)[21m[0m
+[0m[1mmodule.storage.aws_efs_mount_target.storage.1: Still creating... (2m0s elapsed)[21m[0m
+[0m[1mmodule.storage.aws_efs_mount_target.storage.2: Still creating... (2m0s elapsed)[21m[0m
+[0m[1mmodule.storage.aws_efs_mount_target.storage.0: Still creating... (2m0s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Still creating... (2m0s elapsed)[21m[0m
+[0m[1mmodule.cache.aws_elasticache_cluster.cache: Still creating... (2m0s elapsed)[21m[0m
+[0m[1mmodule.push-worker.aws_autoscaling_group.asg: Still creating... (2m0s elapsed)[21m[0m
+[0m[1mmodule.queue-worker.aws_autoscaling_group.asg: Still creating... (2m0s elapsed)[21m[0m
+[0m[1mmodule.worker.aws_autoscaling_group.asg: Still creating... (2m0s elapsed)[21m[0m
+[0m[1mmodule.storage.aws_efs_mount_target.storage.1: Still creating... (2m10s elapsed)[21m[0m
+[0m[1mmodule.storage.aws_efs_mount_target.storage.2: Still creating... (2m10s elapsed)[21m[0m
+[0m[1mmodule.storage.aws_efs_mount_target.storage.0: Still creating... (2m10s elapsed)[21m[0m
+[0m[1mmodule.cache.aws_elasticache_cluster.cache: Still creating... (2m10s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Still creating... (2m10s elapsed)[21m[0m
+[0m[1mmodule.push-worker.aws_autoscaling_group.asg: Still creating... (2m10s elapsed)[21m[0m
+[0m[1mmodule.queue-worker.aws_autoscaling_group.asg: Still creating... (2m10s elapsed)[21m[0m
+[0m[1mmodule.worker.aws_autoscaling_group.asg: Still creating... (2m10s elapsed)[21m[0m
+[0m[1mmodule.storage.aws_efs_mount_target.storage.1: Still creating... (2m20s elapsed)[21m[0m
+[0m[1mmodule.storage.aws_efs_mount_target.storage.2: Still creating... (2m20s elapsed)[21m[0m
+[0m[1mmodule.storage.aws_efs_mount_target.storage.0: Still creating... (2m20s elapsed)[21m[0m
+[0m[1mmodule.cache.aws_elasticache_cluster.cache: Still creating... (2m20s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Still creating... (2m20s elapsed)[21m[0m
+[0m[1mmodule.push-worker.aws_autoscaling_group.asg: Still creating... (2m20s elapsed)[21m[0m
+[0m[1mmodule.queue-worker.aws_autoscaling_group.asg: Still creating... (2m20s elapsed)[21m[0m
+[0m[1mmodule.worker.aws_autoscaling_group.asg: Still creating... (2m20s elapsed)[21m[0m
+[0m[1mmodule.storage.aws_efs_mount_target.storage.1: Still creating... (2m30s elapsed)[21m[0m
+[0m[1mmodule.storage.aws_efs_mount_target.storage.2: Still creating... (2m30s elapsed)[21m[0m
+[0m[1mmodule.storage.aws_efs_mount_target.storage.0: Still creating... (2m30s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Still creating... (2m30s elapsed)[21m[0m
+[0m[1mmodule.cache.aws_elasticache_cluster.cache: Still creating... (2m30s elapsed)[21m[0m
+[0m[1mmodule.push-worker.aws_autoscaling_group.asg: Still creating... (2m30s elapsed)[21m[0m
+[0m[1mmodule.queue-worker.aws_autoscaling_group.asg: Still creating... (2m30s elapsed)[21m[0m
+[0m[1mmodule.worker.aws_autoscaling_group.asg: Still creating... (2m30s elapsed)[21m[0m
+[0m[1mmodule.storage.aws_efs_mount_target.storage.1: Creation complete[21m[0m
+[0m[1mmodule.storage.aws_efs_mount_target.storage.0: Creation complete[21m[0m
+[0m[1mmodule.storage.aws_efs_mount_target.storage.2: Creation complete[21m[0m
+[0m[1mmodule.cache.aws_elasticache_cluster.cache: Still creating... (2m40s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Still creating... (2m40s elapsed)[21m[0m
+[0m[1mmodule.push-worker.aws_autoscaling_group.asg: Still creating... (2m40s elapsed)[21m[0m
+[0m[1mmodule.queue-worker.aws_autoscaling_group.asg: Still creating... (2m40s elapsed)[21m[0m
+[0m[1mmodule.worker.aws_autoscaling_group.asg: Still creating... (2m40s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Still creating... (2m50s elapsed)[21m[0m
+[0m[1mmodule.cache.aws_elasticache_cluster.cache: Still creating... (2m50s elapsed)[21m[0m
+[0m[1mmodule.push-worker.aws_autoscaling_group.asg: Still creating... (2m50s elapsed)[21m[0m
+[0m[1mmodule.queue-worker.aws_autoscaling_group.asg: Still creating... (2m50s elapsed)[21m[0m
+[0m[1mmodule.worker.aws_autoscaling_group.asg: Still creating... (2m50s elapsed)[21m[0m
+[0m[1mmodule.cache.aws_elasticache_cluster.cache: Still creating... (3m0s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Still creating... (3m0s elapsed)[21m[0m
+[0m[1mmodule.push-worker.aws_autoscaling_group.asg: Still creating... (3m0s elapsed)[21m[0m
+[0m[1mmodule.queue-worker.aws_autoscaling_group.asg: Still creating... (3m0s elapsed)[21m[0m
+[0m[1mmodule.worker.aws_autoscaling_group.asg: Still creating... (3m0s elapsed)[21m[0m
+[0m[1mmodule.cache.aws_elasticache_cluster.cache: Still creating... (3m10s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Still creating... (3m10s elapsed)[21m[0m
+[0m[1mmodule.push-worker.aws_autoscaling_group.asg: Still creating... (3m10s elapsed)[21m[0m
+[0m[1mmodule.queue-worker.aws_autoscaling_group.asg: Still creating... (3m10s elapsed)[21m[0m
+[0m[1mmodule.worker.aws_autoscaling_group.asg: Still creating... (3m10s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Still creating... (3m20s elapsed)[21m[0m
+[0m[1mmodule.cache.aws_elasticache_cluster.cache: Still creating... (3m20s elapsed)[21m[0m
+[0m[1mmodule.push-worker.aws_autoscaling_group.asg: Still creating... (3m20s elapsed)[21m[0m
+[0m[1mmodule.queue-worker.aws_autoscaling_group.asg: Still creating... (3m20s elapsed)[21m[0m
+[0m[1mmodule.worker.aws_autoscaling_group.asg: Still creating... (3m20s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Still creating... (3m30s elapsed)[21m[0m
+[0m[1mmodule.cache.aws_elasticache_cluster.cache: Still creating... (3m30s elapsed)[21m[0m
+[0m[1mmodule.push-worker.aws_autoscaling_group.asg: Still creating... (3m30s elapsed)[21m[0m
+[0m[1mmodule.queue-worker.aws_autoscaling_group.asg: Still creating... (3m30s elapsed)[21m[0m
+[0m[1mmodule.worker.aws_autoscaling_group.asg: Still creating... (3m30s elapsed)[21m[0m
+[0m[1mmodule.cache.aws_elasticache_cluster.cache: Still creating... (3m40s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Still creating... (3m40s elapsed)[21m[0m
+[0m[1mmodule.push-worker.aws_autoscaling_group.asg: Still creating... (3m40s elapsed)[21m[0m
+[0m[1mmodule.queue-worker.aws_autoscaling_group.asg: Still creating... (3m40s elapsed)[21m[0m
+[0m[1mmodule.worker.aws_autoscaling_group.asg: Still creating... (3m40s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Still creating... (3m50s elapsed)[21m[0m
+[0m[1mmodule.cache.aws_elasticache_cluster.cache: Still creating... (3m50s elapsed)[21m[0m
+[0m[1mmodule.push-worker.aws_autoscaling_group.asg: Still creating... (3m50s elapsed)[21m[0m
+[0m[1mmodule.queue-worker.aws_autoscaling_group.asg: Still creating... (3m50s elapsed)[21m[0m
+[0m[1mmodule.worker.aws_autoscaling_group.asg: Still creating... (3m50s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Still creating... (4m0s elapsed)[21m[0m
+[0m[1mmodule.cache.aws_elasticache_cluster.cache: Still creating... (4m0s elapsed)[21m[0m
+[0m[1mmodule.push-worker.aws_autoscaling_group.asg: Still creating... (4m0s elapsed)[21m[0m
+[0m[1mmodule.queue-worker.aws_autoscaling_group.asg: Still creating... (4m0s elapsed)[21m[0m
+[0m[1mmodule.worker.aws_autoscaling_group.asg: Still creating... (4m0s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Still creating... (4m10s elapsed)[21m[0m
+[0m[1mmodule.cache.aws_elasticache_cluster.cache: Still creating... (4m10s elapsed)[21m[0m
+[0m[1mmodule.push-worker.aws_autoscaling_group.asg: Still creating... (4m10s elapsed)[21m[0m
+[0m[1mmodule.queue-worker.aws_autoscaling_group.asg: Still creating... (4m10s elapsed)[21m[0m
+[0m[1mmodule.worker.aws_autoscaling_group.asg: Still creating... (4m10s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Still creating... (4m20s elapsed)[21m[0m
+[0m[1mmodule.cache.aws_elasticache_cluster.cache: Still creating... (4m20s elapsed)[21m[0m
+[0m[1mmodule.cache.aws_elasticache_cluster.cache: Creation complete[21m[0m
+[0m[1mmodule.push-worker.aws_autoscaling_group.asg: Still creating... (4m20s elapsed)[21m[0m
+[0m[1mmodule.queue-worker.aws_autoscaling_group.asg: Still creating... (4m20s elapsed)[21m[0m
+[0m[1mmodule.worker.aws_autoscaling_group.asg: Still creating... (4m20s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Still creating... (4m30s elapsed)[21m[0m
+[0m[1mmodule.push-worker.aws_autoscaling_group.asg: Still creating... (4m30s elapsed)[21m[0m
+[0m[1mmodule.queue-worker.aws_autoscaling_group.asg: Still creating... (4m30s elapsed)[21m[0m
+[0m[1mmodule.worker.aws_autoscaling_group.asg: Still creating... (4m30s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Still creating... (4m40s elapsed)[21m[0m
+[0m[1mmodule.push-worker.aws_autoscaling_group.asg: Still creating... (4m40s elapsed)[21m[0m
+[0m[1mmodule.queue-worker.aws_autoscaling_group.asg: Still creating... (4m40s elapsed)[21m[0m
+[0m[1mmodule.worker.aws_autoscaling_group.asg: Still creating... (4m40s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Still creating... (4m50s elapsed)[21m[0m
+[0m[1mmodule.push-worker.aws_autoscaling_group.asg: Still creating... (4m50s elapsed)[21m[0m
+[0m[1mmodule.queue-worker.aws_autoscaling_group.asg: Still creating... (4m50s elapsed)[21m[0m
+[0m[1mmodule.worker.aws_autoscaling_group.asg: Still creating... (4m50s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Still creating... (5m0s elapsed)[21m[0m
+[0m[1mmodule.push-worker.aws_autoscaling_group.asg: Still creating... (5m0s elapsed)[21m[0m
+[0m[1mmodule.queue-worker.aws_autoscaling_group.asg: Still creating... (5m0s elapsed)[21m[0m
+[0m[1mmodule.worker.aws_autoscaling_group.asg: Still creating... (5m0s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Still creating... (5m10s elapsed)[21m[0m
+[0m[1mmodule.push-worker.aws_autoscaling_group.asg: Still creating... (5m10s elapsed)[21m[0m
+[0m[1mmodule.queue-worker.aws_autoscaling_group.asg: Still creating... (5m10s elapsed)[21m[0m
+[0m[1mmodule.worker.aws_autoscaling_group.asg: Still creating... (5m10s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Still creating... (5m20s elapsed)[21m[0m
+[0m[1mmodule.push-worker.aws_autoscaling_group.asg: Still creating... (5m20s elapsed)[21m[0m
+[0m[1mmodule.queue-worker.aws_autoscaling_group.asg: Still creating... (5m20s elapsed)[21m[0m
+[0m[1mmodule.worker.aws_autoscaling_group.asg: Still creating... (5m20s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Still creating... (5m30s elapsed)[21m[0m
+[0m[1mmodule.push-worker.aws_autoscaling_group.asg: Still creating... (5m30s elapsed)[21m[0m
+[0m[1mmodule.queue-worker.aws_autoscaling_group.asg: Still creating... (5m30s elapsed)[21m[0m
+[0m[1mmodule.worker.aws_autoscaling_group.asg: Still creating... (5m30s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Still creating... (5m40s elapsed)[21m[0m
+[0m[1mmodule.push-worker.aws_autoscaling_group.asg: Still creating... (5m40s elapsed)[21m[0m
+[0m[1mmodule.queue-worker.aws_autoscaling_group.asg: Still creating... (5m40s elapsed)[21m[0m
+[0m[1mmodule.worker.aws_autoscaling_group.asg: Still creating... (5m40s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Still creating... (5m50s elapsed)[21m[0m
+[0m[1mmodule.push-worker.aws_autoscaling_group.asg: Still creating... (5m50s elapsed)[21m[0m
+[0m[1mmodule.queue-worker.aws_autoscaling_group.asg: Still creating... (5m50s elapsed)[21m[0m
+[0m[1mmodule.worker.aws_autoscaling_group.asg: Still creating... (5m50s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Still creating... (6m0s elapsed)[21m[0m
+[0m[1mmodule.push-worker.aws_autoscaling_group.asg: Still creating... (6m0s elapsed)[21m[0m
+[0m[1mmodule.queue-worker.aws_autoscaling_group.asg: Still creating... (6m0s elapsed)[21m[0m
+[0m[1mmodule.worker.aws_autoscaling_group.asg: Still creating... (6m0s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Still creating... (6m10s elapsed)[21m[0m
+[0m[1mmodule.push-worker.aws_autoscaling_group.asg: Still creating... (6m10s elapsed)[21m[0m
+[0m[1mmodule.queue-worker.aws_autoscaling_group.asg: Still creating... (6m10s elapsed)[21m[0m
+[0m[1mmodule.worker.aws_autoscaling_group.asg: Still creating... (6m10s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Still creating... (6m20s elapsed)[21m[0m
+[0m[1mmodule.push-worker.aws_autoscaling_group.asg: Still creating... (6m20s elapsed)[21m[0m
+[0m[1mmodule.queue-worker.aws_autoscaling_group.asg: Still creating... (6m20s elapsed)[21m[0m
+[0m[1mmodule.worker.aws_autoscaling_group.asg: Still creating... (6m20s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Still creating... (6m30s elapsed)[21m[0m
+[0m[1mmodule.push-worker.aws_autoscaling_group.asg: Still creating... (6m30s elapsed)[21m[0m
+[0m[1mmodule.queue-worker.aws_autoscaling_group.asg: Still creating... (6m30s elapsed)[21m[0m
+[0m[1mmodule.worker.aws_autoscaling_group.asg: Still creating... (6m30s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Still creating... (6m40s elapsed)[21m[0m
+[0m[1mmodule.push-worker.aws_autoscaling_group.asg: Still creating... (6m40s elapsed)[21m[0m
+[0m[1mmodule.queue-worker.aws_autoscaling_group.asg: Still creating... (6m40s elapsed)[21m[0m
+[0m[1mmodule.worker.aws_autoscaling_group.asg: Still creating... (6m40s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Still creating... (6m50s elapsed)[21m[0m
+[0m[1mmodule.push-worker.aws_autoscaling_group.asg: Still creating... (6m50s elapsed)[21m[0m
+[0m[1mmodule.queue-worker.aws_autoscaling_group.asg: Still creating... (6m50s elapsed)[21m[0m
+[0m[1mmodule.worker.aws_autoscaling_group.asg: Still creating... (6m50s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Still creating... (7m0s elapsed)[21m[0m
+[0m[1mmodule.push-worker.aws_autoscaling_group.asg: Still creating... (7m0s elapsed)[21m[0m
+[0m[1mmodule.queue-worker.aws_autoscaling_group.asg: Still creating... (7m0s elapsed)[21m[0m
+[0m[1mmodule.worker.aws_autoscaling_group.asg: Still creating... (7m0s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Still creating... (7m10s elapsed)[21m[0m
+[0m[1mmodule.push-worker.aws_autoscaling_group.asg: Still creating... (7m10s elapsed)[21m[0m
+[0m[1mmodule.queue-worker.aws_autoscaling_group.asg: Still creating... (7m10s elapsed)[21m[0m
+[0m[1mmodule.worker.aws_autoscaling_group.asg: Still creating... (7m10s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Still creating... (7m20s elapsed)[21m[0m
+[0m[1mmodule.push-worker.aws_autoscaling_group.asg: Still creating... (7m20s elapsed)[21m[0m
+[0m[1mmodule.queue-worker.aws_autoscaling_group.asg: Still creating... (7m20s elapsed)[21m[0m
+[0m[1mmodule.worker.aws_autoscaling_group.asg: Still creating... (7m20s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Still creating... (7m30s elapsed)[21m[0m
+[0m[1mmodule.push-worker.aws_autoscaling_group.asg: Still creating... (7m30s elapsed)[21m[0m
+[0m[1mmodule.queue-worker.aws_autoscaling_group.asg: Still creating... (7m30s elapsed)[21m[0m
+[0m[1mmodule.worker.aws_autoscaling_group.asg: Still creating... (7m30s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Still creating... (7m40s elapsed)[21m[0m
+[0m[1mmodule.push-worker.aws_autoscaling_group.asg: Still creating... (7m40s elapsed)[21m[0m
+[0m[1mmodule.queue-worker.aws_autoscaling_group.asg: Still creating... (7m40s elapsed)[21m[0m
+[0m[1mmodule.worker.aws_autoscaling_group.asg: Still creating... (7m40s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Still creating... (7m50s elapsed)[21m[0m
+[0m[1mmodule.push-worker.aws_autoscaling_group.asg: Still creating... (7m50s elapsed)[21m[0m
+[0m[1mmodule.queue-worker.aws_autoscaling_group.asg: Still creating... (7m50s elapsed)[21m[0m
+[0m[1mmodule.worker.aws_autoscaling_group.asg: Still creating... (7m50s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Still creating... (8m0s elapsed)[21m[0m
+[0m[1mmodule.push-worker.aws_autoscaling_group.asg: Still creating... (8m0s elapsed)[21m[0m
+[0m[1mmodule.queue-worker.aws_autoscaling_group.asg: Still creating... (8m0s elapsed)[21m[0m
+[0m[1mmodule.worker.aws_autoscaling_group.asg: Still creating... (8m0s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Still creating... (8m10s elapsed)[21m[0m
+[0m[1mmodule.push-worker.aws_autoscaling_group.asg: Still creating... (8m10s elapsed)[21m[0m
+[0m[1mmodule.queue-worker.aws_autoscaling_group.asg: Still creating... (8m10s elapsed)[21m[0m
+[0m[1mmodule.worker.aws_autoscaling_group.asg: Still creating... (8m10s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Still creating... (8m20s elapsed)[21m[0m
+[0m[1mmodule.push-worker.aws_autoscaling_group.asg: Still creating... (8m20s elapsed)[21m[0m
+[0m[1mmodule.queue-worker.aws_autoscaling_group.asg: Still creating... (8m20s elapsed)[21m[0m
+[0m[1mmodule.worker.aws_autoscaling_group.asg: Still creating... (8m20s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Still creating... (8m30s elapsed)[21m[0m
+[0m[1mmodule.push-worker.aws_autoscaling_group.asg: Still creating... (8m30s elapsed)[21m[0m
+[0m[1mmodule.queue-worker.aws_autoscaling_group.asg: Still creating... (8m30s elapsed)[21m[0m
+[0m[1mmodule.worker.aws_autoscaling_group.asg: Still creating... (8m30s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Still creating... (8m40s elapsed)[21m[0m
+[0m[1mmodule.push-worker.aws_autoscaling_group.asg: Still creating... (8m40s elapsed)[21m[0m
+[0m[1mmodule.queue-worker.aws_autoscaling_group.asg: Still creating... (8m40s elapsed)[21m[0m
+[0m[1mmodule.worker.aws_autoscaling_group.asg: Still creating... (8m40s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Still creating... (8m50s elapsed)[21m[0m
+[0m[1mmodule.push-worker.aws_autoscaling_group.asg: Still creating... (8m50s elapsed)[21m[0m
+[0m[1mmodule.queue-worker.aws_autoscaling_group.asg: Still creating... (8m50s elapsed)[21m[0m
+[0m[1mmodule.worker.aws_autoscaling_group.asg: Still creating... (8m50s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Still creating... (9m0s elapsed)[21m[0m
+[0m[1mmodule.push-worker.aws_autoscaling_group.asg: Still creating... (9m0s elapsed)[21m[0m
+[0m[1mmodule.queue-worker.aws_autoscaling_group.asg: Still creating... (9m0s elapsed)[21m[0m
+[0m[1mmodule.worker.aws_autoscaling_group.asg: Still creating... (9m0s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Still creating... (9m10s elapsed)[21m[0m
+[0m[1mmodule.push-worker.aws_autoscaling_group.asg: Still creating... (9m10s elapsed)[21m[0m
+[0m[1mmodule.queue-worker.aws_autoscaling_group.asg: Still creating... (9m10s elapsed)[21m[0m
+[0m[1mmodule.worker.aws_autoscaling_group.asg: Still creating... (9m10s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Still creating... (9m20s elapsed)[21m[0m
+[0m[1mmodule.push-worker.aws_autoscaling_group.asg: Still creating... (9m20s elapsed)[21m[0m
+[0m[1mmodule.queue-worker.aws_autoscaling_group.asg: Still creating... (9m20s elapsed)[21m[0m
+[0m[1mmodule.worker.aws_autoscaling_group.asg: Still creating... (9m20s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Still creating... (9m30s elapsed)[21m[0m
+[0m[1mmodule.push-worker.aws_autoscaling_group.asg: Still creating... (9m30s elapsed)[21m[0m
+[0m[1mmodule.queue-worker.aws_autoscaling_group.asg: Still creating... (9m30s elapsed)[21m[0m
+[0m[1mmodule.worker.aws_autoscaling_group.asg: Still creating... (9m30s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Still creating... (9m40s elapsed)[21m[0m
+[0m[1mmodule.push-worker.aws_autoscaling_group.asg: Still creating... (9m40s elapsed)[21m[0m
+[0m[1mmodule.queue-worker.aws_autoscaling_group.asg: Still creating... (9m40s elapsed)[21m[0m
+[0m[1mmodule.worker.aws_autoscaling_group.asg: Still creating... (9m40s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Still creating... (9m50s elapsed)[21m[0m
+[0m[1mmodule.push-worker.aws_autoscaling_group.asg: Still creating... (9m50s elapsed)[21m[0m
+[0m[1mmodule.queue-worker.aws_autoscaling_group.asg: Still creating... (9m50s elapsed)[21m[0m
+[0m[1mmodule.worker.aws_autoscaling_group.asg: Still creating... (9m50s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Still creating... (10m0s elapsed)[21m[0m
+[0m[1mmodule.push-worker.aws_autoscaling_group.asg: Still creating... (10m0s elapsed)[21m[0m
+[0m[1mmodule.queue-worker.aws_autoscaling_group.asg: Still creating... (10m0s elapsed)[21m[0m
+[0m[1mmodule.worker.aws_autoscaling_group.asg: Still creating... (10m0s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Still creating... (10m10s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Still creating... (10m20s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Still creating... (10m30s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Still creating... (10m40s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Still creating... (10m50s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Still creating... (11m0s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Still creating... (11m10s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Still creating... (11m20s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Still creating... (11m30s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Still creating... (11m40s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Still creating... (11m50s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Still creating... (12m0s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Still creating... (12m10s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Still creating... (12m20s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Still creating... (12m30s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Still creating... (12m40s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Still creating... (12m50s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Still creating... (13m0s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Still creating... (13m10s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Still creating... (13m20s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Still creating... (13m30s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Still creating... (13m40s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Still creating... (13m50s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Still creating... (14m0s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Still creating... (14m10s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Still creating... (14m20s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Still creating... (14m30s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Still creating... (14m40s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Still creating... (14m50s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Still creating... (15m0s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Still creating... (15m10s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Still creating... (15m20s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Still creating... (15m30s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Still creating... (15m40s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Still creating... (15m50s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Still creating... (16m0s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Still creating... (16m10s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.database: Creation complete[21m[0m
+[0m[1mmodule.database.aws_db_instance.replica: Creating...[21m
+  address:                    "" => "<computed>"
+  allocated_storage:          "" => "<computed>"
+  apply_immediately:          "" => "<computed>"
+  arn:                        "" => "<computed>"
+  auto_minor_version_upgrade: "" => "true"
+  availability_zone:          "" => "<computed>"
+  backup_retention_period:    "" => "<computed>"
+  backup_window:              "" => "<computed>"
+  copy_tags_to_snapshot:      "" => "false"
+  db_subnet_group_name:       "" => "<computed>"
+  endpoint:                   "" => "<computed>"
+  engine:                     "" => "<computed>"
+  engine_version:             "" => "<computed>"
+  identifier:                 "" => "bugzilla-stage-slave-0"
+  instance_class:             "" => "db.t1.micro"
+  license_model:              "" => "<computed>"
+  maintenance_window:         "" => "<computed>"
+  monitoring_interval:        "" => "0"
+  monitoring_role_arn:        "" => "<computed>"
+  multi_az:                   "" => "<computed>"
+  name:                       "" => "<computed>"
+  option_group_name:          "" => "<computed>"
+  parameter_group_name:       "" => "<computed>"
+  port:                       "" => "<computed>"
+  publicly_accessible:        "" => "<computed>"
+  replicas.#:                 "" => "<computed>"
+  replicate_source_db:        "" => "bugzilla-stage"
+  skip_final_snapshot:        "" => "true"
+  status:                     "" => "<computed>"
+  storage_type:               "" => "gp2"
+  tags.#:                     "" => "3"
+  tags.Environment:           "" => "stage"
+  tags.Region:                "" => "us-west-2"
+  tags.TechnicalOwner:        "" => "infra-aws@mozilla.com"
+  username:                   "" => "<computed>"
+  vpc_security_group_ids.#:   "" => "<computed>"[0m
+[0m[1mmodule.database.aws_db_instance.replica: Still creating... (10s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.replica: Still creating... (20s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.replica: Still creating... (30s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.replica: Still creating... (40s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.replica: Still creating... (50s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.replica: Still creating... (1m0s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.replica: Still creating... (1m10s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.replica: Still creating... (1m20s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.replica: Still creating... (1m30s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.replica: Still creating... (1m40s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.replica: Still creating... (1m50s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.replica: Still creating... (2m0s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.replica: Still creating... (2m10s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.replica: Still creating... (2m20s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.replica: Still creating... (2m30s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.replica: Still creating... (2m40s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.replica: Still creating... (2m50s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.replica: Still creating... (3m0s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.replica: Still creating... (3m10s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.replica: Still creating... (3m20s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.replica: Still creating... (3m30s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.replica: Still creating... (3m40s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.replica: Still creating... (3m50s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.replica: Still creating... (4m0s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.replica: Still creating... (4m10s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.replica: Still creating... (4m20s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.replica: Still creating... (4m30s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.replica: Still creating... (4m40s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.replica: Still creating... (4m50s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.replica: Still creating... (5m0s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.replica: Still creating... (5m10s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.replica: Still creating... (5m20s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.replica: Still creating... (5m30s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.replica: Still creating... (5m40s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.replica: Still creating... (5m50s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.replica: Still creating... (6m0s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.replica: Still creating... (6m10s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.replica: Still creating... (6m20s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.replica: Still creating... (6m30s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.replica: Still creating... (6m40s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.replica: Still creating... (6m50s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.replica: Still creating... (7m0s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.replica: Still creating... (7m10s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.replica: Still creating... (7m20s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.replica: Still creating... (7m30s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.replica: Still creating... (7m40s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.replica: Still creating... (7m50s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.replica: Still creating... (8m0s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.replica: Still creating... (8m10s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.replica: Still creating... (8m20s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.replica: Still creating... (8m30s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.replica: Still creating... (8m40s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.replica: Still creating... (8m50s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.replica: Still creating... (9m0s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.replica: Still creating... (9m10s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.replica: Still creating... (9m20s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.replica: Still creating... (9m30s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.replica: Still creating... (9m40s elapsed)[21m[0m
+[0m[1mmodule.database.aws_db_instance.replica: Creation complete[21m[0m
+aws-vault: error: exit status 1
