@@ -62,7 +62,7 @@ module "load_balancer" {
   service_name        = "${var.service_name}"
   health_check_target = "HTTP:80/robots.txt?no-ssl-rewrite&elb-health-check"
 
-  #ssl_cert_name_prefix = "bugzilla"
+  ssl_cert_name_prefix = "${var.service_name}"
 }
 
 module "database" {
