@@ -18,7 +18,7 @@ for pkg in \
    Any::URI::Escape \
    Chart::Base \
    HTTP::Lite \
-   JSON::RPC \
+   JSON::RPC@1.01 \
    PatchReader \
    Authen::Radius \
    Template::Plugin::GD \
