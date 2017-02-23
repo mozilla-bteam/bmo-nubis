@@ -39,6 +39,7 @@ for pkg in \
    Email::MIME::Attachment::Stripper@1.316 \
    Email::Reply@1.202 \
    Moo~2.000 \
+   Text::CSV_XS@1.26 \
   ; do
   echo "Installing $pkg"
   $CPANM $pkg < /dev/null
