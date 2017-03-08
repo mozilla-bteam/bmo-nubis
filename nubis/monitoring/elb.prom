@@ -84,3 +84,29 @@ ALERT BugzillaELB_HealthyHostsProportion
     summary = "Bugzilla ELB healthy host proportion is under 60%",
     description = "{{ $labels.load_balancer_name }} is showing {{ $value }} (< 60%) of hosts as healthy"
   }
+
+ALERT BugzillaELB_LongSurge
+  IF avg_over_time(aws_elb_surge_queue_length_maximum[1h]) > 20
+  FOR 5m
+  LABELS {
+    severity = "critical",
+    application = "bugzilla",
+    type = "aws_elb"
+  }
+  ANNOTATIONS {
+    summary = "Bugzilla ELB surge queue length over 20",
+    description = "{{ $labels.load_balancer_name }} is showing {{ $value }} (>20) surge queue length in the last hour"
+  }
+
+ALERT BugzillaELB_ShortSurge
+  IF avg_over_time(aws_elb_surge_queue_length_maximum[5m]) > 200
+  FOR 5m
+  LABELS {
+    severity = "critical",
+    application = "bugzilla",
+    type = "aws_elb"
+  }
+  ANNOTATIONS {
+    summary = "Bugzilla ELB surge queue length over 20",
+    description = "{{ $labels.load_balancer_name }} is showing {{ $value }} (>200) surge queue length in the last 5m"
+  }
