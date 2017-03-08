@@ -26,7 +26,7 @@ ALERT BugzillaELB_5XX
   }
   ANNOTATIONS {
     summary = "Bugzilla ELB 5xx codes over 100",
-    description = "{{ $labels.load_balancer_name }} is showing {{ $value }} 5xx errors ( > 100) in the last hour
+    description = "{{ $labels.load_balancer_name }} is showing {{ $value }} 5xx errors ( > 100) in the last hour"
   }
 
 
@@ -39,7 +39,7 @@ ALERT BugzillaELB_BackendConnectionErrors
     type = "aws_elb"
   }
   ANNOTATIONS {
-    summary = ""Bugzilla ELB backend connections errors over 50",
+    summary = "Bugzilla ELB backend connections errors over 50",
     description = "{{ $labels.load_balancer_name }} is showing {{ $value }} ( > 50 ) backend connections errors in the last 5m"
   }
 
