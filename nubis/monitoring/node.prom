@@ -1,0 +1,15 @@
+# pre-computed metrics
+bugzilla:node_cpu_utilization_avg:rate5m = 1 - avg(irate(node_cpu{job="node",mode="idle"}[5m])  * ON(instance) GROUP_LEFT nubis{project="bugzilla"}) by (instance)
+
+ALERT BugzillaNode_HighCpuUsage
+  IF 100 * bugzilla:node_cpu_utilization_avg:rate5m * ON(instance) GROUP_RIGHT nubis{project="bugzilla"} > 80
+  FOR 10m
+  LABELS {
+    severity = "critical",
+    application = "bugzilla"
+  }
+  ANNOTATIONS {
+    summary = "Bugzilla node high CPU utilization",
+    description = "{{ $labels.instance }} is showing {{ $value }} (>80) CPU utilization over the last 10 minutes"
+  }
+

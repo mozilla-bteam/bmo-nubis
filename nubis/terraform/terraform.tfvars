@@ -1,5 +1,0 @@
-account = "nubis-training-2016"
-region  = "us-west-2"
-environment = "stage"
-service_name = "bugzilla"
-ami="ami-8a9726ea"

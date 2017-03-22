@@ -1,0 +1,112 @@
+# pre-computed metrics
+aws_elb:host_count:max = aws_elb_healthy_host_count_average + aws_elb_un_healthy_host_count_average
+aws_elb:host_count:avg = aws_elb_healthy_host_count_maximum + aws_elb_un_healthy_host_count_maximum
+
+ALERT BugzillaELB_Backend5XX
+  IF avg_over_time(aws_elb_httpcode_backend_5_xx_sum{job="cloudwatch", load_balancer_name=~"^bugzilla-.*"}[1h]) > 100
+  FOR 5m
+  LABELS {
+    severity = "critical",
+    application = "bugzilla",
+    type = "aws_elb"
+  }
+  ANNOTATIONS {
+    summary = "Bugzilla ELB 5xx codes from backends over 100",
+    description = "{{ $labels.load_balancer_name }} is showing {{ $value }} 5xx backend errors ( > 100) in the last hour"
+  }
+
+
+ALERT BugzillaELB_5XX
+  IF avg_over_time(aws_elb_httpcode_elb_5_xx_sum{job="cloudwatch", load_balancer_name=~"^bugzilla-.*"}[1h]) > 100
+  FOR 5m
+  LABELS {
+    severity = "critical",
+    application = "bugzilla",
+    type = "aws_elb"
+  }
+  ANNOTATIONS {
+    summary = "Bugzilla ELB 5xx codes over 100",
+    description = "{{ $labels.load_balancer_name }} is showing {{ $value }} 5xx errors ( > 100) in the last hour"
+  }
+
+
+ALERT BugzillaELB_BackendConnectionErrors
+  IF avg_over_time(aws_elb_backend_connection_errors_sum{job="cloudwatch", load_balancer_name=~"^bugzilla-.*"}[5m]) > 50
+  FOR 5m
+  LABELS {
+    severity = "critical",
+    application = "bugzilla",
+    type = "aws_elb"
+  }
+  ANNOTATIONS {
+    summary = "Bugzilla ELB backend connections errors over 50",
+    description = "{{ $labels.load_balancer_name }} is showing {{ $value }} ( > 50 ) backend connections errors in the last 5m"
+  }
+
+
+ALERT BugzillaELB_LatencyHigh
+  IF avg_over_time(aws_elb_latency_average{job="cloudwatch", load_balancer_name=~"^bugzilla-.*"}[5m]) > 2
+  FOR 5m
+  LABELS {
+    severity = "critical",
+    application = "bugzilla",
+    type = "aws_elb"
+  }
+  ANNOTATIONS {
+    summary = "Bugzilla ELB latency is over 2",
+    description = "{{ $labels.load_balancer_name }} is showing {{ $value }} ( > 2s) average latency in the last 5m"
+  }
+
+
+ALERT BugzillaELB_TooManyHosts
+  IF avg_over_time(aws_elb_healthy_host_count_maximum{job="cloudwatch", load_balancer_name=~"^bugzilla-.*"}[1h]) + avg_over_time(aws_elb_un_healthy_host_count_maximum{job="cloudwatch", load_balancer_name=~".*"}[1h]) > 10
+  FOR 5m
+  LABELS {
+    severity = "critical",
+    application = "bugzilla",
+    type = "aws_elb"
+  }
+  ANNOTATIONS {
+    summary = "Bugzilla ELB host count is over 10",
+    description = "{{ $labels.load_balancer_name }} is showing {{ $value }} ( >10 ) total hosts in the last hour"
+  }
+
+
+ALERT BugzillaELB_HealthyHostsProportion
+  IF 100 * avg_over_time(aws_elb_un_healthy_host_count_average{job="cloudwatch", load_balancer_name=~"^bugzilla-.*"}[1h])  / avg_over_time(aws_elb:host_count:avg{job="cloudwatch", load_balancer_name=~"^bugzilla-.*"}[1h]) > 60
+  FOR 5m
+  LABELS {
+    severity = "critical",
+    application = "bugzilla",
+    type = "aws_elb"
+  }
+  ANNOTATIONS {
+    summary = "Bugzilla ELB healthy host proportion is under 60%",
+    description = "{{ $labels.load_balancer_name }} is showing {{ $value }} (< 60%) of hosts as healthy"
+  }
+
+ALERT BugzillaELB_LongSurge
+  IF avg_over_time(aws_elb_surge_queue_length_maximum[1h]) > 20
+  FOR 5m
+  LABELS {
+    severity = "critical",
+    application = "bugzilla",
+    type = "aws_elb"
+  }
+  ANNOTATIONS {
+    summary = "Bugzilla ELB surge queue length over 20",
+    description = "{{ $labels.load_balancer_name }} is showing {{ $value }} (>20) surge queue length in the last hour"
+  }
+
+ALERT BugzillaELB_ShortSurge
+  IF avg_over_time(aws_elb_surge_queue_length_maximum[5m]) > 200
+  FOR 5m
+  LABELS {
+    severity = "critical",
+    application = "bugzilla",
+    type = "aws_elb"
+  }
+  ANNOTATIONS {
+    summary = "Bugzilla ELB surge queue length over 20",
+    description = "{{ $labels.load_balancer_name }} is showing {{ $value }} (>200) surge queue length in the last 5m"
+  }
