@@ -86,7 +86,7 @@ apache::vhost { $service:
     docroot_owner     => 'root',
     docroot_group     => 'apache',
     block             => ['scm'],
-    setenvif          => 'X_FORWARDED_PROTO https HTTPS=on',
+    setenvif          => 'X-Forwarded-Proto https HTTPS=on',
     access_log_format => '%{X-Forwarded-For}i %l %{Bugzilla_login}C %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\" %T %v %D',
     access_log_pipe   => '|/usr/local/bin/apache-syslog.pl',
     error_log_pipe    => '|/usr/local/bin/apache-syslog.pl',
