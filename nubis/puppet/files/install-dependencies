@@ -40,6 +40,7 @@ for pkg in \
    Email::Reply@1.202 \
    Moo~2.000 \
    Text::CSV_XS@1.26 \
+   Throwable@0.200013 \
   ; do
   echo "Installing $pkg"
   $CPANM $pkg < /dev/null
