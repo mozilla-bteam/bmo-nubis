@@ -5,8 +5,8 @@
     ],
     "project_description": "bugzilla.mozilla.org",
     "project_name": "bugzilla",
-    "source_ami_project_version": "v1.3.0",
-    "project_version": "v1.3.0_{{env `GIT_COMMIT_SHA`}}",
+    "source_ami_project_version": "v1.4.0",
+    "project_version": "v1.4.0_{{env `GIT_COMMIT_SHA`}}",
     "source_ami_project_name": "nubis-base"
   }
 }
