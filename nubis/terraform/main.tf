@@ -67,8 +67,7 @@ module "load_balancer" {
 }
 
 module "database" {
-#  source                 = "github.com/nubisproject/nubis-terraform//database?ref=v1.4.0"
-  source = "/home/gozer/opt/src/mozilla.org/gozer/nubis/terraform/database"
+  source                 = "github.com/nubisproject/nubis-terraform//database?ref=v1.4.0"
   region                 = "${var.region}"
   environment            = "${var.environment}"
   account                = "${var.account}"
