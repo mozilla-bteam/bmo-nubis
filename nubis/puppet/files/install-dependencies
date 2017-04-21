@@ -9,6 +9,8 @@ for pkg in \
    Module::Metadata@1.000033 \
    DateTime::TimeZone@2.11 \
    Math::Random::ISAAC \
+   Math::Prime::Util::GMP@0.43 \
+   Math::Prime::Util@0.61 \
    File::MimeInfo::Magic \
    File::Flock@2013.06 \
    Daemon::Generic \
