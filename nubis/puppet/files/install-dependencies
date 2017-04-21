@@ -7,7 +7,7 @@ CPANM="cpanm --configure-timeout 900 --verbose"
 
 for pkg in \
    Module::Metadata@1.000033 \
-   DateTime::TimeZone@1.64 \
+   DateTime::TimeZone@2.11 \
    Math::Random::ISAAC \
    File::MimeInfo::Magic \
    File::Flock@2013.06 \
