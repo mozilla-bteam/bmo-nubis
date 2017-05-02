@@ -71,7 +71,7 @@ module "database" {
   region                 = "${var.region}"
   environment            = "${var.environment}"
   account                = "${var.account}"
-  monitoring = 0
+  monitoring             = true
   service_name           = "${var.service_name}"
   client_security_groups = "${module.worker.security_group},${module.queue-worker.security_group},${module.push-worker.security_group}"
   replica_count          = 1
