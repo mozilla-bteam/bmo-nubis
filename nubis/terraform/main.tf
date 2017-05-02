@@ -13,9 +13,9 @@ module "worker" {
   purpose      = "webserver"
 
   wait_for_capacity_timeout = "20m"
-  min_instances = "${lookup(var.min_instances, coalesce(replace(replace(var.environment, "/^(stage|prod|any)$/",""), "/.+/", "any"), var.environment))}"
-  max_instances = "${lookup(var.max_instances, coalesce(replace(replace(var.environment, "/^(stage|prod|any)$/",""), "/.+/", "any"), var.environment))}"
-  instance_type = "${lookup(var.instance_types, coalesce(replace(replace(var.environment, "/^(stage|prod|any)$/",""), "/.+/", "any"), var.environment))}"
+  min_instances             = "${lookup(var.min_instances, coalesce(replace(replace(var.environment, "/^(stage|prod|any)$/",""), "/.+/", "any"), var.environment))}"
+  max_instances             = "${lookup(var.max_instances, coalesce(replace(replace(var.environment, "/^(stage|prod|any)$/",""), "/.+/", "any"), var.environment))}"
+  instance_type             = "${lookup(var.instance_types, coalesce(replace(replace(var.environment, "/^(stage|prod|any)$/",""), "/.+/", "any"), var.environment))}"
 
   # CPU utilisation based autoscaling (with good defaults)
   scale_load_defaults = true
