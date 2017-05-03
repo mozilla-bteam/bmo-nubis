@@ -67,13 +67,14 @@ module "load_balancer" {
 }
 
 module "database" {
-  source                 = "github.com/nubisproject/nubis-terraform//database?ref=v1.4.1"
+  source                 = "github.com/gozer/nubis-terraform//database?ref=49086f60fb5e0d7f06c7d61ffacf235370843869"
   region                 = "${var.region}"
   environment            = "${var.environment}"
   account                = "${var.account}"
   monitoring             = true
   service_name           = "${var.service_name}"
   client_security_groups = "${module.worker.security_group},${module.queue-worker.security_group},${module.push-worker.security_group}"
+  client_ip_cidr         = "10.22.70.0/24"
   replica_count          = 1
   multi_az               = true
   name                   = "${lookup(var.db_name, coalesce(replace(replace(var.environment, "/^(stage|prod|any)$/",""), "/.+/", "any"), var.environment))}"
