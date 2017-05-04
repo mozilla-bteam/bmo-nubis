@@ -9,7 +9,7 @@ module "worker" {
   account      = "${var.account}"
   service_name = "${var.service_name}"
   ami          = "${var.ami}"
-  elb          = "${module.load_balancer.name}"
+  elb          = "${module.load_balancer.name},${module.load_balancer_attachments.name}"
   purpose      = "webserver"
 
   wait_for_capacity_timeout = "20m"
@@ -66,8 +66,19 @@ module "load_balancer" {
   ssl_cert_name_prefix = "${var.service_name}"
 }
 
+module "load_balancer_attachments" {
+  source              = "github.com/nubisproject/nubis-terraform//load_balancer?ref=v1.4.1"
+  region              = "${var.region}"
+  environment         = "${var.environment}"
+  account             = "${var.account}"
+  service_name        = "${var.service_name}"
+  health_check_target = "HTTP:80/robots.txt?no-ssl-rewrite&elb-health-check"
+
+  ssl_cert_name_prefix = "attachments"
+}
+
 module "database" {
-  source                 = "github.com/gozer/nubis-terraform//database?ref=12460346f91ac785bab3038ba2463577e1cababd"
+  source                 = "github.com/nubisproject/nubis-terraform//database?ref=38d0a84074daa0fd94629e2c05777cacd3d736d5"
   region                 = "${var.region}"
   environment            = "${var.environment}"
   account                = "${var.account}"
@@ -89,6 +100,16 @@ module "dns" {
   account      = "${var.account}"
   service_name = "${var.service_name}"
   target       = "${module.load_balancer.address}"
+}
+
+module "attachments-dns" {
+  source       = "github.com/nubisproject/nubis-terraform//dns?ref=v1.4.1"
+  region       = "${var.region}"
+  environment  = "${var.environment}"
+  account      = "${var.account}"
+  service_name = "${var.service_name}"
+  target       = "${module.load_balancer_attachments.address}"
+  prefix       = "attachments"
 }
 
 module "storage" {
