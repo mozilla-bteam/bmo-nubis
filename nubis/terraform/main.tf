@@ -71,7 +71,7 @@ module "load_balancer_attachments" {
   region              = "${var.region}"
   environment         = "${var.environment}"
   account             = "${var.account}"
-  service_name        = "${var.service_name}"
+  service_name        = "attachments"
   health_check_target = "HTTP:80/robots.txt?no-ssl-rewrite&elb-health-check"
 
   ssl_cert_name_prefix = "attachments"
