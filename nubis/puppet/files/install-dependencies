@@ -13,6 +13,7 @@ for pkg in \
    Math::Random::ISAAC \
    Math::Prime::Util::GMP@0.43 \
    Math::Prime::Util@0.61 \
+   Alt::Crypt::RSA::BigInt@0.05 \
    File::MimeInfo::Magic \
    File::Flock@2013.06 \
    Daemon::Generic \

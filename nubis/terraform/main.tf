@@ -3,26 +3,26 @@
 # So we pick the 'any' key when its not prod or stage
 
 module "worker" {
-  source       = "github.com/nubisproject/nubis-terraform//worker?ref=v1.4.0"
+  source       = "github.com/nubisproject/nubis-terraform//worker?ref=v1.4.1"
   region       = "${var.region}"
   environment  = "${var.environment}"
   account      = "${var.account}"
   service_name = "${var.service_name}"
   ami          = "${var.ami}"
-  elb          = "${module.load_balancer.name}"
+  elb          = "${module.load_balancer.name},${module.load_balancer_attachments.name}"
   purpose      = "webserver"
 
   wait_for_capacity_timeout = "20m"
-  min_instances = "${lookup(var.min_instances, coalesce(replace(replace(var.environment, "/^(stage|prod|any)$/",""), "/.+/", "any"), var.environment))}"
-  max_instances = "${lookup(var.max_instances, coalesce(replace(replace(var.environment, "/^(stage|prod|any)$/",""), "/.+/", "any"), var.environment))}"
-  instance_type = "${lookup(var.instance_types, coalesce(replace(replace(var.environment, "/^(stage|prod|any)$/",""), "/.+/", "any"), var.environment))}"
+  min_instances             = "${lookup(var.min_instances, coalesce(replace(replace(var.environment, "/^(stage|prod|any)$/",""), "/.+/", "any"), var.environment))}"
+  max_instances             = "${lookup(var.max_instances, coalesce(replace(replace(var.environment, "/^(stage|prod|any)$/",""), "/.+/", "any"), var.environment))}"
+  instance_type             = "${lookup(var.instance_types, coalesce(replace(replace(var.environment, "/^(stage|prod|any)$/",""), "/.+/", "any"), var.environment))}"
 
   # CPU utilisation based autoscaling (with good defaults)
   scale_load_defaults = true
 }
 
 module "queue-worker" {
-  source       = "github.com/nubisproject/nubis-terraform//worker?ref=v1.4.0"
+  source       = "github.com/nubisproject/nubis-terraform//worker?ref=v1.4.1"
   region       = "${var.region}"
   environment  = "${var.environment}"
   account      = "${var.account}"
@@ -39,7 +39,7 @@ module "queue-worker" {
 }
 
 module "push-worker" {
-  source       = "github.com/nubisproject/nubis-terraform//worker?ref=v1.4.0"
+  source       = "github.com/nubisproject/nubis-terraform//worker?ref=v1.4.1"
   region       = "${var.region}"
   environment  = "${var.environment}"
   account      = "${var.account}"
@@ -56,7 +56,7 @@ module "push-worker" {
 }
 
 module "load_balancer" {
-  source              = "github.com/nubisproject/nubis-terraform//load_balancer?ref=v1.4.0"
+  source              = "github.com/nubisproject/nubis-terraform//load_balancer?ref=v1.4.1"
   region              = "${var.region}"
   environment         = "${var.environment}"
   account             = "${var.account}"
@@ -66,14 +66,26 @@ module "load_balancer" {
   ssl_cert_name_prefix = "${var.service_name}"
 }
 
+module "load_balancer_attachments" {
+  source              = "github.com/nubisproject/nubis-terraform//load_balancer?ref=v1.4.1"
+  region              = "${var.region}"
+  environment         = "${var.environment}"
+  account             = "${var.account}"
+  service_name        = "attachments"
+  health_check_target = "HTTP:80/robots.txt?no-ssl-rewrite&elb-health-check"
+
+  ssl_cert_name_prefix = "attachments"
+}
+
 module "database" {
-  source                 = "github.com/nubisproject/nubis-terraform//database?ref=v1.4.0"
+  source                 = "github.com/nubisproject/nubis-terraform//database?ref=38d0a84074daa0fd94629e2c05777cacd3d736d5"
   region                 = "${var.region}"
   environment            = "${var.environment}"
   account                = "${var.account}"
-  monitoring = 0
+  monitoring             = true
   service_name           = "${var.service_name}"
   client_security_groups = "${module.worker.security_group},${module.queue-worker.security_group},${module.push-worker.security_group}"
+  client_ip_cidr         = "10.22.70.0/24"
   replica_count          = 1
   multi_az               = true
   name                   = "${lookup(var.db_name, coalesce(replace(replace(var.environment, "/^(stage|prod|any)$/",""), "/.+/", "any"), var.environment))}"
@@ -82,7 +94,7 @@ module "database" {
 }
 
 module "dns" {
-  source       = "github.com/nubisproject/nubis-terraform//dns?ref=v1.4.0"
+  source       = "github.com/nubisproject/nubis-terraform//dns?ref=v1.4.1"
   region       = "${var.region}"
   environment  = "${var.environment}"
   account      = "${var.account}"
@@ -90,8 +102,18 @@ module "dns" {
   target       = "${module.load_balancer.address}"
 }
 
+module "attachments-dns" {
+  source       = "github.com/nubisproject/nubis-terraform//dns?ref=v1.4.1"
+  region       = "${var.region}"
+  environment  = "${var.environment}"
+  account      = "${var.account}"
+  service_name = "${var.service_name}"
+  target       = "${module.load_balancer_attachments.address}"
+  prefix       = "attachments"
+}
+
 module "storage" {
-  source                 = "github.com/nubisproject/nubis-terraform//storage?ref=v1.4.0"
+  source                 = "github.com/nubisproject/nubis-terraform//storage?ref=v1.4.1"
   region                 = "${var.region}"
   environment            = "${var.environment}"
   account                = "${var.account}"
@@ -101,7 +123,7 @@ module "storage" {
 }
 
 module "cache" {
-  source                 = "github.com/nubisproject/nubis-terraform//cache?ref=v1.4.0"
+  source                 = "github.com/nubisproject/nubis-terraform//cache?ref=v1.4.1"
   region                 = "${var.region}"
   environment            = "${var.environment}"
   account                = "${var.account}"
@@ -110,7 +132,7 @@ module "cache" {
 }
 
 module "mail" {
-  source       = "github.com/nubisproject/nubis-terraform//mail?ref=v1.4.0"
+  source       = "github.com/nubisproject/nubis-terraform//mail?ref=v1.4.1"
   region       = "${var.region}"
   environment  = "${var.environment}"
   account      = "${var.account}"
@@ -118,7 +140,7 @@ module "mail" {
 }
 
 module "data" {
-  source       = "github.com/nubisproject/nubis-terraform//bucket?ref=v1.4.0"
+  source       = "github.com/nubisproject/nubis-terraform//bucket?ref=v1.4.1"
   region       = "${var.region}"
   environment  = "${var.environment}"
   account      = "${var.account}"
@@ -129,7 +151,7 @@ module "data" {
 }
 
 module "attachments" {
-  source       = "github.com/nubisproject/nubis-terraform//bucket?ref=v1.4.0"
+  source       = "github.com/nubisproject/nubis-terraform//bucket?ref=v1.4.1"
   region       = "${var.region}"
   environment  = "${var.environment}"
   account      = "${var.account}"
