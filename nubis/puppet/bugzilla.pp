@@ -25,7 +25,6 @@ package {
     'perl-App-cpanminus',
     'perl-Authen-SASL',
     'perl-Cache-Memcached',
-    'perl-DBD-MySQL',
     'perl-DBI',
     'perl-DateTime',
     'perl-Digest-SHA',
@@ -73,6 +72,7 @@ package {
     'perl-File-Slurp',
     'perl-Env',
     'mysql',
+    'mysql-devel',
   ]:
     ensure => present,
 }
