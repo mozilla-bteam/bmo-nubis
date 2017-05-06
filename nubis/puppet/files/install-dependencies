@@ -47,6 +47,7 @@ for pkg in \
    Moo~2.000 \
    Text::CSV_XS@1.26 \
    Throwable@0.200013 \
+   IO::Async@0.71 \
   ; do
   echo "Installing $pkg"
   $CPANM $pkg < /dev/null
