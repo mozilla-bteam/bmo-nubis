@@ -8,11 +8,10 @@ set -x
 # Dump the Carbon Dependency file
 curl -vL -o /tmp/vendor.tar.gz https://moz-devservices-bmocartons.s3.amazonaws.com/amazon/vendor.tar.gz
 sha1sum /tmp/vendor.tar.gz
-tar --strip 1 -C /var/www/bugzilla -tvf /tmp/vendor.tar.gz
+tar --strip 1 -C /var/www/bugzilla -xvf /tmp/vendor.tar.gz
 rm /tmp/vendor.tar.gz
 
-CPANM="cpanm --configure-timeout 900 --verbose"
-
+CPANM="cpanm --configure-timeout 900 --verbose -l local"
 echo "Install Bugzilla self-specified dependencies"
 $CPANM --verbose --force --notest --with-feature bmo --installdeps /var/www/bugzilla < /dev/null
 
