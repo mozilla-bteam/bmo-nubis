@@ -6,6 +6,7 @@
 CPANM="cpanm --configure-timeout 900 --verbose"
 
 for pkg in \
+   CGI@3.63 \
    Module::Metadata@1.000033 \
    List::MoreUtils@0.418 \
    Taint::Util@0.08 \
