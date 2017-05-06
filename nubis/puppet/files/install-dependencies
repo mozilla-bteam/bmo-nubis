@@ -59,4 +59,7 @@ for pkg in \
   $CPANM --force $pkg < /dev/null
 done
 
+echo "Install Bugzilla self-specified dependencies"
+$CPANM --with-feature bmo --installdeps /var/www/bugzilla
+
 exit 0
