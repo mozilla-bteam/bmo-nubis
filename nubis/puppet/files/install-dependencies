@@ -3,65 +3,13 @@
 # Exit if anything fails
 #set -e
 
+# Dump the Carbon Dependency file
+curl -sL -o /tmp/vendor.tar.gz https://moz-devservices-bmocartons.s3.amazonaws.com/amazon/vendor.tar.gz
+sha1sum /tmp/vendor.tar.gz
+tar --strip 1 -C /var/www/bugzilla -tvf - /tmp/vendor.tar.gz
+rm /tmp/vendor.tar.gz
+
 CPANM="cpanm --configure-timeout 900 --verbose"
-
-for pkg in \
-   CGI@3.63 \
-   Module::Metadata@1.000033 \
-   List::MoreUtils@0.418 \
-   Taint::Util@0.08 \
-   DateTime::TimeZone@2.11 \
-   Math::Random::ISAAC \
-   Math::Prime::Util::GMP@0.43 \
-   Math::Prime::Util@0.61 \
-   Alt::Crypt::RSA::BigInt@0.05 \
-   File::MimeInfo::Magic \
-   File::Flock@2013.06 \
-   Daemon::Generic \
-   Crypt::OpenPGP \
-   Crypt::SMIME \
-   TheSchwartz \
-   Any::URI::Escape \
-   Chart::Base \
-   HTTP::Lite \
-   JSON::RPC@1.01 \
-   PatchReader \
-   Authen::Radius \
-   Template::Plugin::GD \
-   Math::BigInt \
-   ElasticSearch@0.68 \
-   Test::Number::Delta \
-   Math::Random::MT \
-   Devel::StackTrace \
-   Convert::Base32 \
-   Auth::GoogleAuth \
-   Net::SFTP \
-   File::Copy::Recursive \
-   MIME::Tools@5.502 \
-   Email::Simple@2.102 \
-   Email::Send@2.198 \
-   Email::MIME::ContentType@1.011 \
-   Email::MIME@1.911 \
-   Email::MIME::Attachment::Stripper@1.316 \
-   Email::Reply@1.202 \
-   Moo~2.000 \
-   Text::CSV_XS@1.26 \
-   Throwable@0.200013 \
-   IO::Async@0.71 \
-   DBD::mysql@4.037 \
-  ; do
-  echo "Installing $pkg"
-  $CPANM $pkg < /dev/null
-done
-
-# Force install, this is failing some tests
-for pkg in \
-    Math::BigInt::Pari \
-    Math::BigInt::GMP \
-   ; do
-   echo "Installing --force $pkg"
-  $CPANM --force $pkg < /dev/null
-done
 
 echo "Install Bugzilla self-specified dependencies"
 $CPANM --verbose --force --notest --with-feature bmo --installdeps /var/www/bugzilla < /dev/null

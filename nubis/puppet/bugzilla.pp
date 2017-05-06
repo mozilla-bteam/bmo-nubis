@@ -6,6 +6,7 @@ yumrepo { 'epel':
 }->
 package {
   [
+    'git',
     'graphviz',
     'patchutils',
     'mod24_perl',

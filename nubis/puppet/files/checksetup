@@ -3,12 +3,7 @@
 # Exit if anything fails
 set -e
 
-# Verbose
-set -x
-
 cd /var/www/bugzilla
-
-cat /var/www/bugzilla/answers.txt
 
 perl checksetup.pl --verbose /var/www/bugzilla/answers.txt
 
