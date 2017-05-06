@@ -61,7 +61,7 @@ module "load_balancer" {
   environment         = "${var.environment}"
   account             = "${var.account}"
   service_name        = "${var.service_name}"
-  health_check_target = "HTTP:80/robots.txt?no-ssl-rewrite&elb-health-check"
+  health_check_target = "HTTP:80/__lbheartbeat__?no-ssl-rewrite&elb-health-check"
 
   ssl_cert_name_prefix = "${var.service_name}"
 }
