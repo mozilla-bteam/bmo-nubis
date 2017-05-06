@@ -63,6 +63,6 @@ for pkg in \
 done
 
 echo "Install Bugzilla self-specified dependencies"
-$CPANM --verbose --force --notest --with-feature bmo --installdeps /var/www/bugzilla
+$CPANM --verbose --force --notest --with-feature bmo --installdeps /var/www/bugzilla < /dev/null
 
 exit 0
