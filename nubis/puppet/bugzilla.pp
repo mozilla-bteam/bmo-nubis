@@ -12,6 +12,7 @@ package {
     'mod24_perl',
     'perl',
     'perl-devel',
+    'perl-autodie',
     'openssl-devel',
     'gmp-devel',
     'perl-App-cpanminus',
