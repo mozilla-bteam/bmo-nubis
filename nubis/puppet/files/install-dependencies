@@ -3,10 +3,12 @@
 # Exit if anything fails
 #set -e
 
+set -x
+
 # Dump the Carbon Dependency file
-curl -sL -o /tmp/vendor.tar.gz https://moz-devservices-bmocartons.s3.amazonaws.com/amazon/vendor.tar.gz
+curl -vL -o /tmp/vendor.tar.gz https://moz-devservices-bmocartons.s3.amazonaws.com/amazon/vendor.tar.gz
 sha1sum /tmp/vendor.tar.gz
-tar --strip 1 -C /var/www/bugzilla -tvf - /tmp/vendor.tar.gz
+tar --strip 1 -C /var/www/bugzilla -tvf /tmp/vendor.tar.gz
 rm /tmp/vendor.tar.gz
 
 CPANM="cpanm --configure-timeout 900 --verbose"
