@@ -1,15 +1,14 @@
 #!/bin/bash
 
 # Exit if anything fails
-#set -e
+set -e
 
-set -x
+URL=https://moz-devservices-bmocartons.s3.amazonaws.com/amazon/vendor.tar.gz
 
-echo "Install Bugzilla dependency bundle"
-curl -vL -o /var/www/bugzilla/vendor.tar.gz https://moz-devservices-bmocartons.s3.amazonaws.com/amazon/vendor.tar.gz
-sha1sum /var/www/bugzilla/vendor.tar.gz
+echo "Install Bugzilla dependency bundle from $URL"
+curl -s --retry 5 -L -o /var/www/bugzilla/vendor.tar.gz $URL
+CHECKSUM=$(sha1sum /var/www/bugzilla/vendor.tar.gz | awk '{print $1}')
 tar --strip 1 -C /var/www/bugzilla -xf /var/www/bugzilla/vendor.tar.gz
-
-echo "Finished Installing Bugzilla dependency bundle"
+echo "Finished Installing Bugzilla dependency bundle ($CHECKSUM)"
 
 exit 0
