@@ -8,7 +8,7 @@ set -x
 echo "Install Bugzilla dependency bundle"
 curl -vL -o /var/www/bugzilla/vendor.tar.gz https://moz-devservices-bmocartons.s3.amazonaws.com/amazon/vendor.tar.gz
 sha1sum /var/www/bugzilla/vendor.tar.gz
-tar --strip 1 -C /var/www/bugzilla -xvf /var/www/bugzilla/vendor.tar.gz
+tar --strip 1 -C /var/www/bugzilla -xf /var/www/bugzilla/vendor.tar.gz
 
 echo "Finished Installing Bugzilla dependency bundle"
 
