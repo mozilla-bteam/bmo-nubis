@@ -11,14 +11,9 @@ package {
     'patchutils',
     'mod24_perl',
     'perl',
-    'perl-devel',
-    'perl-autodie',
-    'perl-Sys-Syslog',
-    'openssl-devel',
-    'gmp-devel',
+    'perl-core',
     'perl-App-cpanminus',
     'mysql',
-    'mysql-devel',
   ]:
     ensure => present,
 }
