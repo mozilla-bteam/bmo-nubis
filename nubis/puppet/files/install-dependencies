@@ -13,6 +13,11 @@ echo "Finished Installing Bugzilla dependency bundle ($CHECKSUM)"
 
 echo "Installing package list from PACAKGES.txt"
 # We use httpd24, not httpd and skip prefix line header
-cat /var/www/bugzilla/PACKAGES.txt | tail -n+2 | grep -v '^httpd-' | grep -v '^mod_perl-' | xargs yum -y install
+cat /var/www/bugzilla/PACKAGES.txt | tail -n+2 | \
+  grep -v '^httpd-' | \
+  grep -v '^mod_perl-' | \
+  grep -v '^gpg-pubkey-' | \
+  grep -v '\-devel\-' | \
+  xargs yum -y install
 
 exit 0
