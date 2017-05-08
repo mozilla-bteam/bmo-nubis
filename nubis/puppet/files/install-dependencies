@@ -11,4 +11,7 @@ CHECKSUM=$(sha1sum /var/www/bugzilla/vendor.tar.gz | awk '{print $1}')
 tar --strip 1 -C /var/www/bugzilla -xf /var/www/bugzilla/vendor.tar.gz
 echo "Finished Installing Bugzilla dependency bundle ($CHECKSUM)"
 
+echo "Installing package list from PACAKGES.txt"
+cat /var/www/bugzilla/PACKAGES.txt | xargs yum -y install
+
 exit 0

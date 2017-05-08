@@ -1,23 +1,3 @@
-package { 'epel-release':
-  ensure => present,
-}->
-yumrepo { 'epel':
-  enabled => true,
-}->
-package {
-  [
-    'git',
-    'graphviz',
-    'patchutils',
-    'mod24_perl',
-    'perl',
-    'perl-core',
-    'perl-App-cpanminus',
-    'mysql',
-  ]:
-    ensure => present,
-}
-
 file { '/var/www/bugzilla/answers.txt':
   ensure => present,
   source => 'puppet:///nubis/files/answers.txt',
