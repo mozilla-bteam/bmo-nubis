@@ -3,6 +3,7 @@
     "builders": [
       "amazon-ebs-amazon-linux"
     ],
+    "ami_regions": "us-east-1,us-west-2",
     "project_description": "bugzilla.mozilla.org",
     "project_name": "bugzilla",
     "source_ami_project_version": "v1.4.1",
