@@ -11,7 +11,8 @@ sha1sum /tmp/vendor.tar.gz
 tar --strip 1 -C /var/www/bugzilla -xvf /tmp/vendor.tar.gz
 rm /tmp/vendor.tar.gz
 
-CPANM="cpanm --configure-timeout 900 --verbose -l local"
+CPANM="cpanm --configure-timeout 900 --verbose -l /var/www/bugzilla/local"
+
 echo "Install Bugzilla self-specified dependencies"
 $CPANM --verbose --force --notest --with-feature bmo --installdeps /var/www/bugzilla < /dev/null
 
