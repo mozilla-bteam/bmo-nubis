@@ -13,6 +13,7 @@ package {
     'perl',
     'perl-devel',
     'perl-autodie',
+    'perl-Sys-Syslog',
     'openssl-devel',
     'gmp-devel',
     'perl-App-cpanminus',
