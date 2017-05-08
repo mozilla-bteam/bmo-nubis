@@ -1,3 +1,17 @@
+package { 'epel-release':
+  ensure => present,
+}->
+yumrepo { 'epel':
+  enabled => true,
+}->
+package {
+  [
+    'mod24_perl',
+    'perl',
+  ]:
+    ensure => present,
+}
+
 file { '/var/www/bugzilla/answers.txt':
   ensure => present,
   source => 'puppet:///nubis/files/answers.txt',
