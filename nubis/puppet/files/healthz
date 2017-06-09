@@ -7,7 +7,7 @@ PURPOSE=$(nubis-purpose)
 
 case $PURPOSE in
   webserver)
-    /usr/bin/curl -I http://localhost:80
+    /usr/bin/curl -I http://localhost:80/__healthcheck__
   ;;
   queue-worker)
     if /usr/local/bin/bugzilla-active; then
