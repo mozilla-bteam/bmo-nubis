@@ -38,11 +38,28 @@ service { 'supervisord':
   ],
 }
 
+file { '/etc/supervisord.conf':
+  ensure => present,
+  source => 'puppet:///nubis/files/supervisord.conf',
+  require => [
+    Package['supervisor'],
+  ],
+  owner   => 'root',
+  group   => 'root',
+}
+
+file { '/etc/supervisord.d':
+  ensure => 'directory',
+  owner   => 'root',
+  group   => 'root',
+}
+
 file { '/etc/supervisord.d/shim.ini':
   ensure => present,
   source => 'puppet:///nubis/files/shim.ini',
   require => [
     Package['supervisor'],
+    File['/etc/supervisord.d'],
   ],
 }
 
