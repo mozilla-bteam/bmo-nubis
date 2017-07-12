@@ -24,22 +24,26 @@ python::pip { 'mozlog':
   ],
 }
 
-# Haxor for borked package
-exec { 'install-supervisord':
-  command => 'yum -y install --nogpgcheck supervisor',
-  path    => ['/sbin','/bin','/usr/sbin','/usr/bin','/usr/local/sbin','/usr/local/bin'],
-}->
-exec { 'fix-supervisor-shebang':
-  command => "file /usr/bin/supervisor* | grep -i 'Python script' | cut -d: -f1 | xargs sed -i -e '1c#!/usr/bin/env python26'",
-  path    => ['/sbin','/bin','/usr/sbin','/usr/bin','/usr/local/sbin','/usr/local/bin'],
-}->
-exec { 'enable supervisord':
-  command => 'chkconfig supervisord on',
-  path    => ['/sbin','/bin','/usr/sbin','/usr/bin','/usr/local/sbin','/usr/local/bin'],
-}->
+package {'supervisor':
+  ensure => 'present',
+  require => [
+    Yumrepo['epel'],
+  ],
+}
+
+service { 'supervisord':
+  enable => true,
+  require => [
+    Package['supervisor'],
+  ],
+}
+
 file { '/etc/supervisord.d/shim.ini':
   ensure => present,
   source => 'puppet:///nubis/files/shim.ini',
+  require => [
+    Package['supervisor'],
+  ],
 }
 
 package { 'mercurial-python27':
