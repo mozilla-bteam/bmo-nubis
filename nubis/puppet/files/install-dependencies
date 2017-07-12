@@ -18,6 +18,7 @@ cat /var/www/bugzilla/PACKAGES.txt | tail -n+2 | \
   grep -v '^mod_perl-' | \
   grep -v '^gpg-pubkey-' | \
   grep -v '\-devel\-' | \
+  grep -v '^mysql-' | \
   xargs yum -y install
 
 exit 0
