@@ -63,7 +63,6 @@ file { '/etc/supervisord.d/shim.ini':
   ensure => present,
   source => 'puppet:///nubis/files/shim.ini',
   require => [
-    Package['supervisor'],
     File['/etc/supervisord.d'],
   ],
 }
