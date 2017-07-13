@@ -13,6 +13,8 @@ module "worker" {
   purpose      = "webserver"
 
   wait_for_capacity_timeout = "20m"
+  health_check_grace_period = "600"
+
   min_instances             = "${lookup(var.min_instances, coalesce(replace(replace(var.environment, "/^(stage|prod|any)$/",""), "/.+/", "any"), var.environment))}"
   max_instances             = "${lookup(var.max_instances, coalesce(replace(replace(var.environment, "/^(stage|prod|any)$/",""), "/.+/", "any"), var.environment))}"
   instance_type             = "${lookup(var.instance_types, coalesce(replace(replace(var.environment, "/^(stage|prod|any)$/",""), "/.+/", "any"), var.environment))}"
