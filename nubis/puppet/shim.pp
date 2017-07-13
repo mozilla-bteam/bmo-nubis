@@ -24,26 +24,31 @@ python::pip { 'mozlog':
   ],
 }
 
-package {'supervisor':
-  ensure => 'present',
+python::pip { 'supervisor':
+  ensure => '3.3.2',
   require => [
-    Yumrepo['epel'],
+    Package['python27-pip'],
   ],
 }
 
 service { 'supervisord':
   enable => true,
   require => [
-    Package['supervisor'],
+    Python::Pip['supervisor'],
+    File['/etc/init.d/supervisord'],
   ],
+}
+
+file { '/etc/init.d/supervisord':
+  ensure => present,
+  source => 'puppet:///nubis/files/supervisord.init',
+  owner   => 'root',
+  group   => 'root',
 }
 
 file { '/etc/supervisord.conf':
   ensure => present,
   source => 'puppet:///nubis/files/supervisord.conf',
-  require => [
-    Package['supervisor'],
-  ],
   owner   => 'root',
   group   => 'root',
 }
