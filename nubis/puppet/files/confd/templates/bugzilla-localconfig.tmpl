@@ -163,5 +163,5 @@ $apache_size_limit = {{ if exists "/config/ApacheSizeLimit" }}{{ getv "/config/A
 $memcached_servers = '{{ getv "/config/MemCachedEndpoint" }}:{{ getv "/config/MemCachedPort" }}';
 
 # Specify a string to prefix each key on Memcached.
-$memcached_namespace = '{{ if exists "/config/MemCachedNamespace" }}{{ getv "/config/MemCachedNamespace" }}{{ else }}bugzilla{{ end }}:;
+$memcached_namespace = '{{ if exists "/config/MemCachedNamespace" }}{{ getv "/config/MemCachedNamespace" }}{{ else }}bugzilla{{ end }}:';
 
