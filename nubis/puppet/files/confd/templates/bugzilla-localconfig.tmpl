@@ -157,3 +157,11 @@ $site_wide_secret = '{{ if exists "/config/SiteWideSecret" }}{{ getv "/config/Si
 # before Apache::SizeLimit kills it. This is only applicable when run under mod_perl.
 $apache_size_limit = {{ if exists "/config/ApacheSizeLimit" }}{{ getv "/config/ApacheSizeLimit" }}{{ else }}750000{{ end }};
 
+# If this option is set, Bugzilla will integrate with Memcached.
+# Specify one or more servers, separated by spaces, using hostname:port 
+# notation (for example: 127.0.0.1:11211).
+$memcached_servers = '{{ getv "/config/MemCachedEndpoint" }}:{{ getv "/config/MemCachedPort" }}';
+
+# Specify a string to prefix each key on Memcached.
+$memcached_namespace = '{{ if exists "/config/MemCachedNamespace" }}{{ getv "/config/MemCachedNamespace" }}{{ else }}bugzilla{{ end }}:;
+
