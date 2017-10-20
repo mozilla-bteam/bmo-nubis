@@ -80,7 +80,7 @@ module "load_balancer_attachments" {
 }
 
 module "database" {
-  source                 = "github.com/nubisproject/nubis-terraform//database?ref=38d0a84074daa0fd94629e2c05777cacd3d736d5"
+  source                 = "github.com/nubisproject/nubis-terraform//database?ref=v2.0.1"
   region                 = "${var.region}"
   environment            = "${var.environment}"
   account                = "${var.account}"
