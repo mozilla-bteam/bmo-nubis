@@ -6,8 +6,8 @@
     "ami_regions": "us-east-1,us-west-2",
     "project_description": "bugzilla.mozilla.org",
     "project_name": "bugzilla",
-    "source_ami_project_version": "v1.5.0",
-    "project_version": "v1.5.0_{{env `GIT_COMMIT_SHA`}}",
+    "source_ami_project_version": "v2.0.1",
+    "project_version": "v2.0.1_{{env `GIT_COMMIT_SHA`}}",
     "source_ami_project_name": "nubis-base"
   }
 }
