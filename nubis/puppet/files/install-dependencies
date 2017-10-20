@@ -11,9 +11,6 @@ CHECKSUM=$(sha1sum /var/www/bugzilla/vendor.tar.gz | awk '{print $1}')
 tar --strip 1 -C /var/www/bugzilla -xf /var/www/bugzilla/vendor.tar.gz
 echo "Finished Installing Bugzilla dependency bundle ($CHECKSUM)"
 
-echo "Installing missing modules"
-cpanp install SMUELLER/Algorithm-BloomFilter-0.02.tar.gz
-
 echo "Installing package list from PACAKGES.txt"
 # We use httpd24, not httpd and skip prefix line header
 cat /var/www/bugzilla/PACKAGES.txt | tail -n+2 | \
@@ -22,5 +19,8 @@ cat /var/www/bugzilla/PACKAGES.txt | tail -n+2 | \
   grep -v '^gpg-pubkey-' | \
   grep -v '\-devel\-' | \
   xargs yum -y install
+
+echo "Installing missing modules"
+cpanp install SMUELLER/Algorithm-BloomFilter-0.02.tar.gz
 
 exit 0
