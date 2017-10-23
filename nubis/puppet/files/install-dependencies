@@ -18,6 +18,9 @@ cat /var/www/bugzilla/PACKAGES.txt | tail -n+2 | \
   grep -v '^mod_perl-' | \
   grep -v '^gpg-pubkey-' | \
   grep -v '\-devel\-' | \
-  xargs yum -y install
+  xargs yum -y install --skip-broken
+
+echo "Installing missing modules"
+cpanp install SMUELLER/Algorithm-BloomFilter-0.02.tar.gz
 
 exit 0
