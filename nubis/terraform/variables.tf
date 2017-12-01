@@ -56,8 +56,8 @@ variable "db_allocated_storage" {
   type = "map"
 
   default = {
-    stage = "256"
-    prod  = "256"
+    stage = "128"
+    prod  = "512"
     any   = "64"
   }
 }
