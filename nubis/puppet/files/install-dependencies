@@ -3,7 +3,7 @@
 # Exit if anything fails
 set -e
 
-URL=https://moz-devservices-bmocartons.s3.amazonaws.com/amazon/vendor.tar.gz
+URL=https://moz-devservices-bmocartons.s3.amazonaws.com/bmo_centos7/vendor.tar.gz
 
 echo "Install Bugzilla dependency bundle from $URL"
 curl -s --retry 5 -L -o /var/www/bugzilla/vendor.tar.gz $URL
@@ -12,7 +12,6 @@ tar --strip 1 -C /var/www/bugzilla -xf /var/www/bugzilla/vendor.tar.gz
 echo "Finished Installing Bugzilla dependency bundle ($CHECKSUM)"
 
 echo "Installing package list from PACAKGES.txt"
-# We use httpd24, not httpd and skip prefix line header
 cat /var/www/bugzilla/PACKAGES.txt | tail -n+2 | \
   grep -v '^httpd-' | \
   grep -v '^mod_perl-' | \
@@ -22,5 +21,6 @@ cat /var/www/bugzilla/PACKAGES.txt | tail -n+2 | \
 
 echo "Installing missing modules"
 cpanp install SMUELLER/Algorithm-BloomFilter-0.02.tar.gz
+yum -y install perl-Digest-SHA
 
 exit 0

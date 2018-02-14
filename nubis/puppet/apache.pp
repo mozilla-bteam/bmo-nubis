@@ -12,14 +12,14 @@ include nubis_discovery
 
 nubis::discovery::service { $service:
   port     => $port,
-  check    => "/usr/local/bin/bugzilla-healthz",
+  check    => '/usr/local/bin/bugzilla-healthz',
   interval => '30s',
 }
 
 class {
     'apache':
         apache_version      => '2.4',
-        apache_name         => 'httpd24',
+        apache_name         => 'httpd',
         default_mods        => true,
         default_vhost       => false,
         default_confd_files => false,
@@ -29,8 +29,8 @@ class {
         service_ensure      => false;
     'apache::mod::remoteip':
         proxy_ips => [ '127.0.0.1', '10.0.0.0/8' ];
-    'apache::mod::headers':
-#    'apache::mod::perl': # Busted thanks to Amazon Linux mod24_perl ?!
+    'apache::mod::headers':;
+    'apache::mod::perl':;
 }
 
 # Enable /server-status
@@ -41,10 +41,8 @@ class { 'apache::mod::status':
 class { 'apache::mod::info':
 }
 
-
 apache::custom_config { 'mod_perl':
   content => "
-  LoadModule perl_module modules/mod_perl.so
   PerlSwitches -w -T
   PerlPostConfigRequire /var/www/bugzilla/mod_perl.pl
 

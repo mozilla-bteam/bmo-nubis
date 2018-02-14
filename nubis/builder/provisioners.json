@@ -4,7 +4,7 @@
     "type": "shell",
     "inline": [
         "sudo mkdir -p -m 755 /var/www/bugzilla",
-        "sudo chown ec2-user:ec2-user /var/www/bugzilla"
+        "sudo chown {{user `ssh_username_centos`}}:{{user `ssh_username_centos`}} /var/www/bugzilla"
     ],
     "order": "1"
   },

@@ -1,9 +1,12 @@
-package { 'MySQL-python27':
-  ensure => present,
+class { 'python':
+  version => 'system',
+  pip     => true,
+  dev     => true,
 }
 
-package { 'python27-pip':
-  ensure => present,
+class { 'mysql::bindings':
+    python_enable => true,
+    client_dev    => true,
 }
 
 python::pip { [
@@ -12,23 +15,23 @@ python::pip { [
   'pytz',
 ]:
   ensure  => 'present',
-  require => [
-    Package['python27-pip'],
-  ],
+#  require => [
+#    Package['python27-pip'],
+#  ],
 }
 
 python::pip { 'mozlog':
   ensure  => '1.6',
-  require => [
-    Package['python27-pip'],
-  ],
+#  require => [
+#    Package['python27-pip'],
+#  ],
 }
 
 python::pip { 'supervisor':
   ensure => '3.3.2',
-  require => [
-    Package['python27-pip'],
-  ],
+#  require => [
+#    Package['python27-pip'],
+#  ],
 }
 
 service { 'supervisord':
@@ -67,7 +70,7 @@ file { '/etc/supervisord.d/shim.ini':
   ],
 }
 
-package { 'mercurial-python27':
+package { 'mercurial':
   ensure => present,
 }
 
@@ -77,6 +80,6 @@ vcsrepo { '/opt/pulse/shims':
   source   => 'https://hg.mozilla.org/automation/pulseshims',
   revision => 'f8fc683ea85e',
   require  => [
-    Package['mercurial-python27'],
+    Package['mercurial'],
   ],
 }

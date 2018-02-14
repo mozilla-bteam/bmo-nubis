@@ -1,15 +1,5 @@
-package { 'epel-release':
+package { "perl":
   ensure => present,
-}->
-yumrepo { 'epel':
-  enabled => true,
-}->
-package {
-  [
-    'mod24_perl',
-    'perl',
-  ]:
-    ensure => present,
 }
 
 file { '/var/www/bugzilla/answers.txt':
