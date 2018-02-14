@@ -21,6 +21,12 @@ cat /var/www/bugzilla/PACKAGES.txt | tail -n+2 | \
 
 echo "Installing missing modules"
 cpanp install SMUELLER/Algorithm-BloomFilter-0.02.tar.gz
-yum -y install perl-Digest-SHA
+
+cpanp install Digest::SHA
+cpanp install Class::XSAccessor
+cpanp install Devel::NYTProf
+cpanp install HTML::Escape
+cpanp install Sereal
+cpanp install URI::Escape::XS
 
 exit 0
