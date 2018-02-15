@@ -147,7 +147,7 @@ apache::vhost { $service:
           '%{HTTP_HOST} !\.nubis\.allizom\.org$',
           '%{HTTP_HOST} !^bugzilla\.allizom\.org$',
         ],
-        rewrite_rule => ['(.*) https://bugzilla.mozilla.org$1 [R=301,L]'],
+        rewrite_rule => ['(.*) https://%{HTTP:Host}$1 [R=301,L]'],
       },
       {
         comment      => 'Skip robots.txt',

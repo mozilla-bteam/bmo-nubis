@@ -2,14 +2,14 @@
 # files for you, which will keep this file (localconfig) and other
 # confidential files from being read over the web.
 # 
-# If this is set to 1, checksetup.pl will create .htaccess files if 
+# If this is set to 1, checksetup.pl will create .htaccess files if
 # they don't exist.
 # 
 # If this is set to 0, checksetup.pl will not create .htaccess files.
 $create_htaccess = 1;
 
 # The name of the group that your web server runs as. On Red Hat
-# distributions, this is usually "apache". On Debian/Ubuntu, it is 
+# distributions, this is usually "apache". On Debian/Ubuntu, it is
 # usually "www-data".
 # 
 # If you have use_suexec turned on below, then this is instead the name
@@ -40,7 +40,7 @@ $webservergroup = 'apache';
 # a normal webserver environment.
 # 
 # If set to 1, checksetup.pl will set file permissions so that Bugzilla
-# works in a SuexecUserGroup environment. 
+# works in a SuexecUserGroup environment.
 $use_suexec = 0;
 
 # What SQL database to use. Default is mysql. List of supported databases
@@ -57,8 +57,6 @@ $db_host = '{{ if exists "/config/Override/DBserver" }}{{ getv "/config/Override
 $db_name = '{{ if exists "/config/Override/DBname" }}{{ getv "/config/Override/DBname" }}{{ else }}{{ if exists "/config/DBname" }}{{ getv "/config/DBname" }}{{ else }}bugzilla{{ end }}{{ end }}';
 
 # Who we connect to the database as.
-# When *not* active, we use the username 'read-only'
-
 $db_user = '{{ if or  ( not ( exists "/config/Active" ) ) ( ne ( getv "/config/Active" ) "1" ) }}read-only{{ else }}{{ if exists "/config/Override/DBuser"}}{{ getv "/config/Override/DBuser" }}{{ else }}{{ if exists "/config/DBuser" }}{{ getv "/config/DBuser" }}{{ else }}bugzilla{{ end }}{{ end }}{{ end }}';
 
 # Enter your database password here. It's normally advisable to specify
@@ -109,30 +107,6 @@ $interdiffbin = '/usr/bin/interdiff';
 # are using that feature of the Patch Viewer.)
 $diffpath = '/usr/bin';
 
-# You can specify the full path to a TrueType or OpenType font file, which will
-# be used to display text (labels, legends, ...) in charts and graphical reports.
-# To support as many languages as possible, we recommend to specify a font such as
-# Unifont (http://unifoundry.com/unifont.html), which supports all printable
-# characters in the Basic Multilingual Plane. If you leave this parameter empty,
-# a default font will be used, but its support is limited to English characters
-# only and so other characters will be displayed incorrectly.
-$font_file = '';
-
-# It is possible to show graphs of dependent bugs. You may set this parameter to
-# any of the following:
-# 
-# - A complete file path to 'dot' (part of GraphViz (http://www.graphviz.org/))
-#   will generate the graphs locally.
-# - A URL prefix pointing to an installation of the webdot package will generate
-#   the graphs remotely. (append "/%urlbase%" to the URL prefix)
-# - A blank value will disable dependency graphing.
-# 
-# If you use a webdot URL prefix, make certain that the webdot server can read
-# files from your webdot directory. On Apache you do this by editing the
-# .htaccess file, for other systems the needed measures may vary. You can run
-# checksetup.pl to recreate the .htaccess file if it has been lost.
-$webdotbase = '';
-
 # This secret key is used by your installation for the creation and
 # validation of encrypted tokens. These tokens are used to implement
 # security features in Bugzilla, to protect against certain types of attacks.
@@ -158,10 +132,31 @@ $site_wide_secret = '{{ if exists "/config/SiteWideSecret" }}{{ getv "/config/Si
 $apache_size_limit = {{ if exists "/config/ApacheSizeLimit" }}{{ getv "/config/ApacheSizeLimit" }}{{ else }}750000{{ end }};
 
 # If this option is set, Bugzilla will integrate with Memcached.
-# Specify one or more servers, separated by spaces, using hostname:port 
+# Specify one or more servers, separated by spaces, using hostname:port
 # notation (for example: 127.0.0.1:11211).
 $memcached_servers = '{{ getv "/config/MemCachedEndpoint" }}:{{ getv "/config/MemCachedPort" }}';
 
 # Specify a string to prefix each key on Memcached.
 $memcached_namespace = '{{ if exists "/config/MemCachedNamespace" }}{{ getv "/config/MemCachedNamespace" }}{{ else }}bugzilla{{ end }}:';
+
+# The URL that is the common initial leading part of all URLs.
+$urlbase = '{{ if exists "/config/CanonicalServer" }}{{ getv "/config/CanonicalServer" }}{{ else }}{{ end }}';
+
+# When the runtime allow_attachment_display parameter is on, it is
+# possible for a malicious attachment to steal your cookies or
+# perform an attack using your credentials.
+# 
+# If you would like additional security on attachments to avoid
+# this, set this parameter to an alternate URL for your $terms.Bugzilla
+# that is not the same as urlbase.
+# That is, a different domain name that resolves to this exact
+# same installation.
+# 
+# For added security, you can insert %bugid% into the URL,
+# which will be replaced with the ID of the current bug that
+# the attachment is on, when you access an attachment. This will limit
+# attachments to accessing only other attachments on the same
+# bug. Remember, though, that all those possible domain names
+#  must point to this same instance.
+$attachment_base = '';
 
